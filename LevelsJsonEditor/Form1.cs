@@ -59,6 +59,9 @@ namespace LevelsJsonEditor
 
         private void InitializeEditor()
         {
+            // 初始化图像资源
+            ImageResources.Initialize();
+
             LoadJson();
             if (_container.Levels.Count == 0)
             {
@@ -311,6 +314,7 @@ namespace LevelsJsonEditor
                         // 可选：显示颜色统计信息（作为调试信息）
                         if (!hasColorError && colorCounts.Values.Any(count => count > 0))
                         {
+
                             var colorInfo = new StringBuilder();
                             colorInfo.AppendLine("车辆颜色统计:");
                             foreach (var kvp in colorCounts)
@@ -1008,25 +1012,35 @@ namespace LevelsJsonEditor
             {
                 if (entity == null) continue;
                 if (entity.CellX < 0 || entity.CellX >= gw || entity.CellY < 0 || entity.CellY >= gh) continue;
-                
+
                 var rect = new RectangleF(
                     content.X + entity.CellX * cell + 1,
                     content.Y + (gh - 1 - entity.CellY) * cell + 1, // Y坐标翻转，使(0,0)在左下
                     cell - 2, cell - 2);
-                
-                // 根据类型选择颜色
-                Color color;
-                if (!_typeColors.TryGetValue(entity.Type ?? "Empty", out color))
-                    color = Color.Gray;
-                
-                // 如果是Car类型，根据颜色类型调整颜色
-                if ("Car".Equals(entity.Type, StringComparison.OrdinalIgnoreCase))
+
+                // 先尝试用图像绘制
+                var image = GetImageForEntity(entity);
+                if (image != null)
                 {
-                    color = GetCarColor(entity.ColorType);
+                    // 绘制图像，保持宽高比
+                    g.DrawImage(image, rect);
                 }
-                
-                g.FillRectangle(new SolidBrush(color), rect);
-                
+                else
+                {
+                    // 缺省用颜色块（保留原有逻辑）
+                    Color color;
+                    if (!_typeColors.TryGetValue(entity.Type ?? "Empty", out color))
+                        color = Color.Gray;
+
+                    // 如果是Car类型，根据颜色类型调整颜色
+                    if ("Car".Equals(entity.Type, StringComparison.OrdinalIgnoreCase))
+                    {
+                        color = GetCarColor(entity.ColorType);
+                    }
+
+                    g.FillRectangle(new SolidBrush(color), rect);
+                }
+
                 // 选中高亮
                 if (_selectedGroup != null && _selectedIndex >= 0)
                 {
@@ -1039,6 +1053,78 @@ namespace LevelsJsonEditor
                         }
                     }
                 }
+            }
+        }
+
+        private Image GetImageForEntity(GridEntityData entity)
+        {
+            if (entity == null || string.IsNullOrEmpty(entity.Type)) return null;
+
+            // 按类型映射到图像资源
+            switch (entity.Type.ToLower())
+            {
+                case "wall":
+                    return ImageResources.WallImage;
+
+                case "park":
+                    return ImageResources.ParkImage;
+
+                case "paypark":
+                    return ImageResources.ParkImage; // 使用相同的Park图像
+
+                case "box":
+                    return ImageResources.BoxImage;
+
+                case "factory":
+                    // 用方向选择工厂图像
+                    if (ImageResources.FactoryImages.Count > 0)
+                    {
+                        if (Enum.TryParse<DirectionsType>(entity.Dir ?? DirectionsType.Down.ToString(), true, out var dir))
+                        {
+                            // 约定 Down/Up/Right/Left 对应 0/1/2/3
+                            int idx = dir == DirectionsType.Down ? 0 :
+                                      dir == DirectionsType.Up ? 1 :
+                                      dir == DirectionsType.Right ? 2 : 3;
+                            idx = Math.Max(0, Math.Min(idx, ImageResources.FactoryImages.Count - 1));
+                            return ImageResources.FactoryImages[idx];
+                        }
+                        return ImageResources.FactoryImages[0];
+                    }
+                    return null;
+
+                case "car":
+                    // 按颜色选择车辆图像
+                    if (ImageResources.CarImages.Count > 0)
+                    {
+                        if (Enum.TryParse<CarColorType>(entity.ColorType ?? CarColorType.White.ToString(), true, out var colorType))
+                        {
+                            int colorIndex = (int)colorType;
+                            if (colorIndex >= 0 && colorIndex < ImageResources.CarImages.Count)
+                                return ImageResources.CarImages[colorIndex];
+                        }
+                        return ImageResources.CarImages[0]; // 默认返回第一个
+                    }
+                    return null;
+
+                case "lockdoor":
+                    // 按颜色选择锁门图像 (使用Head图像)
+                    if (ImageResources.LockDoorHeadImages.Count > 0)
+                    {
+                        if (Enum.TryParse<CarColorType>(entity.ColorType ?? CarColorType.White.ToString(), true, out var colorType))
+                        {
+                            int colorIndex = (int)colorType;
+                            if (colorIndex >= 0 && colorIndex < ImageResources.LockDoorHeadImages.Count)
+                                return ImageResources.LockDoorHeadImages[colorIndex];
+                        }
+                        return ImageResources.LockDoorHeadImages[0];
+                    }
+                    return null;
+
+                case "empty":
+                case "hole":
+                case "item":
+                default:
+                    return null; // 这些类型暂时没有图像，使用颜色块
             }
         }
 
