@@ -122,6 +122,9 @@ namespace LevelsJsonEditor
                 string json = File.ReadAllText(jsonPath);
                 var raw = JsonConvert.DeserializeObject<LevelDataContainer>(json);
                 _container = new Container { Levels = raw?.Levels ?? new List<LevelData>() };
+                
+                // 加载后按LV排序
+                SortLevelsByLV();
             }
             catch (Exception e)
             {
@@ -504,12 +507,14 @@ namespace LevelsJsonEditor
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
             LoadJson();
+            SortLevelsByLV();
             if (_container.Levels.Count > 0)
-                SetCurrentIndex(Math.Max(0, Math.Min(_currentIndex, _container.Levels.Count - 1)));
+                SetCurrentIndex(_currentIndex);
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
+            SortLevelsByLV();
             SaveJson();
         }
 
@@ -519,7 +524,18 @@ namespace LevelsJsonEditor
             var baseLv = _container.Levels.FirstOrDefault(l => l.LV == 1) ?? _container.Levels.FirstOrDefault();
             LevelData newLv = baseLv != null ? CreateLevelFromBase(nextLv, baseLv) : CreateDefaultLevel(nextLv);
             _container.Levels.Add(newLv);
-            SetCurrentIndex(_container.Levels.Count - 1);
+            
+            SortLevelsByLV(); // 排序后会重新定位当前关卡
+            
+            // 找到新添加的关卡并设为当前关卡
+            for (int i = 0; i < _container.Levels.Count; i++)
+            {
+                if (_container.Levels[i].LV == nextLv)
+                {
+                    SetCurrentIndex(i);
+                    break;
+                }
+            }
         }
 
         private void BtnDeleteLevel_Click(object sender, EventArgs e)
@@ -527,7 +543,8 @@ namespace LevelsJsonEditor
             if (_currentIndex >= 0 && _currentIndex < _container.Levels.Count)
             {
                 _container.Levels.RemoveAt(_currentIndex);
-                SetCurrentIndex(Math.Max(0, Math.Min(_currentIndex - 1, _container.Levels.Count - 1)));
+                SortLevelsByLV(); // 删除后排序并重新定位
+                SetCurrentIndex(_currentIndex);
             }
         }
 
@@ -771,7 +788,15 @@ namespace LevelsJsonEditor
             groupBoxLevelInfo.Controls.Add(table);
             
             // 绑定值变更事件
-            numLV.ValueChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.LV = (int)numLV.Value; };
+            numLV.ValueChanged += (s, e) => { 
+                if (_current != null && !_isUpdatingUI) 
+                { 
+                    _current.LV = (int)numLV.Value; 
+                    // LV变更后重新排序和更新UI
+                    SortLevelsByLV();
+                    UpdateUI();
+                } 
+            };
             cmbHardType.SelectedIndexChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.HardType = (int)cmbHardType.SelectedItem; };
             chkRandomCar.CheckedChanged += (s, e) => { 
                 if (_current != null && !_isUpdatingUI) { 
@@ -1391,6 +1416,38 @@ namespace LevelsJsonEditor
             var dst = new int[newSize];
             if (src != null) Array.Copy(src, dst, Math.Min(src.Length, dst.Length));
             return dst;
+        }
+
+        // 关卡排序方法
+        private void SortLevelsByLV()
+        {
+            if (_container?.Levels == null || _container.Levels.Count <= 1) return;
+
+            // 保存当前选中关卡的LV，以便排序后重新定位
+            int currentLV = -1;
+            if (_currentIndex >= 0 && _currentIndex < _container.Levels.Count)
+            {
+                currentLV = _container.Levels[_currentIndex].LV;
+            }
+
+            // 按LV排序
+            _container.Levels.Sort((a, b) => a.LV.CompareTo(b.LV));
+
+            // 排序后重新找到当前关卡的位置
+            if (currentLV >= 0)
+            {
+                for (int i = 0; i < _container.Levels.Count; i++)
+                {
+                    if (_container.Levels[i].LV == currentLV)
+                    {
+                        _currentIndex = i;
+                        break;
+                    }
+                }
+            }
+            
+            // 确保索引在有效范围内
+            _currentIndex = Math.Max(0, Math.Min(_currentIndex, _container.Levels.Count - 1));
         }
 
         // 属性编辑按钮事件处理方法
