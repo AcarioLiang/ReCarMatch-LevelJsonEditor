@@ -63,7 +63,6 @@ namespace LevelsJsonEditor
             if (_container.Levels.Count == 0)
             {
                 MessageBox.Show("找不到json配置文件“levels.json”"); 
-                return;
                 _container.Levels.Add(CreateDefaultLevel(1));
             }
             SetCurrentIndex(0);
@@ -157,6 +156,11 @@ namespace LevelsJsonEditor
 
         private bool ValidateLevel(LevelData level, out string title, out string message)
         {
+            var errors = new StringBuilder();
+            var warnings = new StringBuilder();
+            int errorCount = 0;
+            int warningCount = 0;
+
             if (level == null)
             {
                 title = "保存失败";
@@ -164,23 +168,239 @@ namespace LevelsJsonEditor
                 return false;
             }
 
+            // Grid 基础检查
             if (level.Grid == null)
             {
-                title = "保存失败";
-                message = "缺少 Grid 配置。";
-                return false;
+                errors.AppendLine("[错误] 缺少 Grid 配置。");
+                errorCount++;
+            }
+            else
+            {
+                if (level.Grid.Width <= 0 || level.Grid.Height <= 0)
+                {
+                    errors.AppendLine($"[错误] Grid 尺寸非法 Width:{level.Grid.Width}, Height:{level.Grid.Height}。");
+                    errorCount++;
+                }
             }
 
-            if (level.Grid.Width <= 0 || level.Grid.Height <= 0)
+            // 位置合法性与重复校验
+            var groupMap = new Dictionary<string, GridEntityData[]>(StringComparer.OrdinalIgnoreCase)
+            {
+                {"Emptys", level.Emptys ?? new GridEntityData[0]},
+                {"Entities", level.Entities ?? new GridEntityData[0]},
+                {"Parks", level.Parks ?? new GridEntityData[0]},
+                {"PayParks", level.PayParks ?? new GridEntityData[0]},
+                {"Factorys", level.Factorys ?? new GridEntityData[0]},
+                {"Boxs", level.Boxs ?? new GridEntityData[0]},
+                {"LockDoors", level.LockDoors ?? new GridEntityData[0]},
+                {"Cars", level.Cars ?? new GridEntityData[0]},
+            };
+
+            // 跨组重复记录（作为警告，避免误报）
+            var globalCells = new Dictionary<string, string>(); // key:"x,y" -> groupName
+
+            foreach (var kv in groupMap)
+            {
+                ValidateEntityList(kv.Key, kv.Value, level.Grid, errors, warnings, ref errorCount, ref warningCount, globalCells);
+            }
+
+            // RandomCar 额外校验：空位数量与 RandomCarCounts 总和一致
+            if (errorCount == 0 && level.RandomCar)
+            {
+                int countsLen = level.RandomCarCounts != null ? level.RandomCarCounts.Length : 0;
+                int colorsLen = level.RandomCarColorTypes != null ? level.RandomCarColorTypes.Length : 0;
+                if (countsLen == 0 || colorsLen == 0 || countsLen != colorsLen)
+                {
+                    errors.AppendLine("[错误] RandomCar 启用时，RandomCarCounts 与 RandomCarColorTypes 必须长度一致且大于 0。");
+                    errorCount++;
+                }
+                else
+                {
+                    int totalRandomCars = 0;
+                    for (int i = 0; i < countsLen; i++) totalRandomCars += Math.Max(0, level.RandomCarCounts[i]);
+
+                    // 计算当前场景中"没有实体"的格子数（排除 Emptys，按实际实体占用统计）
+                    int gw = Math.Max(0, level.Grid?.Width ?? 0);
+                    int gh = Math.Max(0, level.Grid?.Height ?? 0);
+                    int totalCells = gw * gh;
+                    var occupied = new HashSet<string>();
+                    
+                    void MarkOccupied(GridEntityData[] arr)
+                    {
+                        if (arr == null) return;
+                        for (int i = 0; i < arr.Length; i++)
+                        {
+                            var e = arr[i];
+                            if (e == null) continue;
+                            if (e.CellX < 0 || e.CellY < 0 || e.CellX >= gw || e.CellY >= gh) continue;
+                            occupied.Add($"{e.CellX},{e.CellY}");
+                        }
+                    }
+                    
+                    // 标记占用
+                    MarkOccupied(level.Entities);
+                    MarkOccupied(level.Parks);
+                    MarkOccupied(level.PayParks);
+                    MarkOccupied(level.Cars);
+                    MarkOccupied(level.Factorys);
+                    MarkOccupied(level.Emptys);
+                    //MarkOccupied(level.Boxs);
+                    //MarkOccupied(level.LockDoors);
+
+                    int emptyCells = Math.Max(0, totalCells - occupied.Count);
+                    if (totalRandomCars != emptyCells)
+                    {
+                        errors.AppendLine($"[错误] RandomCarCounts 总数({totalRandomCars}) 与场景空格子数({emptyCells})不相等。");
+                        errorCount++;
+                    }
+
+                    //校验生成后所有车辆的颜色配置个数为3的倍数
+                    if (level.Factorys == null || level.Factorys.Length == 0)
+                    {
+                        // 统计每种颜色的车辆总数量
+                        var colorCounts = new Dictionary<string, int>();
+
+                        // 初始化所有颜色计数为0
+                        foreach (CarColorType color in Enum.GetValues(typeof(CarColorType)))
+                        {
+                            colorCounts[color.ToString()] = 0;
+                        }
+
+                        // 1. 统计level.Cars中每种颜色车辆的个数
+                        if (level.Cars != null)
+                        {
+                            foreach (var car in level.Cars)
+                            {
+                                if (car != null && !string.IsNullOrEmpty(car.ColorType))
+                                {
+                                    if (colorCounts.ContainsKey(car.ColorType))
+                                    {
+                                        colorCounts[car.ColorType]++;
+                                    }
+                                }
+                            }
+                        }
+
+                        // 2. 统计RandomCarColorTypes中每种颜色车辆的个数
+                        if (level.RandomCar && level.RandomCarColorTypes != null && level.RandomCarCounts != null)
+                        {
+                            int minLength = Math.Min(level.RandomCarColorTypes.Length, level.RandomCarCounts.Length);
+                            for (int i = 0; i < minLength; i++)
+                            {
+                                string colorType = level.RandomCarColorTypes[i];
+                                int count = level.RandomCarCounts[i];
+                                if (!string.IsNullOrEmpty(colorType) && colorCounts.ContainsKey(colorType))
+                                {
+                                    colorCounts[colorType] += count;
+                                }
+                            }
+                        }
+
+                        // 4. 验证每种颜色的车辆数量是否为3的倍数
+                        bool hasColorError = false;
+                        foreach (var kvp in colorCounts)
+                        {
+                            if (kvp.Value > 0 && kvp.Value % 3 != 0)
+                            {
+                                errors.AppendLine($"[错误] {kvp.Key} 颜色车辆总数为 {kvp.Value}，不是3的倍数。");
+                                errorCount++;
+                                hasColorError = true;
+                            }
+                        }
+
+                        // 可选：显示颜色统计信息（作为调试信息）
+                        if (!hasColorError && colorCounts.Values.Any(count => count > 0))
+                        {
+                            var colorInfo = new StringBuilder();
+                            colorInfo.AppendLine("车辆颜色统计:");
+                            foreach (var kvp in colorCounts)
+                            {
+                                if (kvp.Value > 0)
+                                {
+                                    colorInfo.AppendLine($"  {kvp.Key}: {kvp.Value}辆");
+                                }
+                            }
+                            // 这里可以选择将colorInfo作为警告信息添加，或者仅用于调试
+                            // warnings.AppendLine(colorInfo.ToString());
+                            // warningCount++;
+                        }
+                    }
+                }
+            }
+
+            //校验生成后所有车辆的颜色配置个数为3的倍数
+            if (errorCount == 0)
+            {
+                
+            }
+
+            if (errorCount > 0)
             {
                 title = "保存失败";
-                message = $"Grid 尺寸非法 Width:{level.Grid.Width}, Height:{level.Grid.Height}。";
+                message = $"发现 {errorCount} 个错误:\n" + errors.ToString();
                 return false;
             }
 
             title = "保存成功";
-            message = "校验通过，保存成功。";
+            if (warningCount > 0)
+            {
+                message = $"校验通过，保存成功, 但有 {warningCount} 条警告:\n" + warnings.ToString();
+            }
+            else
+            {
+                message = "校验通过。保存成功";
+            }
             return true;
+        }
+
+        private void ValidateEntityList(
+            string groupName,
+            GridEntityData[] list,
+            GridData grid,
+            StringBuilder errors,
+            StringBuilder warnings,
+            ref int errorCount,
+            ref int warningCount,
+            Dictionary<string, string> globalCells)
+        {
+            var localSet = new HashSet<string>();
+            for (int i = 0; i < list.Length; i++)
+            {
+                var e = list[i];
+                if (e == null) continue;
+                string key = $"{e.CellX},{e.CellY}";
+
+                // 坐标合法性
+                if (grid != null)
+                {
+                    if (e.CellX < 0 || e.CellY < 0 || e.CellX >= grid.Width || e.CellY >= grid.Height)
+                    {
+                        errors.AppendLine($"[错误] {groupName}[{i}] 坐标越界 ({e.CellX},{e.CellY}) 不在 [0,{grid.Width-1}]x[0,{grid.Height-1}] 内。");
+                        errorCount++;
+                    }
+                }
+
+                // 本组重复
+                if (!localSet.Add(key))
+                {
+                    errors.AppendLine($"[错误] {groupName} 存在重复坐标 ({e.CellX},{e.CellY})。");
+                    errorCount++;
+                }
+
+                // 跨组重复（警告）
+                if (globalCells.TryGetValue(key, out var existedGroup))
+                {
+                    if (!string.Equals(existedGroup, groupName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        warnings.AppendLine($"[警告] {groupName}[{i}] 坐标与 {existedGroup} 冲突 ({e.CellX},{e.CellY})。");
+                        warningCount++;
+                    }
+                }
+                else
+                {
+                    globalCells[key] = groupName;
+                }
+            }
         }
 
         private LevelData CreateDefaultLevel(int lv)
