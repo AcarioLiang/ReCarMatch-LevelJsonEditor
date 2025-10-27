@@ -85,6 +85,13 @@ namespace LevelsJsonEditor
             // 绑定PropertyGrid属性值改变事件
             propertyGrid.PropertyValueChanged += PropertyGrid_PropertyValueChanged;
 
+            // 绑定属性编辑按钮事件
+            btnDeleteEntity.Click += BtnDeleteEntity_Click;
+            btnCopyUp.Click += BtnCopyUp_Click;
+            btnCopyDown.Click += BtnCopyDown_Click;
+            btnCopyLeft.Click += BtnCopyLeft_Click;
+            btnCopyRight.Click += BtnCopyRight_Click;
+
             // 窗口大小变化时重新分配三个区域的宽度
             this.Resize += Form1_Resize;
             
@@ -482,7 +489,7 @@ namespace LevelsJsonEditor
             // Grid CellSize
             table.Controls.Add(new Label { Text = "Grid CellSize:", TextAlign = ContentAlignment.MiddleRight }, 0, row);
             var numCellSize = new NumericUpDown { 
-                Minimum = 16, Maximum = 256, Value = 64, 
+                Minimum = 0, Maximum = 256, Value = 64, 
                 DecimalPlaces = 1, Increment = 0.1m, Name = "numCellSize" 
             };
             table.Controls.Add(numCellSize, 1, row);
@@ -982,15 +989,21 @@ namespace LevelsJsonEditor
                 var cmbColor = new ComboBox
                 {
                     DropDownStyle = ComboBoxStyle.DropDownList,
-                    DataSource = Enum.GetValues(typeof(CarColorType)),
                     Tag = i
                 };
+                
+                // 手动添加枚举项到Items集合（不使用DataSource）
+                foreach (CarColorType color in Enum.GetValues(typeof(CarColorType)))
+                {
+                    cmbColor.Items.Add(color);
+                }
                 
                 // 安全获取颜色类型
                 string colorTypeStr = (i < _current.RandomCarColorTypes.Length && _current.RandomCarColorTypes[i] != null) 
                     ? _current.RandomCarColorTypes[i] 
                     : CarColorType.White.ToString();
                     
+                // 设置选中项
                 if (Enum.TryParse<CarColorType>(colorTypeStr, true, out var colorEnum))
                 {
                     cmbColor.SelectedItem = colorEnum;
@@ -1072,6 +1085,74 @@ namespace LevelsJsonEditor
             var dst = new int[newSize];
             if (src != null) Array.Copy(src, dst, Math.Min(src.Length, dst.Length));
             return dst;
+        }
+
+        // 属性编辑按钮事件处理方法
+        private void BtnDeleteEntity_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_selectedGroup) || _selectedIndex < 0 || 
+                !_groups.ContainsKey(_selectedGroup) || _selectedIndex >= _groups[_selectedGroup].Count)
+            {
+                MessageBox.Show("请先选择一个实体", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // 删除选中的实体
+            _groups[_selectedGroup].RemoveAt(_selectedIndex);
+            ClearSelection();
+            UpdateEntityTree();
+            panelPreview.Invalidate();
+        }
+
+        private void BtnCopyUp_Click(object sender, EventArgs e)
+        {
+            CopyEntity(0, 1); // Y坐标增加1（向上）
+        }
+
+        private void BtnCopyDown_Click(object sender, EventArgs e)
+        {
+            CopyEntity(0, -1); // Y坐标减少1（向下）
+        }
+
+        private void BtnCopyLeft_Click(object sender, EventArgs e)
+        {
+            CopyEntity(-1, 0); // X坐标减少1（向左）
+        }
+
+        private void BtnCopyRight_Click(object sender, EventArgs e)
+        {
+            CopyEntity(1, 0); // X坐标增加1（向右）
+        }
+
+        private void CopyEntity(int deltaX, int deltaY)
+        {
+            if (string.IsNullOrEmpty(_selectedGroup) || _selectedIndex < 0 || 
+                !_groups.ContainsKey(_selectedGroup) || _selectedIndex >= _groups[_selectedGroup].Count)
+            {
+                MessageBox.Show("请先选择一个实体", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var selectedEntity = _groups[_selectedGroup][_selectedIndex];
+            var clonedEntity = CloneEntity(selectedEntity);
+            clonedEntity.CellX += deltaX;
+            clonedEntity.CellY += deltaY;
+            
+            // 添加克隆的实体到同一组
+            _groups[_selectedGroup].Add(clonedEntity);
+            
+            // 更新选择到新创建的实体
+            _selectedIndex = _groups[_selectedGroup].Count - 1;
+            
+            // 更新UI
+            UpdateEntityTree();
+            panelPreview.Invalidate();
+            
+            // 在PropertyGrid中显示新创建的实体
+            propertyGrid.SelectedObject = clonedEntity;
+            
+            // 在树视图中选中新创建的实体
+            SelectEntityInTree(_selectedGroup, _selectedIndex);
         }
     }
 }

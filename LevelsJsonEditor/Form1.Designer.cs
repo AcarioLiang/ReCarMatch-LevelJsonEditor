@@ -39,26 +39,33 @@ namespace LevelsJsonEditor
             this.panelTop = new System.Windows.Forms.Panel();
             this.groupBoxLevelInfo = new System.Windows.Forms.GroupBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBoxEntityTree = new System.Windows.Forms.GroupBox();
             this.treeViewEntities = new System.Windows.Forms.TreeView();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBoxPreview = new System.Windows.Forms.GroupBox();
             this.panelPreview = new System.Windows.Forms.Panel();
             this.groupBoxProperties = new System.Windows.Forms.GroupBox();
             this.propertyGrid = new System.Windows.Forms.PropertyGrid();
+            this.panelPropertyButtons = new System.Windows.Forms.Panel();
+            this.btnDeleteEntity = new System.Windows.Forms.Button();
+            this.btnCopyUp = new System.Windows.Forms.Button();
+            this.btnCopyDown = new System.Windows.Forms.Button();
+            this.btnCopyLeft = new System.Windows.Forms.Button();
+            this.btnCopyRight = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBoxEntityTree.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.groupBoxEntityTree.SuspendLayout();
             this.groupBoxPreview.SuspendLayout();
             this.groupBoxProperties.SuspendLayout();
+            this.panelPropertyButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -73,7 +80,7 @@ namespace LevelsJsonEditor
             this.btnDeleteLevel});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1428, 33);
+            this.toolStrip1.Size = new System.Drawing.Size(1428, 38);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -81,14 +88,14 @@ namespace LevelsJsonEditor
             // 
             this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(45, 30);
+            this.btnRefresh.Size = new System.Drawing.Size(50, 28);
             this.btnRefresh.Text = "刷新";
             // 
             // btnSave
             // 
             this.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(45, 30);
+            this.btnSave.Size = new System.Drawing.Size(50, 28);
             this.btnSave.Text = "保存";
             // 
             // toolStripSeparator1
@@ -106,43 +113,43 @@ namespace LevelsJsonEditor
             // 
             this.btnNewLevel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnNewLevel.Name = "btnNewLevel";
-            this.btnNewLevel.Size = new System.Drawing.Size(69, 30);
+            this.btnNewLevel.Size = new System.Drawing.Size(86, 28);
             this.btnNewLevel.Text = "新增关卡";
             // 
             // btnDeleteLevel
             // 
             this.btnDeleteLevel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnDeleteLevel.Name = "btnDeleteLevel";
-            this.btnDeleteLevel.Size = new System.Drawing.Size(69, 30);
+            this.btnDeleteLevel.Size = new System.Drawing.Size(86, 28);
             this.btnDeleteLevel.Text = "删除关卡";
             // 
             // panelTop
             // 
-            this.panelTop.Controls.Add(this.groupBoxLevelInfo);
-            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTop.Location = new System.Drawing.Point(0, 33);
-            this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1428, 300);
-            this.panelTop.TabIndex = 1;
             this.panelTop.AutoSize = true;
             this.panelTop.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelTop.Controls.Add(this.groupBoxLevelInfo);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(0, 38);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(1428, 27);
+            this.panelTop.TabIndex = 1;
             // 
             // groupBoxLevelInfo
             // 
+            this.groupBoxLevelInfo.AutoSize = true;
+            this.groupBoxLevelInfo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBoxLevelInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBoxLevelInfo.Location = new System.Drawing.Point(0, 0);
             this.groupBoxLevelInfo.Name = "groupBoxLevelInfo";
-            this.groupBoxLevelInfo.Size = new System.Drawing.Size(1428, 280);
+            this.groupBoxLevelInfo.Size = new System.Drawing.Size(1428, 27);
             this.groupBoxLevelInfo.TabIndex = 0;
             this.groupBoxLevelInfo.TabStop = false;
             this.groupBoxLevelInfo.Text = "关卡信息";
-            this.groupBoxLevelInfo.AutoSize = true;
-            this.groupBoxLevelInfo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 233);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 65);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -152,9 +159,28 @@ namespace LevelsJsonEditor
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1428, 961);
+            this.splitContainer1.Size = new System.Drawing.Size(1428, 1129);
             this.splitContainer1.SplitterDistance = 476;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // groupBoxEntityTree
+            // 
+            this.groupBoxEntityTree.Controls.Add(this.treeViewEntities);
+            this.groupBoxEntityTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxEntityTree.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxEntityTree.Name = "groupBoxEntityTree";
+            this.groupBoxEntityTree.Size = new System.Drawing.Size(476, 1129);
+            this.groupBoxEntityTree.TabIndex = 0;
+            this.groupBoxEntityTree.TabStop = false;
+            this.groupBoxEntityTree.Text = "实体树";
+            // 
+            // treeViewEntities
+            // 
+            this.treeViewEntities.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewEntities.Location = new System.Drawing.Point(3, 24);
+            this.treeViewEntities.Name = "treeViewEntities";
+            this.treeViewEntities.Size = new System.Drawing.Size(470, 1102);
+            this.treeViewEntities.TabIndex = 0;
             // 
             // splitContainer2
             // 
@@ -169,28 +195,9 @@ namespace LevelsJsonEditor
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBoxProperties);
-            this.splitContainer2.Size = new System.Drawing.Size(1124, 961);
-            this.splitContainer2.SplitterDistance = 476;
+            this.splitContainer2.Size = new System.Drawing.Size(948, 1129);
+            this.splitContainer2.SplitterDistance = 401;
             this.splitContainer2.TabIndex = 0;
-            // 
-            // groupBoxEntityTree
-            // 
-            this.groupBoxEntityTree.Controls.Add(this.treeViewEntities);
-            this.groupBoxEntityTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxEntityTree.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxEntityTree.Name = "groupBoxEntityTree";
-            this.groupBoxEntityTree.Size = new System.Drawing.Size(300, 961);
-            this.groupBoxEntityTree.TabIndex = 0;
-            this.groupBoxEntityTree.TabStop = false;
-            this.groupBoxEntityTree.Text = "实体树";
-            // 
-            // treeViewEntities
-            // 
-            this.treeViewEntities.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewEntities.Location = new System.Drawing.Point(3, 24);
-            this.treeViewEntities.Name = "treeViewEntities";
-            this.treeViewEntities.Size = new System.Drawing.Size(294, 934);
-            this.treeViewEntities.TabIndex = 0;
             // 
             // groupBoxPreview
             // 
@@ -198,7 +205,7 @@ namespace LevelsJsonEditor
             this.groupBoxPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxPreview.Location = new System.Drawing.Point(0, 0);
             this.groupBoxPreview.Name = "groupBoxPreview";
-            this.groupBoxPreview.Size = new System.Drawing.Size(700, 961);
+            this.groupBoxPreview.Size = new System.Drawing.Size(401, 1129);
             this.groupBoxPreview.TabIndex = 0;
             this.groupBoxPreview.TabStop = false;
             this.groupBoxPreview.Text = "场景预览";
@@ -209,16 +216,17 @@ namespace LevelsJsonEditor
             this.panelPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPreview.Location = new System.Drawing.Point(3, 24);
             this.panelPreview.Name = "panelPreview";
-            this.panelPreview.Size = new System.Drawing.Size(694, 934);
+            this.panelPreview.Size = new System.Drawing.Size(395, 1102);
             this.panelPreview.TabIndex = 0;
             // 
             // groupBoxProperties
             // 
             this.groupBoxProperties.Controls.Add(this.propertyGrid);
+            this.groupBoxProperties.Controls.Add(this.panelPropertyButtons);
             this.groupBoxProperties.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxProperties.Location = new System.Drawing.Point(0, 0);
             this.groupBoxProperties.Name = "groupBoxProperties";
-            this.groupBoxProperties.Size = new System.Drawing.Size(420, 961);
+            this.groupBoxProperties.Size = new System.Drawing.Size(543, 1129);
             this.groupBoxProperties.TabIndex = 0;
             this.groupBoxProperties.TabStop = false;
             this.groupBoxProperties.Text = "属性编辑";
@@ -228,8 +236,72 @@ namespace LevelsJsonEditor
             this.propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGrid.Location = new System.Drawing.Point(3, 24);
             this.propertyGrid.Name = "propertyGrid";
-            this.propertyGrid.Size = new System.Drawing.Size(414, 934);
+            this.propertyGrid.Size = new System.Drawing.Size(537, 1009);
             this.propertyGrid.TabIndex = 0;
+            // 
+            // panelPropertyButtons
+            // 
+            this.panelPropertyButtons.Controls.Add(this.btnDeleteEntity);
+            this.panelPropertyButtons.Controls.Add(this.btnCopyUp);
+            this.panelPropertyButtons.Controls.Add(this.btnCopyDown);
+            this.panelPropertyButtons.Controls.Add(this.btnCopyLeft);
+            this.panelPropertyButtons.Controls.Add(this.btnCopyRight);
+            this.panelPropertyButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelPropertyButtons.Location = new System.Drawing.Point(3, 1033);
+            this.panelPropertyButtons.Name = "panelPropertyButtons";
+            this.panelPropertyButtons.Size = new System.Drawing.Size(537, 93);
+            this.panelPropertyButtons.TabIndex = 1;
+            // 
+            // btnDeleteEntity
+            // 
+            this.btnDeleteEntity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteEntity.Location = new System.Drawing.Point(3, 6);
+            this.btnDeleteEntity.Name = "btnDeleteEntity";
+            this.btnDeleteEntity.Size = new System.Drawing.Size(525, 34);
+            this.btnDeleteEntity.TabIndex = 0;
+            this.btnDeleteEntity.Text = "删除该实体";
+            this.btnDeleteEntity.UseVisualStyleBackColor = true;
+            // 
+            // btnCopyUp
+            // 
+            this.btnCopyUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCopyUp.Location = new System.Drawing.Point(6, 50);
+            this.btnCopyUp.Name = "btnCopyUp";
+            this.btnCopyUp.Size = new System.Drawing.Size(95, 34);
+            this.btnCopyUp.TabIndex = 1;
+            this.btnCopyUp.Text = "向上复制";
+            this.btnCopyUp.UseVisualStyleBackColor = true;
+            // 
+            // btnCopyDown
+            // 
+            this.btnCopyDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCopyDown.Location = new System.Drawing.Point(107, 50);
+            this.btnCopyDown.Name = "btnCopyDown";
+            this.btnCopyDown.Size = new System.Drawing.Size(95, 34);
+            this.btnCopyDown.TabIndex = 2;
+            this.btnCopyDown.Text = "向下复制";
+            this.btnCopyDown.UseVisualStyleBackColor = true;
+            // 
+            // btnCopyLeft
+            // 
+            this.btnCopyLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCopyLeft.Location = new System.Drawing.Point(208, 50);
+            this.btnCopyLeft.Name = "btnCopyLeft";
+            this.btnCopyLeft.Size = new System.Drawing.Size(95, 34);
+            this.btnCopyLeft.TabIndex = 3;
+            this.btnCopyLeft.Text = "向左复制";
+            this.btnCopyLeft.UseVisualStyleBackColor = true;
+            // 
+            // btnCopyRight
+            // 
+            this.btnCopyRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCopyRight.Location = new System.Drawing.Point(309, 50);
+            this.btnCopyRight.Name = "btnCopyRight";
+            this.btnCopyRight.Size = new System.Drawing.Size(99, 34);
+            this.btnCopyRight.TabIndex = 4;
+            this.btnCopyRight.Text = "向右复制";
+            this.btnCopyRight.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -245,17 +317,19 @@ namespace LevelsJsonEditor
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panelTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.panelTop.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.groupBoxEntityTree.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.groupBoxEntityTree.ResumeLayout(false);
             this.groupBoxPreview.ResumeLayout(false);
             this.groupBoxProperties.ResumeLayout(false);
+            this.panelPropertyButtons.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,6 +354,12 @@ namespace LevelsJsonEditor
         private System.Windows.Forms.Panel panelPreview;
         private System.Windows.Forms.GroupBox groupBoxProperties;
         private System.Windows.Forms.PropertyGrid propertyGrid;
+        private System.Windows.Forms.Panel panelPropertyButtons;
+        private System.Windows.Forms.Button btnDeleteEntity;
+        private System.Windows.Forms.Button btnCopyUp;
+        private System.Windows.Forms.Button btnCopyDown;
+        private System.Windows.Forms.Button btnCopyLeft;
+        private System.Windows.Forms.Button btnCopyRight;
     }
 }
 

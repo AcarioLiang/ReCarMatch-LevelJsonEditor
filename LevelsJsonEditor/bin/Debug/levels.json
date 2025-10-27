@@ -2,7 +2,7 @@
   "Levels": [
     {
       "LV": 1,
-      "HardType": 1,
+      "HardType": 2,
       "RandomCar": false,
       "GameTimeLimit": 0.0,
       "EnableTimeLimit": false,
@@ -581,9 +581,9 @@
           "IncludeCarCount": 0
         }
       ],
-      "Factorys": null,
-      "Boxs": null,
-      "LockDoors": null,
+      "Factorys": [],
+      "Boxs": [],
+      "LockDoors": [],
       "RandomCarColorTypes": [],
       "RandomCarCounts": [],
       "AwardCoin": 0,
@@ -7837,6 +7837,600 @@
         5,
         3,
         5
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 12,
+      "HardType": 1,
+      "RandomCar": true,
+      "GameTimeLimit": 0.0,
+      "EnableTimeLimit": false,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 3,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 5,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 6,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 7,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 8,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 9,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 9,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 7,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 4,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 3,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 4,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 5,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 7,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 6,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 6,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 5,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 9,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "HasKey": false,
+          "KayColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [],
+      "Boxs": [
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 5,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 6,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 7,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 8,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 9,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 9,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 6,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 8,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 8,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 10,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 9,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 6,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 4,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 3,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 3,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 4,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 4,
+          "ColorType": "",
+          "HasKey": false,
+          "KayColorType": "White",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "LockDoors": [],
+      "RandomCarColorTypes": [
+        "Red",
+        "Blue",
+        "Green",
+        "Yellow",
+        "Purple"
+      ],
+      "RandomCarCounts": [
+        6,
+        7,
+        8,
+        9,
+        1
       ],
       "AwardCoin": 0,
       "AwardItem1": 0,
