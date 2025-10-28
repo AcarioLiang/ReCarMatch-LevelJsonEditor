@@ -1074,6 +1074,9 @@ namespace LevelsJsonEditor
                 }
             }
             
+            // 绘制坐标轴标签
+            DrawGridLabels(g, content, cell, gw, gh);
+            
             // 画实体
             DrawEntities(g, content, cell, gw, gh, _groups["Emptys"]);
             DrawEntities(g, content, cell, gw, gh, _groups["Entities"]);
@@ -1131,6 +1134,40 @@ namespace LevelsJsonEditor
                             g.DrawRectangle(pen, Rectangle.Round(rect));
                         }
                     }
+                }
+            }
+        }
+
+        private void DrawGridLabels(Graphics g, RectangleF content, int cell, int gw, int gh)
+        {
+            using (var font = new Font("Arial", 8, FontStyle.Bold))
+            using (var brush = new SolidBrush(Color.FromArgb(180, 180, 180)))
+            using (var bgBrush = new SolidBrush(Color.FromArgb(46, 46, 46)))
+            {
+                // 绘制X轴标签（在底部）
+                for (int x = 0; x < gw; x++)
+                {
+                    string label = x.ToString();
+                    SizeF textSize = g.MeasureString(label, font);
+                    float xx = content.X + x * cell + (cell - textSize.Width) / 2 ;
+                    float yy = content.Bottom + 15;
+                    
+                    // 绘制背景（去除多余绘制）
+                    g.FillRectangle(bgBrush, xx, yy - textSize.Height, textSize.Width, textSize.Height);
+                    g.DrawString(label, font, brush, xx, yy - textSize.Height);
+                }
+                
+                // 绘制Y轴标签（在左侧，注意Y坐标是翻转的）
+                for (int y = 0; y < gh; y++)
+                {
+                    string label = (gh - 1 - y).ToString(); // 翻转显示
+                    SizeF textSize = g.MeasureString(label, font);
+                    float xx = content.X - textSize.Width - 2 - 5;
+                    float yy = content.Y + y * cell + (cell - textSize.Height) / 2;
+                    
+                    // 绘制背景
+                    g.FillRectangle(bgBrush, xx, yy, textSize.Width, textSize.Height);
+                    g.DrawString(label, font, brush, xx, yy);
                 }
             }
         }
