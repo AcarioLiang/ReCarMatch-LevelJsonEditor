@@ -590,7 +590,9 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0
+      "AwardItem4": 0,
+      "SpaceProbabilityConfigs": [],
+      "SpaceGuaranteeConfigs": []
     },
     {
       "LV": 2,
@@ -1333,16 +1335,18 @@
           "IncludeCarCount": 0
         }
       ],
-      "Factorys": null,
-      "Boxs": null,
-      "LockDoors": null,
+      "Factorys": [],
+      "Boxs": [],
+      "LockDoors": [],
       "RandomCarColorTypes": null,
       "RandomCarCounts": null,
       "AwardCoin": 0,
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0
+      "AwardItem4": 0,
+      "SpaceProbabilityConfigs": [],
+      "SpaceGuaranteeConfigs": []
     },
     {
       "LV": 3,
@@ -2114,7 +2118,9 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0
+      "AwardItem4": 0,
+      "SpaceProbabilityConfigs": [],
+      "SpaceGuaranteeConfigs": []
     },
     {
       "LV": 4,
@@ -2866,7 +2872,9 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0
+      "AwardItem4": 0,
+      "SpaceProbabilityConfigs": [],
+      "SpaceGuaranteeConfigs": []
     },
     {
       "LV": 5,
@@ -3297,7 +3305,9 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0
+      "AwardItem4": 0,
+      "SpaceProbabilityConfigs": [],
+      "SpaceGuaranteeConfigs": []
     },
     {
       "LV": 6,
@@ -4100,7 +4110,9 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0
+      "AwardItem4": 0,
+      "SpaceProbabilityConfigs": [],
+      "SpaceGuaranteeConfigs": []
     },
     {
       "LV": 7,
@@ -4614,7 +4626,9 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0
+      "AwardItem4": 0,
+      "SpaceProbabilityConfigs": [],
+      "SpaceGuaranteeConfigs": []
     },
     {
       "LV": 8,
@@ -5138,7 +5152,9 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0
+      "AwardItem4": 0,
+      "SpaceProbabilityConfigs": [],
+      "SpaceGuaranteeConfigs": []
     },
     {
       "LV": 9,
@@ -5670,7 +5686,9 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0
+      "AwardItem4": 0,
+      "SpaceProbabilityConfigs": [],
+      "SpaceGuaranteeConfigs": []
     },
     {
       "LV": 10,
@@ -5840,16 +5858,6 @@
         },
         {
           "Type": "Car",
-          "CellX": 1,
-          "CellY": 4,
-          "ColorType": "Blue",
-          "HasKey": false,
-          "KayColorType": null,
-          "Dir": null,
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Car",
           "CellX": 3,
           "CellY": 3,
           "ColorType": "Blue",
@@ -5880,36 +5888,6 @@
         },
         {
           "Type": "Car",
-          "CellX": 5,
-          "CellY": 4,
-          "ColorType": "Blue",
-          "HasKey": false,
-          "KayColorType": null,
-          "Dir": null,
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Car",
-          "CellX": 1,
-          "CellY": 5,
-          "ColorType": "Red",
-          "HasKey": false,
-          "KayColorType": null,
-          "Dir": null,
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Car",
-          "CellX": 1,
-          "CellY": 6,
-          "ColorType": "Red",
-          "HasKey": false,
-          "KayColorType": null,
-          "Dir": null,
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Car",
           "CellX": 3,
           "CellY": 5,
           "ColorType": "Red",
@@ -5930,47 +5908,7 @@
         },
         {
           "Type": "Car",
-          "CellX": 5,
-          "CellY": 5,
-          "ColorType": "Red",
-          "HasKey": false,
-          "KayColorType": null,
-          "Dir": null,
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Car",
-          "CellX": 5,
-          "CellY": 6,
-          "ColorType": "Red",
-          "HasKey": false,
-          "KayColorType": null,
-          "Dir": null,
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Car",
-          "CellX": 1,
-          "CellY": 7,
-          "ColorType": "Yellow",
-          "HasKey": false,
-          "KayColorType": null,
-          "Dir": null,
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Car",
           "CellX": 3,
-          "CellY": 7,
-          "ColorType": "Yellow",
-          "HasKey": false,
-          "KayColorType": null,
-          "Dir": null,
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Car",
-          "CellX": 5,
           "CellY": 7,
           "ColorType": "Yellow",
           "HasKey": false,
@@ -6053,16 +5991,6 @@
         {
           "Type": "Wall",
           "CellX": 0,
-          "CellY": 9,
-          "ColorType": null,
-          "HasKey": false,
-          "KayColorType": null,
-          "Dir": null,
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 0,
           "CellY": 10,
           "ColorType": null,
           "HasKey": false,
@@ -6154,16 +6082,6 @@
           "Type": "Wall",
           "CellX": 2,
           "CellY": 8,
-          "ColorType": null,
-          "HasKey": false,
-          "KayColorType": null,
-          "Dir": null,
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 2,
-          "CellY": 9,
           "ColorType": null,
           "HasKey": false,
           "KayColorType": null,
@@ -6293,16 +6211,6 @@
         {
           "Type": "Wall",
           "CellX": 4,
-          "CellY": 9,
-          "ColorType": null,
-          "HasKey": false,
-          "KayColorType": null,
-          "Dir": null,
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 4,
           "CellY": 10,
           "ColorType": null,
           "HasKey": false,
@@ -6394,16 +6302,6 @@
           "Type": "Wall",
           "CellX": 6,
           "CellY": 8,
-          "ColorType": null,
-          "HasKey": false,
-          "KayColorType": null,
-          "Dir": null,
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 6,
-          "CellY": 9,
           "ColorType": null,
           "HasKey": false,
           "KayColorType": null,
@@ -6503,7 +6401,7 @@
           "IncludeCarCount": 0
         }
       ],
-      "Factorys": null,
+      "Factorys": [],
       "Boxs": [
         {
           "Type": "Box",
@@ -6586,14 +6484,16 @@
           "IncludeCarCount": 0
         }
       ],
-      "LockDoors": null,
+      "LockDoors": [],
       "RandomCarColorTypes": null,
       "RandomCarCounts": null,
       "AwardCoin": 0,
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0
+      "AwardItem4": 0,
+      "SpaceProbabilityConfigs": [],
+      "SpaceGuaranteeConfigs": []
     },
     {
       "LV": 11,
@@ -7228,7 +7128,7 @@
           "IncludeCarCount": 0
         }
       ],
-      "LockDoors": null,
+      "LockDoors": [],
       "RandomCarColorTypes": [
         "Red",
         "Blue",
@@ -7237,17 +7137,19 @@
         "Purple"
       ],
       "RandomCarCounts": [
-        6,
-        6,
-        6,
-        6,
-        6
+        3,
+        3,
+        3,
+        3,
+        4
       ],
       "AwardCoin": 0,
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0
+      "AwardItem4": 0,
+      "SpaceProbabilityConfigs": [],
+      "SpaceGuaranteeConfigs": []
     },
     {
       "LV": 12,
@@ -7831,17 +7733,19 @@
         "Purple"
       ],
       "RandomCarCounts": [
+        4,
         6,
         6,
-        9,
-        9,
-        9
+        3,
+        3
       ],
       "AwardCoin": 0,
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0
+      "AwardItem4": 0,
+      "SpaceProbabilityConfigs": [],
+      "SpaceGuaranteeConfigs": []
     },
     {
       "LV": 13,
@@ -8081,7 +7985,9 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0
+      "AwardItem4": 0,
+      "SpaceProbabilityConfigs": [],
+      "SpaceGuaranteeConfigs": []
     },
     {
       "LV": 30,
@@ -8676,7 +8582,9 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0
+      "AwardItem4": 0,
+      "SpaceProbabilityConfigs": [],
+      "SpaceGuaranteeConfigs": []
     }
   ]
 }

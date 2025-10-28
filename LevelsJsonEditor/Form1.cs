@@ -250,7 +250,7 @@ namespace LevelsJsonEditor
                     MarkOccupied(level.Cars);
                     MarkOccupied(level.Factorys);
                     MarkOccupied(level.Emptys);
-                    //MarkOccupied(level.Boxs);
+                    MarkOccupied(level.Boxs);
                     //MarkOccupied(level.LockDoors);
 
                     int emptyCells = Math.Max(0, totalCells - occupied.Count);
@@ -261,7 +261,7 @@ namespace LevelsJsonEditor
                     }
 
                     //校验生成后所有车辆的颜色配置个数为3的倍数
-                    if (level.Factorys == null || level.Factorys.Length == 0)
+                    if ((level.Factorys == null || level.Factorys.Length == 0) && (level.Boxs == null || level.Boxs.Length == 0))
                     {
                         // 统计每种颜色的车辆总数量
                         var colorCounts = new Dictionary<string, int>();
@@ -589,6 +589,9 @@ namespace LevelsJsonEditor
                 AwardItem2 = baseLv.AwardItem2,
                 AwardItem3 = baseLv.AwardItem3,
                 AwardItem4 = baseLv.AwardItem4,
+
+                SpaceProbabilityConfigs = baseLv.SpaceProbabilityConfigs,
+                SpaceGuaranteeConfigs = baseLv.SpaceGuaranteeConfigs
             };
         }
 
@@ -778,6 +781,38 @@ namespace LevelsJsonEditor
             table.Controls.Add(randomCarPanel, 0, row);
             table.SetColumnSpan(randomCarPanel, 4);
             row++;
+
+            // 保底调控概率配置区域
+            var spaceProbabilityPanel = new Panel
+            {
+                Name = "spaceProbabilityPanel",
+                Size = new Size(600, 200),
+                MinimumSize = new Size(600, 200),
+                MaximumSize = new Size(600, 500),
+                AutoSize = false,
+                AutoScroll = true,
+                BorderStyle = BorderStyle.FixedSingle
+            };
+
+            table.Controls.Add(spaceProbabilityPanel, 0, row);
+            table.SetColumnSpan(spaceProbabilityPanel, 4);
+            row++;
+
+            // 必定保底次数配置区域
+            var spaceGuaranteePanel = new Panel
+            {
+                Name = "spaceGuaranteePanel",
+                Size = new Size(600, 200),
+                MinimumSize = new Size(600, 200),
+                MaximumSize = new Size(600, 500),
+                AutoSize = false,
+                AutoScroll = true,
+                BorderStyle = BorderStyle.FixedSingle
+            };
+
+            table.Controls.Add(spaceGuaranteePanel, 0, row);
+            table.SetColumnSpan(spaceGuaranteePanel, 4);
+            row++;
             
             // 保存按钮
             var btnSaveLevel = new Button { Text = "保存关卡到 levels.json", Name = "btnSaveLevel" };
@@ -819,6 +854,10 @@ namespace LevelsJsonEditor
             // 初始化随机车辆配置面板
             randomCarPanel.Enabled = _current?.RandomCar ?? false;
             UpdateRandomCarPanel(randomCarPanel);
+
+            // 初始化保底调控配置面板
+            UpdateSpaceProbabilityPanel(spaceProbabilityPanel);
+            UpdateSpaceGuaranteePanel(spaceGuaranteePanel);
         }
 
         private void UpdateLevelInfoControls()
@@ -876,6 +915,12 @@ namespace LevelsJsonEditor
                                 var panel = (Panel)c;
                                 panel.Enabled = _current.RandomCar;
                                 UpdateRandomCarPanel(panel);
+                                break;
+                            case "spaceProbabilityPanel":
+                                UpdateSpaceProbabilityPanel((Panel)c);
+                                break;
+                            case "spaceGuaranteePanel":
+                                UpdateSpaceGuaranteePanel((Panel)c);
                                 break;
                         }
                     }
@@ -1418,6 +1463,50 @@ namespace LevelsJsonEditor
             return dst;
         }
 
+        private SpaceProbabilityData[] ResizeSpaceProbabilityArray(SpaceProbabilityData[] src, int newSize)
+        {
+            if (newSize < 0) newSize = 0;
+            var dst = new SpaceProbabilityData[newSize];
+            if (src != null)
+            {
+                Array.Copy(src, dst, Math.Min(src.Length, dst.Length));
+                for (int i = src.Length; i < newSize; i++)
+                {
+                    dst[i] = new SpaceProbabilityData { Space = 1, RestrictNoMatch = false, Probability = 50 };
+                }
+            }
+            else
+            {
+                for (int i = 0; i < newSize; i++)
+                {
+                    dst[i] = new SpaceProbabilityData { Space = 1, RestrictNoMatch = false, Probability = 50 };
+                }
+            }
+            return dst;
+        }
+
+        private SpaceGuaranteeData[] ResizeSpaceGuaranteeArray(SpaceGuaranteeData[] src, int newSize)
+        {
+            if (newSize < 0) newSize = 0;
+            var dst = new SpaceGuaranteeData[newSize];
+            if (src != null)
+            {
+                Array.Copy(src, dst, Math.Min(src.Length, dst.Length));
+                for (int i = src.Length; i < newSize; i++)
+                {
+                    dst[i] = new SpaceGuaranteeData { Space = 1, RestrictNoMatch = false, Count = 0 };
+                }
+            }
+            else
+            {
+                for (int i = 0; i < newSize; i++)
+                {
+                    dst[i] = new SpaceGuaranteeData { Space = 1, RestrictNoMatch = false, Count = 0 };
+                }
+            }
+            return dst;
+        }
+
         // 关卡排序方法
         private void SortLevelsByLV()
         {
@@ -1516,6 +1605,278 @@ namespace LevelsJsonEditor
             
             // 在树视图中选中新创建的实体
             SelectEntityInTree(_selectedGroup, _selectedIndex);
+        }
+
+        // 保底调控概率配置面板更新方法
+        private void UpdateSpaceProbabilityPanel(Panel panel)
+        {
+            if (_current == null) return;
+
+            panel.Controls.Clear();
+
+            var layout = new TableLayoutPanel
+            {
+                Dock = DockStyle.Top,
+                AutoSize = true,
+                AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                ColumnCount = 4,
+                Margin = new Padding(0, 10, 0, 0)
+            };
+
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80));
+
+            // 添加标题
+            var lblTitle = new Label
+            {
+                Text = "保底调控概率配置（SpaceProbabilityConfigs）",
+                Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold),
+                AutoSize = true
+            };
+            layout.Controls.Add(lblTitle, 0, 0);
+            layout.SetColumnSpan(lblTitle, 4);
+
+            // 添加数量控制
+            int curSize = _current.SpaceProbabilityConfigs?.Length ?? 0;
+
+            var numSize = new NumericUpDown
+            {
+                Minimum = 0,
+                Maximum = 20,
+                Value = curSize,
+                Name = "numSpaceProbabilitySize"
+            };
+            numSize.ValueChanged += (s, e) =>
+            {
+                if (!_isUpdatingUI)
+                {
+                    int newSize = (int)numSize.Value;
+                    _current.SpaceProbabilityConfigs = ResizeSpaceProbabilityArray(_current.SpaceProbabilityConfigs, newSize);
+                    UpdateSpaceProbabilityPanel(panel);
+                }
+            };
+
+            layout.Controls.Add(new Label { Text = "配置数量:", AutoSize = true }, 0, 1);
+            layout.Controls.Add(numSize, 1, 1);
+            layout.SetColumnSpan(numSize, 2);
+
+            // 初始化数组
+            if (_current.SpaceProbabilityConfigs == null) _current.SpaceProbabilityConfigs = new SpaceProbabilityData[curSize];
+
+            // 添加每个配置项
+            for (int i = 0; i < curSize; i++)
+            {
+                int row = i + 2;
+                layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+
+                if (_current.SpaceProbabilityConfigs[i] == null)
+                    _current.SpaceProbabilityConfigs[i] = new SpaceProbabilityData { Space = 1, RestrictNoMatch = false, Probability = 50 };
+
+                // 剩余车位数
+                var numSpace = new NumericUpDown
+                {
+                    Minimum = 1,
+                    Maximum = 7,
+                    Value = _current.SpaceProbabilityConfigs[i].Space,
+                    Tag = i
+                };
+                numSpace.ValueChanged += (s, e) =>
+                {
+                    if (!_isUpdatingUI)
+                    {
+                        var num = (NumericUpDown)s;
+                        int index = (int)num.Tag;
+                        _current.SpaceProbabilityConfigs[index].Space = (int)num.Value;
+                    }
+                };
+
+                // 是否限定无匹配
+                var chkRestrict = new CheckBox
+                {
+                    Checked = _current.SpaceProbabilityConfigs[i].RestrictNoMatch,
+                    Tag = i
+                };
+                chkRestrict.CheckedChanged += (s, e) =>
+                {
+                    if (!_isUpdatingUI)
+                    {
+                        var cb = (CheckBox)s;
+                        int index = (int)cb.Tag;
+                        _current.SpaceProbabilityConfigs[index].RestrictNoMatch = cb.Checked;
+                    }
+                };
+
+                // 概率
+                var numProbability = new NumericUpDown
+                {
+                    Minimum = 0,
+                    Maximum = 100,
+                    Value = (decimal)_current.SpaceProbabilityConfigs[i].Probability,
+                    DecimalPlaces = 2,
+                    Increment = 1,
+                    Tag = i
+                };
+                numProbability.ValueChanged += (s, e) =>
+                {
+                    if (!_isUpdatingUI)
+                    {
+                        var num = (NumericUpDown)s;
+                        int index = (int)num.Tag;
+                        _current.SpaceProbabilityConfigs[index].Probability = (float)num.Value;
+                    }
+                };
+
+                layout.Controls.Add(new Label { Text = $"剩余车位[{i}]:", AutoSize = true }, 0, row);
+                layout.Controls.Add(numSpace, 1, row);
+                layout.Controls.Add(new Label { Text = "限定无匹配:", AutoSize = true }, 2, row);
+                layout.Controls.Add(chkRestrict, 3, row);
+                row++;
+                
+                layout.Controls.Add(new Label { Text = $"概率[{i}](0-100):", AutoSize = true }, 0, row);
+                layout.Controls.Add(numProbability, 1, row);
+            }
+
+            int dynamicHeight = 80 + (curSize * 60) + 10;
+            panel.Size = panel.MaximumSize = panel.MinimumSize = new Size(600, Math.Max(50, Math.Min(dynamicHeight, 500)));
+
+            panel.Controls.Add(layout);
+        }
+
+        // 必定保底次数配置面板更新方法
+        private void UpdateSpaceGuaranteePanel(Panel panel)
+        {
+            if (_current == null) return;
+
+            panel.Controls.Clear();
+
+            var layout = new TableLayoutPanel
+            {
+                Dock = DockStyle.Top,
+                AutoSize = true,
+                AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                ColumnCount = 4,
+                Margin = new Padding(0, 10, 0, 0)
+            };
+
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80));
+
+            // 添加标题
+            var lblTitle = new Label
+            {
+                Text = "必定保底次数配置（SpaceGuaranteeConfigs）",
+                Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold),
+                AutoSize = true
+            };
+            layout.Controls.Add(lblTitle, 0, 0);
+            layout.SetColumnSpan(lblTitle, 4);
+
+            // 添加数量控制
+            int curSize = _current.SpaceGuaranteeConfigs?.Length ?? 0;
+
+            var numSize = new NumericUpDown
+            {
+                Minimum = 0,
+                Maximum = 20,
+                Value = curSize,
+                Name = "numSpaceGuaranteeSize"
+            };
+            numSize.ValueChanged += (s, e) =>
+            {
+                if (!_isUpdatingUI)
+                {
+                    int newSize = (int)numSize.Value;
+                    _current.SpaceGuaranteeConfigs = ResizeSpaceGuaranteeArray(_current.SpaceGuaranteeConfigs, newSize);
+                    UpdateSpaceGuaranteePanel(panel);
+                }
+            };
+
+            layout.Controls.Add(new Label { Text = "配置数量:", AutoSize = true }, 0, 1);
+            layout.Controls.Add(numSize, 1, 1);
+            layout.SetColumnSpan(numSize, 2);
+
+            // 初始化数组
+            if (_current.SpaceGuaranteeConfigs == null) _current.SpaceGuaranteeConfigs = new SpaceGuaranteeData[curSize];
+
+            // 添加每个配置项
+            for (int i = 0; i < curSize; i++)
+            {
+                int row = i + 2;
+                layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+
+                if (_current.SpaceGuaranteeConfigs[i] == null)
+                    _current.SpaceGuaranteeConfigs[i] = new SpaceGuaranteeData { Space = 1, RestrictNoMatch = false, Count = 0 };
+
+                // 剩余车位数
+                var numSpace = new NumericUpDown
+                {
+                    Minimum = 1,
+                    Maximum = 7,
+                    Value = _current.SpaceGuaranteeConfigs[i].Space,
+                    Tag = i
+                };
+                numSpace.ValueChanged += (s, e) =>
+                {
+                    if (!_isUpdatingUI)
+                    {
+                        var num = (NumericUpDown)s;
+                        int index = (int)num.Tag;
+                        _current.SpaceGuaranteeConfigs[index].Space = (int)num.Value;
+                    }
+                };
+
+                // 是否限定无匹配
+                var chkRestrict = new CheckBox
+                {
+                    Checked = _current.SpaceGuaranteeConfigs[i].RestrictNoMatch,
+                    Tag = i
+                };
+                chkRestrict.CheckedChanged += (s, e) =>
+                {
+                    if (!_isUpdatingUI)
+                    {
+                        var cb = (CheckBox)s;
+                        int index = (int)cb.Tag;
+                        _current.SpaceGuaranteeConfigs[index].RestrictNoMatch = cb.Checked;
+                    }
+                };
+
+                // 必定触发次数
+                var numCount = new NumericUpDown
+                {
+                    Minimum = 0,
+                    Maximum = 999,
+                    Value = _current.SpaceGuaranteeConfigs[i].Count,
+                    Tag = i
+                };
+                numCount.ValueChanged += (s, e) =>
+                {
+                    if (!_isUpdatingUI)
+                    {
+                        var num = (NumericUpDown)s;
+                        int index = (int)num.Tag;
+                        _current.SpaceGuaranteeConfigs[index].Count = (int)num.Value;
+                    }
+                };
+
+                layout.Controls.Add(new Label { Text = $"剩余车位[{i}]:", AutoSize = true }, 0, row);
+                layout.Controls.Add(numSpace, 1, row);
+                layout.Controls.Add(new Label { Text = "限定无匹配:", AutoSize = true }, 2, row);
+                layout.Controls.Add(chkRestrict, 3, row);
+                row++;
+                
+                layout.Controls.Add(new Label { Text = $"触发次数[{i}]:", AutoSize = true }, 0, row);
+                layout.Controls.Add(numCount, 1, row);
+            }
+
+            int dynamicHeight = 80 + (curSize * 60) + 10;
+            panel.Size = panel.MaximumSize = panel.MinimumSize = new Size(600, Math.Max(50, Math.Min(dynamicHeight, 500)));
+
+            panel.Controls.Add(layout);
         }
     }
 }

@@ -7,20 +7,56 @@ namespace LevelsJsonEditor
     // 枚举定义
     public enum LevelHardType
     {
-        Easy = 0,
-        Normal = 1,
-        Hard = 2,
-        Expert = 3
+        Normal = 0,
+        Hard = 1,
+        VeryHard = 2,
+        SuperHard = 3,
     }
 
     public enum CarColorType
     {
-        White = 0,
-        Red = 1,
-        Blue = 2,
-        Green = 3,
-        Yellow = 4,
-        Purple = 5
+
+        /// <summary>
+        /// 红色
+        /// </summary>
+        Red = 0,
+
+        /// <summary>
+        /// 蓝色
+        /// </summary>
+        Blue = 1,
+
+        /// <summary>
+        /// 绿色
+        /// </summary>
+        Green = 2,
+
+        /// <summary>
+        /// 黄色
+        /// </summary>
+        Yellow = 3,
+
+        /// <summary>
+        /// 紫色
+        /// </summary>
+        Purple = 4,
+
+        /// <summary>
+        /// 橙色
+        /// </summary>
+        Orange = 5,
+
+        /// <summary>
+        /// 青色
+        /// </summary>
+        Cyan = 6,
+
+        /// <summary>
+        /// 粉色
+        /// </summary>
+        Pink = 7,
+
+        White = 999
     }
 
     public enum DirectionsType
@@ -28,7 +64,7 @@ namespace LevelsJsonEditor
         Down = 0,
         Up = 1,
         Right = 2,
-        Left = 3
+        Left = 3,
     }
 
     // 网格数据
@@ -53,6 +89,30 @@ namespace LevelsJsonEditor
         public string Dir { get; set; } = "Down";
         public int IncludeCarCount { get; set; } = 0;
     }
+
+
+    /// <summary>
+    /// JSON配置项A：单个剩余车位的保底调控概率配置
+    /// </summary>
+    [Serializable]
+    public class SpaceProbabilityData
+    {
+        public int Space; // 剩余车位数（1-7）
+        public bool RestrictNoMatch; // 是否限定场上不存在可消除情况
+        public float Probability; // 保底调控概率（0-100）
+    }
+
+    /// <summary>
+    /// JSON配置项B：单个剩余车位的必定保底次数配置
+    /// </summary>
+    [Serializable]
+    public class SpaceGuaranteeData
+    {
+        public int Space; // 剩余车位数（1-7）
+        public bool RestrictNoMatch; // 是否限定场上不存在可消除情况
+        public int Count; // 必定触发次数
+    }
+
 
     // 关卡数据
     [Serializable]
@@ -79,6 +139,10 @@ namespace LevelsJsonEditor
         public int AwardItem2 { get; set; } = 0;
         public int AwardItem3 { get; set; } = 0;
         public int AwardItem4 { get; set; } = 0;
+
+        // 新增：难度调控配置（可选字段，兼容旧配置）
+        public SpaceProbabilityData[] SpaceProbabilityConfigs { get; set; } = new SpaceProbabilityData[0];
+        public SpaceGuaranteeData[] SpaceGuaranteeConfigs { get; set; } = new SpaceGuaranteeData[0];
     }
 
     // 关卡数据容器（用于JSON序列化）
