@@ -125,23 +125,24 @@ namespace LevelsJsonEditor
             // 
             // panelTop
             // 
-            this.panelTop.AutoSize = true;
-            this.panelTop.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelTop.AutoSize = false;
+            this.panelTop.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
             this.panelTop.Controls.Add(this.groupBoxLevelInfo);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 38);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1428, 27);
+            this.panelTop.Size = new System.Drawing.Size(1428, 500);
+            this.panelTop.MaximumSize = new System.Drawing.Size(0, 500);
             this.panelTop.TabIndex = 1;
             // 
             // groupBoxLevelInfo
             // 
-            this.groupBoxLevelInfo.AutoSize = true;
-            this.groupBoxLevelInfo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBoxLevelInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBoxLevelInfo.AutoSize = false;
+            this.groupBoxLevelInfo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
+            this.groupBoxLevelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxLevelInfo.Location = new System.Drawing.Point(0, 0);
             this.groupBoxLevelInfo.Name = "groupBoxLevelInfo";
-            this.groupBoxLevelInfo.Size = new System.Drawing.Size(1428, 27);
+            this.groupBoxLevelInfo.Size = new System.Drawing.Size(1428, 500);
             this.groupBoxLevelInfo.TabIndex = 0;
             this.groupBoxLevelInfo.TabStop = false;
             this.groupBoxLevelInfo.Text = "关卡信息";

@@ -1,10 +1,25 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.ComponentModel;
 
 namespace LevelsJsonEditor
 {
     // 枚举定义
+
+    [Serializable]
+    public enum GridEntityType
+    {
+        Empty = 0,
+        Park,
+        PayPark,
+        Car,
+        Entitie,
+        Factory,
+        Box,
+        LockDoor
+    }
+
     public enum LevelHardType
     {
         Normal = 0,
@@ -76,17 +91,43 @@ namespace LevelsJsonEditor
         public float CellSize { get; set; } = 64f;
     }
 
+    // 自定义TypeConverter用于PropertyGrid显示枚举下拉列表
+    public class EnumStringConverter<T> : TypeConverter where T : struct, Enum
+    {
+        public override bool GetStandardValuesSupported(ITypeDescriptorContext context) => true;
+        public override bool GetStandardValuesExclusive(ITypeDescriptorContext context) => true;
+        
+        public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
+        {
+            var values = new List<string>();
+            foreach (T enumValue in Enum.GetValues(typeof(T)))
+            {
+                values.Add(enumValue.ToString());
+            }
+            return new StandardValuesCollection(values);
+        }
+    }
+
     // 网格实体数据
     [Serializable]
     public class GridEntityData
     {
+        [TypeConverter(typeof(EnumStringConverter<GridEntityType>))]
         public string Type { get; set; } = "";
         public int CellX { get; set; } = 0;
         public int CellY { get; set; } = 0;
+        
+        [TypeConverter(typeof(EnumStringConverter<CarColorType>))]
         public string ColorType { get; set; } = "";
+        
         public bool HasKey { get; set; } = false;
+        
+        [TypeConverter(typeof(EnumStringConverter<CarColorType>))]
         public string KayColorType { get; set; } = "White";
+        
+        [TypeConverter(typeof(EnumStringConverter<DirectionsType>))]
         public string Dir { get; set; } = "Down";
+        
         public int IncludeCarCount { get; set; } = 0;
     }
 

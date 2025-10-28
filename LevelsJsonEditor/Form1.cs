@@ -663,13 +663,22 @@ namespace LevelsJsonEditor
             
             var table = new TableLayoutPanel
             {
-                Dock = DockStyle.Top,
+                Dock = DockStyle.None,
                 ColumnCount = 4,
                 RowCount = 10,
                 AutoSize = true,
                 AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                Padding = new Padding(10)
+                Padding = new Padding(10),
+                Location = new Point(10, 10)
             };
+            
+            // 创建一个Panel来包含table，并支持滚动
+            var scrollPanel = new Panel
+            {
+                Dock = DockStyle.Fill,
+                AutoScroll = true
+            };
+            scrollPanel.Controls.Add(table);
             
             // 设置列宽
             table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
@@ -820,7 +829,7 @@ namespace LevelsJsonEditor
             table.Controls.Add(btnSaveLevel, 0, row);
             table.SetColumnSpan(btnSaveLevel, 4);
             
-            groupBoxLevelInfo.Controls.Add(table);
+            groupBoxLevelInfo.Controls.Add(scrollPanel);
             
             // 绑定值变更事件
             numLV.ValueChanged += (s, e) => { 
@@ -1619,14 +1628,16 @@ namespace LevelsJsonEditor
                 Dock = DockStyle.Top,
                 AutoSize = true,
                 AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                ColumnCount = 4,
+                ColumnCount = 6,
                 Margin = new Padding(0, 10, 0, 0)
             };
 
-            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
-            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150));
-            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
             layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120));
 
             // 添加标题
             var lblTitle = new Label
@@ -1636,7 +1647,7 @@ namespace LevelsJsonEditor
                 AutoSize = true
             };
             layout.Controls.Add(lblTitle, 0, 0);
-            layout.SetColumnSpan(lblTitle, 4);
+            layout.SetColumnSpan(lblTitle, 6);
 
             // 添加数量控制
             int curSize = _current.SpaceProbabilityConfigs?.Length ?? 0;
@@ -1660,7 +1671,7 @@ namespace LevelsJsonEditor
 
             layout.Controls.Add(new Label { Text = "配置数量:", AutoSize = true }, 0, 1);
             layout.Controls.Add(numSize, 1, 1);
-            layout.SetColumnSpan(numSize, 2);
+            layout.SetColumnSpan(numSize, 5);
 
             // 初始化数组
             if (_current.SpaceProbabilityConfigs == null) _current.SpaceProbabilityConfigs = new SpaceProbabilityData[curSize];
@@ -1728,17 +1739,15 @@ namespace LevelsJsonEditor
                     }
                 };
 
-                layout.Controls.Add(new Label { Text = $"剩余车位[{i}]:", AutoSize = true }, 0, row);
+                layout.Controls.Add(new Label { Text = $"[{i}]车位数:", AutoSize = true }, 0, row);
                 layout.Controls.Add(numSpace, 1, row);
                 layout.Controls.Add(new Label { Text = "限定无匹配:", AutoSize = true }, 2, row);
                 layout.Controls.Add(chkRestrict, 3, row);
-                row++;
-                
-                layout.Controls.Add(new Label { Text = $"概率[{i}](0-100):", AutoSize = true }, 0, row);
-                layout.Controls.Add(numProbability, 1, row);
+                layout.Controls.Add(new Label { Text = "概率:", AutoSize = true }, 4, row);
+                layout.Controls.Add(numProbability, 5, row);
             }
 
-            int dynamicHeight = 80 + (curSize * 60) + 10;
+            int dynamicHeight = 80 + (curSize * 30) + 10;
             panel.Size = panel.MaximumSize = panel.MinimumSize = new Size(600, Math.Max(50, Math.Min(dynamicHeight, 500)));
 
             panel.Controls.Add(layout);
@@ -1756,14 +1765,16 @@ namespace LevelsJsonEditor
                 Dock = DockStyle.Top,
                 AutoSize = true,
                 AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                ColumnCount = 4,
+                ColumnCount = 6,
                 Margin = new Padding(0, 10, 0, 0)
             };
 
-            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
-            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150));
-            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
             layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120));
 
             // 添加标题
             var lblTitle = new Label
@@ -1773,7 +1784,7 @@ namespace LevelsJsonEditor
                 AutoSize = true
             };
             layout.Controls.Add(lblTitle, 0, 0);
-            layout.SetColumnSpan(lblTitle, 4);
+            layout.SetColumnSpan(lblTitle, 6);
 
             // 添加数量控制
             int curSize = _current.SpaceGuaranteeConfigs?.Length ?? 0;
@@ -1797,7 +1808,7 @@ namespace LevelsJsonEditor
 
             layout.Controls.Add(new Label { Text = "配置数量:", AutoSize = true }, 0, 1);
             layout.Controls.Add(numSize, 1, 1);
-            layout.SetColumnSpan(numSize, 2);
+            layout.SetColumnSpan(numSize, 5);
 
             // 初始化数组
             if (_current.SpaceGuaranteeConfigs == null) _current.SpaceGuaranteeConfigs = new SpaceGuaranteeData[curSize];
@@ -1863,17 +1874,15 @@ namespace LevelsJsonEditor
                     }
                 };
 
-                layout.Controls.Add(new Label { Text = $"剩余车位[{i}]:", AutoSize = true }, 0, row);
+                layout.Controls.Add(new Label { Text = $"[{i}]车位数:", AutoSize = true }, 0, row);
                 layout.Controls.Add(numSpace, 1, row);
                 layout.Controls.Add(new Label { Text = "限定无匹配:", AutoSize = true }, 2, row);
                 layout.Controls.Add(chkRestrict, 3, row);
-                row++;
-                
-                layout.Controls.Add(new Label { Text = $"触发次数[{i}]:", AutoSize = true }, 0, row);
-                layout.Controls.Add(numCount, 1, row);
+                layout.Controls.Add(new Label { Text = "触发次数:", AutoSize = true }, 4, row);
+                layout.Controls.Add(numCount, 5, row);
             }
 
-            int dynamicHeight = 80 + (curSize * 60) + 10;
+            int dynamicHeight = 80 + (curSize * 30) + 10;
             panel.Size = panel.MaximumSize = panel.MinimumSize = new Size(600, Math.Max(50, Math.Min(dynamicHeight, 500)));
 
             panel.Controls.Add(layout);
