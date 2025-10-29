@@ -88,6 +88,9 @@ namespace LevelsJsonEditor
 
             // 绑定PropertyGrid属性值改变事件
             propertyGrid.PropertyValueChanged += PropertyGrid_PropertyValueChanged;
+            // 为PropertyGrid添加实时输入监听（文本变化即触发）
+            propertyGrid.KeyDown += PropertyGrid_KeyDown;
+            propertyGrid.KeyUp += PropertyGrid_KeyUp;
 
             // 绑定属性编辑按钮事件
             btnDeleteEntity.Click += BtnDeleteEntity_Click;
@@ -894,7 +897,7 @@ namespace LevelsJsonEditor
             
             groupBoxLevelInfo.Controls.Add(scrollPanel);
             
-            // 绑定值变更事件
+            // 绑定值变更事件（包含实时文本输入触发）
             numLV.ValueChanged += (s, e) => { 
                 if (_current != null && !_isUpdatingUI) 
                 { 
@@ -904,7 +907,17 @@ namespace LevelsJsonEditor
                     UpdateUI();
                 } 
             };
+            AddRealTimeTrigger(numLV, () => {
+                if (_current != null && !_isUpdatingUI)
+                {
+                    _current.LV = (int)numLV.Value;
+                    SortLevelsByLV();
+                    UpdateUI();
+                }
+            });
+            
             cmbHardType.SelectedIndexChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.HardType = (int)cmbHardType.SelectedItem; };
+            
             chkRandomCar.CheckedChanged += (s, e) => { 
                 if (_current != null && !_isUpdatingUI) { 
                     _current.RandomCar = chkRandomCar.Checked; 
@@ -914,14 +927,50 @@ namespace LevelsJsonEditor
             };
             //numTimeLimit.ValueChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.GameTimeLimit = (float)numTimeLimit.Value; };
             //chkEnableTimeLimit.CheckedChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.EnableTimeLimit = chkEnableTimeLimit.Checked; };
+            
             numWidth.ValueChanged += (s, e) => { if (_current?.Grid != null && !_isUpdatingUI) { _current.Grid.Width = (int)numWidth.Value; panelPreview.Invalidate(); } };
+            AddRealTimeTrigger(numWidth, () => {
+                if (_current?.Grid != null && !_isUpdatingUI)
+                {
+                    _current.Grid.Width = (int)numWidth.Value;
+                    panelPreview.Invalidate();
+                }
+            });
+            
             numHeight.ValueChanged += (s, e) => { if (_current?.Grid != null && !_isUpdatingUI) { _current.Grid.Height = (int)numHeight.Value; panelPreview.Invalidate(); } };
+            AddRealTimeTrigger(numHeight, () => {
+                if (_current?.Grid != null && !_isUpdatingUI)
+                {
+                    _current.Grid.Height = (int)numHeight.Value;
+                    panelPreview.Invalidate();
+                }
+            });
             //numCellSize.ValueChanged += (s, e) => { if (_current?.Grid != null && !_isUpdatingUI) _current.Grid.CellSize = (float)numCellSize.Value; };
+            
             numAwardCoin.ValueChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.AwardCoin = (int)numAwardCoin.Value; };
+            AddRealTimeTrigger(numAwardCoin, () => {
+                if (_current != null && !_isUpdatingUI) _current.AwardCoin = (int)numAwardCoin.Value;
+            });
+            
             numAwardItem1.ValueChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.AwardItem1 = (int)numAwardItem1.Value; };
+            AddRealTimeTrigger(numAwardItem1, () => {
+                if (_current != null && !_isUpdatingUI) _current.AwardItem1 = (int)numAwardItem1.Value;
+            });
+            
             numAwardItem2.ValueChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.AwardItem2 = (int)numAwardItem2.Value; };
+            AddRealTimeTrigger(numAwardItem2, () => {
+                if (_current != null && !_isUpdatingUI) _current.AwardItem2 = (int)numAwardItem2.Value;
+            });
+            
             numAwardItem3.ValueChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.AwardItem3 = (int)numAwardItem3.Value; };
+            AddRealTimeTrigger(numAwardItem3, () => {
+                if (_current != null && !_isUpdatingUI) _current.AwardItem3 = (int)numAwardItem3.Value;
+            });
+            
             numAwardItem4.ValueChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.AwardItem4 = (int)numAwardItem4.Value; };
+            AddRealTimeTrigger(numAwardItem4, () => {
+                if (_current != null && !_isUpdatingUI) _current.AwardItem4 = (int)numAwardItem4.Value;
+            });
             
             // 初始化随机车辆配置面板
             randomCarPanel.Enabled = _current?.RandomCar ?? false;
@@ -1213,6 +1262,66 @@ namespace LevelsJsonEditor
                 panelPreview.Invalidate();
 
                 // 重新选中当前编辑的实体节点（因为UpdateEntityTree会清空选择）
+                SelectEntityInTree(_selectedGroup, _selectedIndex);
+            }
+        }
+
+        // 为NumericUpDown添加实时触发支持（文本输入即触发）
+        private void AddRealTimeTrigger(NumericUpDown control, Action action)
+        {
+            control.KeyDown += (s, e) => {
+                if (!_isUpdatingUI && action != null)
+                {
+                    try
+                    {
+                        action();
+                    }
+                    catch { } // 忽略解析错误，等待ValueChanged事件处理
+                }
+            };
+            control.KeyUp += (s, e) => {
+                if (!_isUpdatingUI && action != null)
+                {
+                    try
+                    {
+                        action();
+                    }
+                    catch { }
+                }
+            };
+        }
+
+        // PropertyGrid实时输入监听（KeyDown和KeyUp）
+        private void PropertyGrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            // 在输入过程中触发更新（实时反馈）
+            TriggerPropertyGridUpdate();
+        }
+
+        private void PropertyGrid_KeyUp(object sender, KeyEventArgs e)
+        {
+            // 按键释放时触发更新（确认输入）
+            TriggerPropertyGridUpdate();
+        }
+
+        // 触发PropertyGrid属性更新的辅助方法
+        private void TriggerPropertyGridUpdate()
+        {
+            if (_isUpdatingUI || _current == null || _selectedGroup == null || _selectedIndex < 0) return;
+            if (!_groups.ContainsKey(_selectedGroup) || _selectedIndex >= _groups[_selectedGroup].Count) return;
+
+            var entity = _groups[_selectedGroup][_selectedIndex];
+            if (entity == null || propertyGrid.SelectedObject != entity) return;
+
+            // 检查是否有属性变化，如果有则触发更新
+            var selectedItem = propertyGrid.SelectedGridItem;
+            if (selectedItem != null && selectedItem.GridItemType == System.Windows.Forms.GridItemType.Property)
+            {
+                // 实时更新实体树和预览（不需要等待PropertyValueChanged）
+                UpdateEntityTree();
+                panelPreview.Invalidate();
+                
+                // 重新选中节点（UpdateEntityTree会清空选择）
                 SelectEntityInTree(_selectedGroup, _selectedIndex);
             }
         }
@@ -1565,6 +1674,15 @@ namespace LevelsJsonEditor
                     UpdateRandomCarPanel(panel);
                 }
             };
+            AddRealTimeTrigger(numSize, () => {
+                if (!_isUpdatingUI)
+                {
+                    int newSize = (int)numSize.Value;
+                    _current.RandomCarCounts = ResizeArray(_current.RandomCarCounts, newSize);
+                    _current.RandomCarColorTypes = ResizeArray(_current.RandomCarColorTypes, newSize);
+                    UpdateRandomCarPanel(panel);
+                }
+            });
             
             layout.Controls.Add(new Label { Text = "随机种类数量:", AutoSize = true }, 0, 1);
             layout.Controls.Add(numSize, 1, 1);
@@ -1641,6 +1759,13 @@ namespace LevelsJsonEditor
                         _current.RandomCarCounts[index] = (int)num.Value;
                     }
                 };
+                AddRealTimeTrigger(numCount, () => {
+                    if (!_isUpdatingUI)
+                    {
+                        int index = (int)numCount.Tag;
+                        _current.RandomCarCounts[index] = (int)numCount.Value;
+                    }
+                });
                 
                 layout.Controls.Add(new Label { Text = $"颜色[{i}]:", AutoSize = true }, 0, row);
                 layout.Controls.Add(cmbColor, 1, row);
@@ -1889,6 +2014,14 @@ namespace LevelsJsonEditor
                     UpdateSpaceProbabilityPanel(panel);
                 }
             };
+            AddRealTimeTrigger(numSize, () => {
+                if (!_isUpdatingUI)
+                {
+                    int newSize = (int)numSize.Value;
+                    _current.SpaceProbabilityConfigs = ResizeSpaceProbabilityArray(_current.SpaceProbabilityConfigs, newSize);
+                    UpdateSpaceProbabilityPanel(panel);
+                }
+            });
 
             layout.Controls.Add(new Label { Text = "配置数量:", AutoSize = true }, 0, 1);
             layout.Controls.Add(numSize, 1, 1);
@@ -1923,6 +2056,13 @@ namespace LevelsJsonEditor
                         _current.SpaceProbabilityConfigs[index].Space = (int)num.Value;
                     }
                 };
+                AddRealTimeTrigger(numSpace, () => {
+                    if (!_isUpdatingUI)
+                    {
+                        int index = (int)numSpace.Tag;
+                        _current.SpaceProbabilityConfigs[index].Space = (int)numSpace.Value;
+                    }
+                });
 
                 // 是否限定无匹配
                 var chkRestrict = new CheckBox
@@ -1959,6 +2099,13 @@ namespace LevelsJsonEditor
                         _current.SpaceProbabilityConfigs[index].Probability = (float)num.Value;
                     }
                 };
+                AddRealTimeTrigger(numProbability, () => {
+                    if (!_isUpdatingUI)
+                    {
+                        int index = (int)numProbability.Tag;
+                        _current.SpaceProbabilityConfigs[index].Probability = (float)numProbability.Value;
+                    }
+                });
 
                 layout.Controls.Add(new Label { Text = $"[{i}]车位数:", AutoSize = true }, 0, row);
                 layout.Controls.Add(numSpace, 1, row);
@@ -2032,6 +2179,14 @@ namespace LevelsJsonEditor
                     UpdateSpaceGuaranteePanel(panel);
                 }
             };
+            AddRealTimeTrigger(numSize, () => {
+                if (!_isUpdatingUI)
+                {
+                    int newSize = (int)numSize.Value;
+                    _current.SpaceGuaranteeConfigs = ResizeSpaceGuaranteeArray(_current.SpaceGuaranteeConfigs, newSize);
+                    UpdateSpaceGuaranteePanel(panel);
+                }
+            });
 
             layout.Controls.Add(new Label { Text = "配置数量:", AutoSize = true }, 0, 1);
             layout.Controls.Add(numSize, 1, 1);
@@ -2066,6 +2221,13 @@ namespace LevelsJsonEditor
                         _current.SpaceGuaranteeConfigs[index].Space = (int)num.Value;
                     }
                 };
+                AddRealTimeTrigger(numSpace, () => {
+                    if (!_isUpdatingUI)
+                    {
+                        int index = (int)numSpace.Tag;
+                        _current.SpaceGuaranteeConfigs[index].Space = (int)numSpace.Value;
+                    }
+                });
 
                 // 是否限定无匹配
                 var chkRestrict = new CheckBox
@@ -2100,6 +2262,13 @@ namespace LevelsJsonEditor
                         _current.SpaceGuaranteeConfigs[index].Count = (int)num.Value;
                     }
                 };
+                AddRealTimeTrigger(numCount, () => {
+                    if (!_isUpdatingUI)
+                    {
+                        int index = (int)numCount.Tag;
+                        _current.SpaceGuaranteeConfigs[index].Count = (int)numCount.Value;
+                    }
+                });
 
                 layout.Controls.Add(new Label { Text = $"[{i}]车位数:", AutoSize = true }, 0, row);
                 layout.Controls.Add(numSpace, 1, row);
