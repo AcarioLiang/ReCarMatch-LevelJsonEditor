@@ -19,6 +19,9 @@ namespace LevelsJsonEditor
         private LevelData _current;
         private int _currentIndex = -1;
         private bool _isUpdatingUI = false;
+        
+        // 原始关卡数据缓存（用于在切换关卡时恢复未保存的修改）
+        private readonly Dictionary<int, LevelData> _originalLevels = new Dictionary<int, LevelData>();
 
         // 实体分组
         private readonly string[] _groupsOrder = new[]
@@ -108,12 +111,22 @@ namespace LevelsJsonEditor
             return Path.Combine(exeDir, "levels.json");
         }
 
+        // 深拷贝LevelData
+        private LevelData DeepCloneLevel(LevelData source)
+        {
+            if (source == null) return null;
+            // 使用JSON序列化实现深拷贝
+            string json = JsonConvert.SerializeObject(source);
+            return JsonConvert.DeserializeObject<LevelData>(json);
+        }
+
         private void LoadJson()
         {
             string jsonPath = GetJsonFilePath();
             if (!File.Exists(jsonPath))
             {
                 _container = new Container { Levels = new List<LevelData>() };
+                _originalLevels.Clear();
                 return;
             }
 
@@ -125,11 +138,19 @@ namespace LevelsJsonEditor
                 
                 // 加载后按LV排序
                 SortLevelsByLV();
+                
+                // 缓存原始关卡数据（深拷贝）
+                _originalLevels.Clear();
+                foreach (var level in _container.Levels)
+                {
+                    _originalLevels[level.LV] = DeepCloneLevel(level);
+                }
             }
             catch (Exception e)
             {
                 MessageBox.Show($"解析 levels.json 失败: {e.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _container = new Container { Levels = new List<LevelData>() };
+                _originalLevels.Clear();
             }
         }
 
@@ -152,6 +173,14 @@ namespace LevelsJsonEditor
                 string json = JsonConvert.SerializeObject(raw, Formatting.Indented);
                 string jsonPath = GetJsonFilePath();
                 File.WriteAllText(jsonPath, json);
+                
+                // 保存成功后，更新所有关卡的原始数据缓存
+                _originalLevels.Clear();
+                foreach (var level in _container.Levels)
+                {
+                    _originalLevels[level.LV] = DeepCloneLevel(level);
+                }
+                
                 MessageBox.Show(dialogMsg, dialogTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception e)
@@ -434,8 +463,30 @@ namespace LevelsJsonEditor
         private void SetCurrentIndex(int idx)
         {
             if (idx < 0 || idx >= _container.Levels.Count) return;
+            
+            // 如果切换关卡（索引不同），先恢复之前关卡的原始数据
+            if (_currentIndex >= 0 && _currentIndex < _container.Levels.Count && idx != _currentIndex && _current != null)
+            {
+                int previousLv = _current.LV;
+                // 如果原始数据缓存中有这个LV的原始数据，恢复到之前关卡的索引位置
+                if (_originalLevels.ContainsKey(previousLv))
+                {
+                    LevelData original = DeepCloneLevel(_originalLevels[previousLv]);
+                    _container.Levels[_currentIndex] = original;
+                }
+            }
+            
             _currentIndex = idx;
             _current = _container.Levels[_currentIndex];
+            
+            // 如果新关卡有原始数据，用原始数据恢复（确保显示的是原始数据，而不是可能被修改过的数据）
+            if (_originalLevels.ContainsKey(_current.LV))
+            {
+                LevelData original = DeepCloneLevel(_originalLevels[_current.LV]);
+                _container.Levels[_currentIndex] = original;
+                _current = original;
+            }
+            
             BuildGroupCaches();
             ClearSelection();
             UpdateUI();
@@ -525,6 +576,9 @@ namespace LevelsJsonEditor
             LevelData newLv = baseLv != null ? CreateLevelFromBase(nextLv, baseLv) : CreateDefaultLevel(nextLv);
             _container.Levels.Add(newLv);
             
+            // 将新关卡添加到原始数据缓存（新关卡本身作为原始数据）
+            _originalLevels[nextLv] = DeepCloneLevel(newLv);
+            
             SortLevelsByLV(); // 排序后会重新定位当前关卡
             
             // 找到新添加的关卡并设为当前关卡
@@ -542,7 +596,17 @@ namespace LevelsJsonEditor
         {
             if (_currentIndex >= 0 && _currentIndex < _container.Levels.Count)
             {
+                // 记录要删除的关卡LV，以便从原始数据缓存中删除
+                int deletedLv = _container.Levels[_currentIndex].LV;
+                
                 _container.Levels.RemoveAt(_currentIndex);
+                
+                // 从原始数据缓存中删除
+                if (_originalLevels.ContainsKey(deletedLv))
+                {
+                    _originalLevels.Remove(deletedLv);
+                }
+                
                 SortLevelsByLV(); // 删除后排序并重新定位
                 SetCurrentIndex(_currentIndex);
             }
