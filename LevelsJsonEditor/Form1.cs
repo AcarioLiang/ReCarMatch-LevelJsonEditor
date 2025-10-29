@@ -1137,6 +1137,88 @@ namespace LevelsJsonEditor
             }
         }
 
+        // 根据Type获取对应的组名
+        private string TypeToGroupName(string type)
+        {
+            if (string.IsNullOrEmpty(type)) return "Emptys";
+            
+            switch (type)
+            {
+                case "Park": return "Parks";
+                case "PayPark": return "PayParks";
+                case "Car": return "Cars";
+                case "Empty": return "Emptys";
+                case "Factory": return "Factorys";
+                case "Box": return "Boxs";
+                case "LockDoor": return "LockDoors";
+                case "Wall":
+                case "Hole":
+                case "Item":
+                default: return "Entities"; // 其他类型都归到Entities组
+            }
+        }
+
+        // PropertyGrid属性值改变事件处理
+        private void PropertyGrid_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+        {
+            if (_current == null || _selectedGroup == null || _selectedIndex < 0) return;
+            if (!_groups.ContainsKey(_selectedGroup) || _selectedIndex >= _groups[_selectedGroup].Count) return;
+            
+            var entity = _groups[_selectedGroup][_selectedIndex];
+            if (entity == null) return;
+            
+            // 如果修改的是Type属性，需要将实体移动到对应的组
+            if (e.ChangedItem.Label == "Type")
+            {
+                string newType = entity.Type ?? "";
+                string newGroupName = TypeToGroupName(newType);
+                
+                // 如果新组名和当前组名不同，需要移动实体
+                if (newGroupName != _selectedGroup)
+                {
+                    // 从当前组移除实体
+                    _groups[_selectedGroup].RemoveAt(_selectedIndex);
+                    
+                    // 添加到新组
+                    if (!_groups.ContainsKey(newGroupName))
+                    {
+                        _groups[newGroupName] = new List<GridEntityData>();
+                    }
+                    _groups[newGroupName].Add(entity);
+                    
+                    // 更新选中状态：选中新组中的这个实体
+                    _selectedGroup = newGroupName;
+                    _selectedIndex = _groups[newGroupName].Count - 1;
+                    
+                    // 更新UI
+                    UpdateEntityTree();
+                    
+                    // 在树视图中选中新移动的实体
+                    SelectEntityInTree(_selectedGroup, _selectedIndex);
+                    
+                    // 确保PropertyGrid显示移动后的实体
+                    propertyGrid.SelectedObject = entity;
+                    
+                    // 刷新预览
+                    panelPreview.Invalidate();
+                    return; // Type变更后直接返回，不需要再执行通用的属性更新
+                }
+            }
+            
+            // 对于其他属性的变更，执行通用的更新逻辑
+            if (!_isUpdatingUI)
+            {
+                // 重新构建实体树以更新显示文字（坐标、颜色等）
+                UpdateEntityTree();
+
+                // 重绘场景预览以显示新的位置和属性
+                panelPreview.Invalidate();
+
+                // 重新选中当前编辑的实体节点（因为UpdateEntityTree会清空选择）
+                SelectEntityInTree(_selectedGroup, _selectedIndex);
+            }
+        }
+
         private void PanelPreview_Paint(object sender, PaintEventArgs e)
         {
             if (_current?.Grid == null) return;
@@ -1392,22 +1474,6 @@ namespace LevelsJsonEditor
                 {
                     splitContainer2.SplitterDistance = remainingWidth / 2;
                 }
-            }
-        }
-
-        private void PropertyGrid_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
-        {
-            // 当实体属性被修改后，刷新实体树和场景预览
-            if (!_isUpdatingUI && _selectedGroup != null && _selectedIndex >= 0)
-            {
-                // 重新构建实体树以更新显示文字（坐标、颜色等）
-                UpdateEntityTree();
-
-                // 重绘场景预览以显示新的位置和属性
-                panelPreview.Invalidate();
-
-                // 重新选中当前编辑的实体节点（因为UpdateEntityTree会清空选择）
-                SelectEntityInTree(_selectedGroup, _selectedIndex);
             }
         }
 
