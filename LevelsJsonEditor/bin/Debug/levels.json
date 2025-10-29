@@ -4606,8 +4606,8 @@
           "IncludeCarCount": 6
         }
       ],
-      "Boxs": null,
-      "LockDoors": null,
+      "Boxs": [],
+      "LockDoors": [],
       "RandomCarColorTypes": [
         "Red",
         "Blue",
@@ -4628,7 +4628,13 @@
       "AwardItem3": 0,
       "AwardItem4": 0,
       "SpaceProbabilityConfigs": [],
-      "SpaceGuaranteeConfigs": []
+      "SpaceGuaranteeConfigs": [
+        {
+          "Space": 1,
+          "RestrictNoMatch": false,
+          "Count": 5
+        }
+      ]
     },
     {
       "LV": 8,

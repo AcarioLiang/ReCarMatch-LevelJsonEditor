@@ -676,7 +676,8 @@ namespace LevelsJsonEditor
             var scrollPanel = new Panel
             {
                 Dock = DockStyle.Fill,
-                AutoScroll = true
+                AutoScroll = true,
+                Name = "scrollPanel"
             };
             scrollPanel.Controls.Add(table);
             
@@ -869,72 +870,116 @@ namespace LevelsJsonEditor
             UpdateSpaceGuaranteePanel(spaceGuaranteePanel);
         }
 
+        // 辅助方法：获取scrollPanel并保存滚动位置
+        private Point SaveScrollPosition(out Panel scrollPanel)
+        {
+            scrollPanel = null;
+            Point savedScrollPosition = Point.Empty;
+            foreach (Control control2 in groupBoxLevelInfo.Controls)
+            {
+                if (control2 is Panel panel2 && panel2.Name == "scrollPanel")
+                {
+                    scrollPanel = panel2;
+                    // AutoScrollPosition返回的是负数，保存时需要取反
+                    var currentPos = panel2.AutoScrollPosition;
+                    savedScrollPosition = new Point(-currentPos.X, -currentPos.Y);
+                    break;
+                }
+            }
+            return savedScrollPosition;
+        }
+
+        // 辅助方法：恢复滚动位置
+        private void RestoreScrollPosition(Panel scrollPanel, Point savedScrollPosition)
+        {
+            if (scrollPanel != null && savedScrollPosition != Point.Empty)
+            {
+                // 延迟恢复滚动位置，确保布局完成后再设置
+                scrollPanel.SuspendLayout();
+                scrollPanel.AutoScrollPosition = savedScrollPosition;
+                scrollPanel.ResumeLayout();
+            }
+        }
+
         private void UpdateLevelInfoControls()
         {
             if (_current == null) return;
             
-            foreach (Control control in groupBoxLevelInfo.Controls)
+            // 保存滚动位置
+            Point savedScrollPosition = SaveScrollPosition(out Panel scrollPanel);
+            
+            foreach (Control control2 in groupBoxLevelInfo.Controls)
             {
-                if (control is TableLayoutPanel table)
+                if (control2 is Panel panel2)
                 {
-                    foreach (Control c in table.Controls)
+                    foreach (Control control in panel2.Controls)
                     {
-                        switch (c.Name)
+                        if (control is TableLayoutPanel table)
                         {
-                            case "numLV":
-                                ((NumericUpDown)c).Value = _current.LV;
-                                break;
-                            case "cmbHardType":
-                                ((ComboBox)c).SelectedItem = (LevelHardType)_current.HardType;
-                                break;
-                            case "chkRandomCar":
-                                ((CheckBox)c).Checked = _current.RandomCar;
-                                break;
-                            case "numTimeLimit":
-                                ((NumericUpDown)c).Value = (decimal)_current.GameTimeLimit;
-                                break;
-                            case "chkEnableTimeLimit":
-                                ((CheckBox)c).Checked = _current.EnableTimeLimit;
-                                break;
-                            case "numWidth":
-                                ((NumericUpDown)c).Value = _current.Grid?.Width ?? 7;
-                                break;
-                            case "numHeight":
-                                ((NumericUpDown)c).Value = _current.Grid?.Height ?? 11;
-                                break;
-                            case "numCellSize":
-                                ((NumericUpDown)c).Value = (decimal)(_current.Grid?.CellSize ?? 64f);
-                                break;
-                            case "numAwardCoin":
-                                ((NumericUpDown)c).Value = _current.AwardCoin;
-                                break;
-                            case "numAwardItem1":
-                                ((NumericUpDown)c).Value = _current.AwardItem1;
-                                break;
-                            case "numAwardItem2":
-                                ((NumericUpDown)c).Value = _current.AwardItem2;
-                                break;
-                            case "numAwardItem3":
-                                ((NumericUpDown)c).Value = _current.AwardItem3;
-                                break;
-                            case "numAwardItem4":
-                                ((NumericUpDown)c).Value = _current.AwardItem4;
-                                break;
-                            case "randomCarPanel":
-                                var panel = (Panel)c;
-                                panel.Enabled = _current.RandomCar;
-                                UpdateRandomCarPanel(panel);
-                                break;
-                            case "spaceProbabilityPanel":
-                                UpdateSpaceProbabilityPanel((Panel)c);
-                                break;
-                            case "spaceGuaranteePanel":
-                                UpdateSpaceGuaranteePanel((Panel)c);
-                                break;
+                            foreach (Control c in table.Controls)
+                            {
+                                switch (c.Name)
+                                {
+                                    case "numLV":
+                                        ((NumericUpDown)c).Value = _current.LV;
+                                        break;
+                                    case "cmbHardType":
+                                        ((ComboBox)c).SelectedItem = (LevelHardType)_current.HardType;
+                                        break;
+                                    case "chkRandomCar":
+                                        ((CheckBox)c).Checked = _current.RandomCar;
+                                        break;
+                                    case "numTimeLimit":
+                                        ((NumericUpDown)c).Value = (decimal)_current.GameTimeLimit;
+                                        break;
+                                    case "chkEnableTimeLimit":
+                                        ((CheckBox)c).Checked = _current.EnableTimeLimit;
+                                        break;
+                                    case "numWidth":
+                                        ((NumericUpDown)c).Value = _current.Grid?.Width ?? 7;
+                                        break;
+                                    case "numHeight":
+                                        ((NumericUpDown)c).Value = _current.Grid?.Height ?? 11;
+                                        break;
+                                    case "numCellSize":
+                                        ((NumericUpDown)c).Value = (decimal)(_current.Grid?.CellSize ?? 64f);
+                                        break;
+                                    case "numAwardCoin":
+                                        ((NumericUpDown)c).Value = _current.AwardCoin;
+                                        break;
+                                    case "numAwardItem1":
+                                        ((NumericUpDown)c).Value = _current.AwardItem1;
+                                        break;
+                                    case "numAwardItem2":
+                                        ((NumericUpDown)c).Value = _current.AwardItem2;
+                                        break;
+                                    case "numAwardItem3":
+                                        ((NumericUpDown)c).Value = _current.AwardItem3;
+                                        break;
+                                    case "numAwardItem4":
+                                        ((NumericUpDown)c).Value = _current.AwardItem4;
+                                        break;
+                                    case "randomCarPanel":
+                                        var panel = (Panel)c;
+                                        panel.Enabled = _current.RandomCar;
+                                        UpdateRandomCarPanel(panel);
+                                        break;
+                                    case "spaceProbabilityPanel":
+                                        UpdateSpaceProbabilityPanel((Panel)c);
+                                        break;
+                                    case "spaceGuaranteePanel":
+                                        UpdateSpaceGuaranteePanel((Panel)c);
+                                        break;
+                                }
+                            }
                         }
                     }
                 }
+                
             }
+            
+            // 恢复滚动位置
+            RestoreScrollPosition(scrollPanel, savedScrollPosition);
         }
 
         private void TreeViewEntities_AfterSelect(object sender, TreeViewEventArgs e)
@@ -1323,6 +1368,9 @@ namespace LevelsJsonEditor
         {
             if (_current == null) return;
             
+            // 保存滚动位置
+            Point savedScrollPosition = SaveScrollPosition(out Panel scrollPanel);
+            
             panel.Controls.Clear();
             
             if (!_current.RandomCar) 
@@ -1340,6 +1388,8 @@ namespace LevelsJsonEditor
 
                 panel.Controls.Add(lblDisabled);
                
+                // 恢复滚动位置
+                RestoreScrollPosition(scrollPanel, savedScrollPosition);
                 return;
             }
             
@@ -1474,6 +1524,9 @@ namespace LevelsJsonEditor
             panel.Size = panel.MaximumSize = panel.MinimumSize = new Size(600, Math.Max(50, Math.Min(dynamicHeight, 300))); // 最小100px，最大400px
 
             panel.Controls.Add(layout);
+            
+            // 恢复滚动位置
+            RestoreScrollPosition(scrollPanel, savedScrollPosition);
         }
 
         // 数组扩容辅助方法
@@ -1658,6 +1711,9 @@ namespace LevelsJsonEditor
         {
             if (_current == null) return;
 
+            // 保存滚动位置
+            Point savedScrollPosition = SaveScrollPosition(out Panel scrollPanel);
+
             panel.Controls.Clear();
 
             var layout = new TableLayoutPanel
@@ -1784,16 +1840,22 @@ namespace LevelsJsonEditor
                 layout.Controls.Add(numProbability, 5, row);
             }
 
-            int dynamicHeight = 80 + (curSize * 30) + 10;
+            int dynamicHeight = 80 + (curSize * 60) + 10;
             panel.Size = panel.MaximumSize = panel.MinimumSize = new Size(600, Math.Max(50, Math.Min(dynamicHeight, 500)));
 
             panel.Controls.Add(layout);
+            
+            // 恢复滚动位置
+            RestoreScrollPosition(scrollPanel, savedScrollPosition);
         }
 
         // 必定保底次数配置面板更新方法
         private void UpdateSpaceGuaranteePanel(Panel panel)
         {
             if (_current == null) return;
+
+            // 保存滚动位置
+            Point savedScrollPosition = SaveScrollPosition(out Panel scrollPanel);
 
             panel.Controls.Clear();
 
@@ -1919,10 +1981,13 @@ namespace LevelsJsonEditor
                 layout.Controls.Add(numCount, 5, row);
             }
 
-            int dynamicHeight = 80 + (curSize * 30) + 10;
+            int dynamicHeight = 80 + (curSize * 60) + 10;
             panel.Size = panel.MaximumSize = panel.MinimumSize = new Size(600, Math.Max(50, Math.Min(dynamicHeight, 500)));
 
             panel.Controls.Add(layout);
+            
+            // 恢复滚动位置
+            RestoreScrollPosition(scrollPanel, savedScrollPosition);
         }
     }
 }
