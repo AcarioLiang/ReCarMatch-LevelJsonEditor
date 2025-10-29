@@ -120,10 +120,10 @@ namespace LevelsJsonEditor
         [TypeConverter(typeof(EnumStringConverter<CarColorType>))]
         public string ColorType { get; set; } = "";
         
-        public bool HasKey { get; set; } = false;
-        
-        [TypeConverter(typeof(EnumStringConverter<CarColorType>))]
-        public string KayColorType { get; set; } = "White";
+        //public bool HasKey { get; set; } = false;
+        //
+        //[TypeConverter(typeof(EnumStringConverter<CarColorType>))]
+        //public string KayColorType { get; set; } = "White";
         
         [TypeConverter(typeof(EnumStringConverter<DirectionsType>))]
         public string Dir { get; set; } = "Down";
@@ -162,8 +162,8 @@ namespace LevelsJsonEditor
         public int LV { get; set; } = 1;
         public int HardType { get; set; } = 1;
         public bool RandomCar { get; set; } = false;
-        public float GameTimeLimit { get; set; } = 0;
-        public bool EnableTimeLimit { get; set; } = false;
+        //public float GameTimeLimit { get; set; } = 0;
+        //public bool EnableTimeLimit { get; set; } = false;
         public GridData Grid { get; set; } = new GridData();
         public GridEntityData[] Parks { get; set; } = new GridEntityData[0];
         public GridEntityData[] PayParks { get; set; } = new GridEntityData[0];

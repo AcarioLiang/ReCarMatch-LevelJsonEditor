@@ -33,7 +33,6 @@ namespace LevelsJsonEditor
         // 选择状态
         private string _selectedGroup = null;
         private int _selectedIndex = -1;
-        private bool _randomCarFoldout = true;
 
         // 颜色映射（预览用）
         private readonly Dictionary<string, Color> _typeColors = new Dictionary<string, Color>(StringComparer.OrdinalIgnoreCase)
@@ -446,8 +445,8 @@ namespace LevelsJsonEditor
                 LV = lv,
                 HardType = (int)LevelHardType.Normal,
                 RandomCar = false,
-                GameTimeLimit = 0,
-                EnableTimeLimit = false,
+                //GameTimeLimit = 0,
+                //EnableTimeLimit = false,
                 Grid = new GridData { Width = 7, Height = 11, CellSize = 64f },
                 Parks = new GridEntityData[0],
                 PayParks = new GridEntityData[0],
@@ -630,8 +629,8 @@ namespace LevelsJsonEditor
                 LV = lv,
                 HardType = baseLv.HardType,
                 RandomCar = baseLv.RandomCar,
-                GameTimeLimit = baseLv.GameTimeLimit,
-                EnableTimeLimit = baseLv.EnableTimeLimit,
+                //GameTimeLimit = baseLv.GameTimeLimit,
+                //EnableTimeLimit = baseLv.EnableTimeLimit,
                 Grid = new GridData
                 {
                     Width = baseLv.Grid?.Width ?? 7,
@@ -668,8 +667,8 @@ namespace LevelsJsonEditor
                 CellX = s.CellX,
                 CellY = s.CellY,
                 ColorType = s.ColorType,
-                HasKey = s.HasKey,
-                KayColorType = s.KayColorType,
+                //HasKey = s.HasKey,
+                //KayColorType = s.KayColorType,
                 Dir = s.Dir,
                 IncludeCarCount = s.IncludeCarCount
             };
@@ -705,8 +704,8 @@ namespace LevelsJsonEditor
                     string displayText = $"{entity.Type} ({entity.CellX},{entity.CellY})";
                     if (!string.IsNullOrEmpty(entity.ColorType))
                         displayText += $" [{entity.ColorType}]";
-                    if (entity.HasKey)
-                        displayText += " Key";
+                    //if (entity.HasKey)
+                    //    displayText += " Key";
                     
                     var entityNode = new TreeNode(displayText) 
                     { 
@@ -780,19 +779,19 @@ namespace LevelsJsonEditor
             table.Controls.Add(chkRandomCar, 1, row);
             row++;
             
-            // GameTimeLimit
-            table.Controls.Add(new Label { Text = "GameTimeLimit:", TextAlign = ContentAlignment.MiddleRight }, 0, row);
-            var numTimeLimit = new NumericUpDown { 
-                Minimum = 0, Maximum = 999999, DecimalPlaces = 1, 
-                Increment = 0.1m, Name = "numTimeLimit" 
-            };
-            table.Controls.Add(numTimeLimit, 1, row);
-            
-            // EnableTimeLimit
-            table.Controls.Add(new Label { Text = "EnableTimeLimit:", TextAlign = ContentAlignment.MiddleRight }, 2, row);
-            var chkEnableTimeLimit = new CheckBox { Name = "chkEnableTimeLimit" };
-            table.Controls.Add(chkEnableTimeLimit, 3, row);
-            row++;
+            //// GameTimeLimit
+            //table.Controls.Add(new Label { Text = "GameTimeLimit:", TextAlign = ContentAlignment.MiddleRight }, 0, row);
+            //var numTimeLimit = new NumericUpDown { 
+            //    Minimum = 0, Maximum = 999999, DecimalPlaces = 1, 
+            //    Increment = 0.1m, Name = "numTimeLimit" 
+            //};
+            //table.Controls.Add(numTimeLimit, 1, row);
+            //
+            //// EnableTimeLimit
+            //table.Controls.Add(new Label { Text = "EnableTimeLimit:", TextAlign = ContentAlignment.MiddleRight }, 2, row);
+            //var chkEnableTimeLimit = new CheckBox { Name = "chkEnableTimeLimit" };
+            //table.Controls.Add(chkEnableTimeLimit, 3, row);
+            //row++;
             
             // Grid Width/Height
             table.Controls.Add(new Label { Text = "Grid Width:", TextAlign = ContentAlignment.MiddleRight }, 0, row);
@@ -804,39 +803,38 @@ namespace LevelsJsonEditor
             table.Controls.Add(numHeight, 3, row);
             row++;
             
-            // Grid CellSize
-            table.Controls.Add(new Label { Text = "Grid CellSize:", TextAlign = ContentAlignment.MiddleRight }, 0, row);
-            var numCellSize = new NumericUpDown { 
-                Minimum = 0, Maximum = 256, Value = 64, 
-                DecimalPlaces = 1, Increment = 0.1m, Name = "numCellSize" 
-            };
-            table.Controls.Add(numCellSize, 1, row);
-            row++;
+            //// Grid CellSize
+            //table.Controls.Add(new Label { Text = "Grid CellSize:", TextAlign = ContentAlignment.MiddleRight }, 0, row);
+            //var numCellSize = new NumericUpDown { 
+            //    Minimum = 0, Maximum = 256, Value = 64, 
+            //    DecimalPlaces = 1, Increment = 0.1m, Name = "numCellSize" 
+            //};
+            //table.Controls.Add(numCellSize, 1, row);
+            //row++;
             
             // 奖励配置
             table.Controls.Add(new Label { Text = "AwardCoin:", TextAlign = ContentAlignment.MiddleRight }, 0, row);
             var numAwardCoin = new NumericUpDown { Minimum = 0, Maximum = 999999, Name = "numAwardCoin" };
             table.Controls.Add(numAwardCoin, 1, row);
-            
-            table.Controls.Add(new Label { Text = "AwardItem1:", TextAlign = ContentAlignment.MiddleRight }, 2, row);
-            var numAwardItem1 = new NumericUpDown { Minimum = 0, Maximum = 999999, Name = "numAwardItem1" };
-            table.Controls.Add(numAwardItem1, 3, row);
             row++;
-            
+
             // 奖励配置第二行
-            table.Controls.Add(new Label { Text = "AwardItem2:", TextAlign = ContentAlignment.MiddleRight }, 0, row);
+            table.Controls.Add(new Label { Text = "AwardItem1:", TextAlign = ContentAlignment.MiddleRight }, 0, row);
+            var numAwardItem1 = new NumericUpDown { Minimum = 0, Maximum = 999999, Name = "numAwardItem1" };
+            table.Controls.Add(numAwardItem1, 1, row);
+            table.Controls.Add(new Label { Text = "AwardItem2:", TextAlign = ContentAlignment.MiddleRight }, 2, row);
             var numAwardItem2 = new NumericUpDown { Minimum = 0, Maximum = 999999, Name = "numAwardItem2" };
-            table.Controls.Add(numAwardItem2, 1, row);
-            
-            table.Controls.Add(new Label { Text = "AwardItem3:", TextAlign = ContentAlignment.MiddleRight }, 2, row);
-            var numAwardItem3 = new NumericUpDown { Minimum = 0, Maximum = 999999, Name = "numAwardItem3" };
-            table.Controls.Add(numAwardItem3, 3, row);
+            table.Controls.Add(numAwardItem2, 3, row);
             row++;
-            
+
+
             // 奖励配置第三行
-            table.Controls.Add(new Label { Text = "AwardItem4:", TextAlign = ContentAlignment.MiddleRight }, 0, row);
+            table.Controls.Add(new Label { Text = "AwardItem3:", TextAlign = ContentAlignment.MiddleRight }, 0, row);
+            var numAwardItem3 = new NumericUpDown { Minimum = 0, Maximum = 999999, Name = "numAwardItem3" };
+            table.Controls.Add(numAwardItem3, 1, row);
+            table.Controls.Add(new Label { Text = "AwardItem4:", TextAlign = ContentAlignment.MiddleRight }, 2, row);
             var numAwardItem4 = new NumericUpDown { Minimum = 0, Maximum = 999999, Name = "numAwardItem4" };
-            table.Controls.Add(numAwardItem4, 1, row);
+            table.Controls.Add(numAwardItem4, 3, row);
             row++;
 
             // 随机车辆配置区域
@@ -914,11 +912,11 @@ namespace LevelsJsonEditor
                     UpdateRandomCarPanel(randomCarPanel);
                 } 
             };
-            numTimeLimit.ValueChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.GameTimeLimit = (float)numTimeLimit.Value; };
-            chkEnableTimeLimit.CheckedChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.EnableTimeLimit = chkEnableTimeLimit.Checked; };
+            //numTimeLimit.ValueChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.GameTimeLimit = (float)numTimeLimit.Value; };
+            //chkEnableTimeLimit.CheckedChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.EnableTimeLimit = chkEnableTimeLimit.Checked; };
             numWidth.ValueChanged += (s, e) => { if (_current?.Grid != null && !_isUpdatingUI) { _current.Grid.Width = (int)numWidth.Value; panelPreview.Invalidate(); } };
             numHeight.ValueChanged += (s, e) => { if (_current?.Grid != null && !_isUpdatingUI) { _current.Grid.Height = (int)numHeight.Value; panelPreview.Invalidate(); } };
-            numCellSize.ValueChanged += (s, e) => { if (_current?.Grid != null && !_isUpdatingUI) _current.Grid.CellSize = (float)numCellSize.Value; };
+            //numCellSize.ValueChanged += (s, e) => { if (_current?.Grid != null && !_isUpdatingUI) _current.Grid.CellSize = (float)numCellSize.Value; };
             numAwardCoin.ValueChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.AwardCoin = (int)numAwardCoin.Value; };
             numAwardItem1.ValueChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.AwardItem1 = (int)numAwardItem1.Value; };
             numAwardItem2.ValueChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.AwardItem2 = (int)numAwardItem2.Value; };
@@ -993,12 +991,12 @@ namespace LevelsJsonEditor
                                     case "chkRandomCar":
                                         ((CheckBox)c).Checked = _current.RandomCar;
                                         break;
-                                    case "numTimeLimit":
-                                        ((NumericUpDown)c).Value = (decimal)_current.GameTimeLimit;
-                                        break;
-                                    case "chkEnableTimeLimit":
-                                        ((CheckBox)c).Checked = _current.EnableTimeLimit;
-                                        break;
+                                    //case "numTimeLimit":
+                                    //    ((NumericUpDown)c).Value = (decimal)_current.GameTimeLimit;
+                                    //    break;
+                                    //case "chkEnableTimeLimit":
+                                    //    ((CheckBox)c).Checked = _current.EnableTimeLimit;
+                                    //    break;
                                     case "numWidth":
                                         ((NumericUpDown)c).Value = _current.Grid?.Width ?? 7;
                                         break;
@@ -1110,8 +1108,8 @@ namespace LevelsJsonEditor
                 CellX = 0,
                 CellY = 0,
                 ColorType = groupName.Equals("Cars", StringComparison.OrdinalIgnoreCase) ? CarColorType.White.ToString() : "",
-                HasKey = false,
-                KayColorType = CarColorType.White.ToString(),
+                //HasKey = false,
+                //KayColorType = CarColorType.White.ToString(),
                 Dir = DirectionsType.Down.ToString(),
                 IncludeCarCount = 0
             };
