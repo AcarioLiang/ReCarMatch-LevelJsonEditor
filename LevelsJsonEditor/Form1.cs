@@ -890,7 +890,7 @@ namespace LevelsJsonEditor
             row++;
             
             // 保存按钮
-            var btnSaveLevel = new Button { Text = "保存关卡到 levels.json", Name = "btnSaveLevel" };
+            var btnSaveLevel = new Button { Text = "保存关卡", Name = "btnSaveLevel" };
             btnSaveLevel.Click += (s, e) => SaveJson();
             table.Controls.Add(btnSaveLevel, 0, row);
             table.SetColumnSpan(btnSaveLevel, 4);

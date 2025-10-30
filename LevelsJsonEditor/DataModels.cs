@@ -17,7 +17,8 @@ namespace LevelsJsonEditor
         Entitie,
         Factory,
         Box,
-        LockDoor
+        LockDoor,
+        Wall
     }
 
     public enum LevelHardType
