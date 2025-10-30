@@ -162,7 +162,7 @@ namespace LevelsJsonEditor
     {
         public int LV { get; set; } = 1;
         public int HardType { get; set; } = 1;
-        public bool RandomCar { get; set; } = false;
+        //public bool RandomCar { get; set; } = false;
         //public float GameTimeLimit { get; set; } = 0;
         //public bool EnableTimeLimit { get; set; } = false;
         public GridData Grid { get; set; } = new GridData();
@@ -174,8 +174,8 @@ namespace LevelsJsonEditor
         public GridEntityData[] Factorys { get; set; } = new GridEntityData[0];
         public GridEntityData[] Boxs { get; set; } = new GridEntityData[0];
         public GridEntityData[] LockDoors { get; set; } = new GridEntityData[0];
-        public string[] RandomCarColorTypes { get; set; } = new string[0];
-        public int[] RandomCarCounts { get; set; } = new int[0];
+        public string[] TotalCarColorTypes { get; set; } = new string[0];
+        public int[] TotalCarCounts { get; set; } = new int[0];
         public int AwardCoin { get; set; } = 0;
         public int AwardItem1 { get; set; } = 0;
         public int AwardItem2 { get; set; } = 0;

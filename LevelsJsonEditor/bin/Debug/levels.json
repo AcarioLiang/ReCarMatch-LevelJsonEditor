@@ -3,7 +3,6 @@
     {
       "LV": 1,
       "HardType": 0,
-      "RandomCar": false,
       "Grid": {
         "Width": 7,
         "Height": 11,
@@ -470,8 +469,16 @@
       "Factorys": [],
       "Boxs": [],
       "LockDoors": [],
-      "RandomCarColorTypes": [],
-      "RandomCarCounts": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow"
+      ],
+      "TotalCarCounts": [
+        3,
+        3,
+        3
+      ],
       "AwardCoin": 0,
       "AwardItem1": 0,
       "AwardItem2": 0,
@@ -483,7 +490,6 @@
     {
       "LV": 2,
       "HardType": 0,
-      "RandomCar": false,
       "Grid": {
         "Width": 7,
         "Height": 11,
@@ -1078,8 +1084,16 @@
       "Factorys": [],
       "Boxs": [],
       "LockDoors": [],
-      "RandomCarColorTypes": null,
-      "RandomCarCounts": null,
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        3,
+        3,
+        3
+      ],
       "AwardCoin": 0,
       "AwardItem1": 0,
       "AwardItem2": 0,
@@ -1091,7 +1105,6 @@
     {
       "LV": 3,
       "HardType": 0,
-      "RandomCar": false,
       "Grid": {
         "Width": 7,
         "Height": 11,
@@ -1702,8 +1715,14 @@
       "Factorys": [],
       "Boxs": [],
       "LockDoors": [],
-      "RandomCarColorTypes": null,
-      "RandomCarCounts": null,
+      "TotalCarColorTypes": [
+        "Blue",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        3,
+        3
+      ],
       "AwardCoin": 0,
       "AwardItem1": 0,
       "AwardItem2": 0,
@@ -1715,7 +1734,6 @@
     {
       "LV": 4,
       "HardType": 0,
-      "RandomCar": false,
       "Grid": {
         "Width": 7,
         "Height": 11,
@@ -2310,8 +2328,16 @@
       "Factorys": [],
       "Boxs": [],
       "LockDoors": [],
-      "RandomCarColorTypes": null,
-      "RandomCarCounts": null,
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow"
+      ],
+      "TotalCarCounts": [
+        3,
+        6,
+        3
+      ],
       "AwardCoin": 0,
       "AwardItem1": 0,
       "AwardItem2": 0,
@@ -2323,7 +2349,6 @@
     {
       "LV": 5,
       "HardType": 0,
-      "RandomCar": true,
       "Grid": {
         "Width": 7,
         "Height": 11,
@@ -2645,13 +2670,13 @@
       "Factorys": [],
       "Boxs": [],
       "LockDoors": [],
-      "RandomCarColorTypes": [
+      "TotalCarColorTypes": [
         "Red",
         "Blue",
         "Green",
         "Yellow"
       ],
-      "RandomCarCounts": [
+      "TotalCarCounts": [
         9,
         9,
         9,
@@ -2668,7 +2693,6 @@
     {
       "LV": 6,
       "HardType": 0,
-      "RandomCar": false,
       "Grid": {
         "Width": 7,
         "Height": 11,
@@ -3304,8 +3328,16 @@
       ],
       "Boxs": [],
       "LockDoors": [],
-      "RandomCarColorTypes": null,
-      "RandomCarCounts": null,
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow"
+      ],
+      "TotalCarCounts": [
+        3,
+        3,
+        3
+      ],
       "AwardCoin": 0,
       "AwardItem1": 0,
       "AwardItem2": 0,
@@ -3317,7 +3349,6 @@
     {
       "LV": 7,
       "HardType": 0,
-      "RandomCar": true,
       "Grid": {
         "Width": 7,
         "Height": 11,
@@ -3712,19 +3743,19 @@
       ],
       "Boxs": [],
       "LockDoors": [],
-      "RandomCarColorTypes": [
+      "TotalCarColorTypes": [
         "Red",
         "Blue",
         "Green",
         "Yellow",
         "Purple"
       ],
-      "RandomCarCounts": [
-        5,
-        5,
+      "TotalCarCounts": [
         9,
-        7,
-        4
+        9,
+        9,
+        9,
+        12
       ],
       "AwardCoin": 0,
       "AwardItem1": 0,
@@ -3743,7 +3774,6 @@
     {
       "LV": 8,
       "HardType": 0,
-      "RandomCar": true,
       "Grid": {
         "Width": 7,
         "Height": 11,
@@ -4138,19 +4168,19 @@
       ],
       "Boxs": [],
       "LockDoors": [],
-      "RandomCarColorTypes": [
+      "TotalCarColorTypes": [
         "Red",
         "Blue",
         "Green",
         "Yellow",
         "Purple"
       ],
-      "RandomCarCounts": [
-        7,
-        7,
-        8,
-        3,
-        5
+      "TotalCarCounts": [
+        12,
+        12,
+        12,
+        9,
+        9
       ],
       "AwardCoin": 0,
       "AwardItem1": 0,
@@ -4163,7 +4193,6 @@
     {
       "LV": 9,
       "HardType": 0,
-      "RandomCar": true,
       "Grid": {
         "Width": 7,
         "Height": 11,
@@ -4574,17 +4603,19 @@
       ],
       "Boxs": [],
       "LockDoors": [],
-      "RandomCarColorTypes": [
+      "TotalCarColorTypes": [
         "Red",
         "Blue",
         "Green",
-        "Yellow"
+        "Yellow",
+        "Purple"
       ],
-      "RandomCarCounts": [
-        8,
-        8,
-        7,
-        5
+      "TotalCarCounts": [
+        12,
+        12,
+        12,
+        9,
+        9
       ],
       "AwardCoin": 0,
       "AwardItem1": 0,
@@ -4597,7 +4628,6 @@
     {
       "LV": 10,
       "HardType": 0,
-      "RandomCar": false,
       "Grid": {
         "Width": 7,
         "Height": 11,
@@ -5233,8 +5263,16 @@
         }
       ],
       "LockDoors": [],
-      "RandomCarColorTypes": null,
-      "RandomCarCounts": null,
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow"
+      ],
+      "TotalCarCounts": [
+        6,
+        6,
+        3
+      ],
       "AwardCoin": 0,
       "AwardItem1": 0,
       "AwardItem2": 0,
@@ -5246,7 +5284,6 @@
     {
       "LV": 11,
       "HardType": 0,
-      "RandomCar": true,
       "Grid": {
         "Width": 7,
         "Height": 11,
@@ -5753,19 +5790,17 @@
         }
       ],
       "LockDoors": [],
-      "RandomCarColorTypes": [
+      "TotalCarColorTypes": [
         "Red",
         "Blue",
         "Green",
-        "Yellow",
-        "Purple"
+        "Yellow"
       ],
-      "RandomCarCounts": [
-        3,
-        3,
-        3,
-        3,
-        4
+      "TotalCarCounts": [
+        9,
+        9,
+        6,
+        6
       ],
       "AwardCoin": 0,
       "AwardItem1": 0,
@@ -5778,7 +5813,6 @@
     {
       "LV": 12,
       "HardType": 0,
-      "RandomCar": true,
       "Grid": {
         "Width": 7,
         "Height": 11,
@@ -6237,19 +6271,19 @@
         }
       ],
       "LockDoors": [],
-      "RandomCarColorTypes": [
+      "TotalCarColorTypes": [
         "Red",
         "Blue",
         "Green",
         "Yellow",
         "Purple"
       ],
-      "RandomCarCounts": [
-        4,
+      "TotalCarCounts": [
+        9,
+        9,
+        9,
         6,
-        6,
-        3,
-        3
+        6
       ],
       "AwardCoin": 0,
       "AwardItem1": 0,
@@ -6262,7 +6296,6 @@
     {
       "LV": 30,
       "HardType": 0,
-      "RandomCar": true,
       "Grid": {
         "Width": 7,
         "Height": 11,
@@ -6722,19 +6755,19 @@
           "IncludeCarCount": 0
         }
       ],
-      "RandomCarColorTypes": [
+      "TotalCarColorTypes": [
         "Red",
         "Blue",
         "Green",
         "Yellow",
         "Purple"
       ],
-      "RandomCarCounts": [
+      "TotalCarCounts": [
         6,
-        4,
-        5,
-        3,
-        5
+        6,
+        6,
+        6,
+        6
       ],
       "AwardCoin": 0,
       "AwardItem1": 0,

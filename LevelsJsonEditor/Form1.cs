@@ -241,20 +241,62 @@ namespace LevelsJsonEditor
                 ValidateEntityList(kv.Key, kv.Value, level.Grid, errors, warnings, ref errorCount, ref warningCount, globalCells);
             }
 
-            // RandomCar 额外校验：空位数量与 RandomCarCounts 总和一致
-            if (errorCount == 0 && level.RandomCar)
+            //校验车辆总数是否一直
+
+            if (errorCount == 0)
             {
-                int countsLen = level.RandomCarCounts != null ? level.RandomCarCounts.Length : 0;
-                int colorsLen = level.RandomCarColorTypes != null ? level.RandomCarColorTypes.Length : 0;
+                int countsLen = level.TotalCarCounts != null ? level.TotalCarCounts.Length : 0;
+                int colorsLen = level.TotalCarColorTypes != null ? level.TotalCarColorTypes.Length : 0;
                 if (countsLen == 0 || colorsLen == 0 || countsLen != colorsLen)
                 {
-                    errors.AppendLine("[错误] RandomCar 启用时，RandomCarCounts 与 RandomCarColorTypes 必须长度一致且大于 0。");
+                    errors.AppendLine("[错误] TotalCarCounts 与 TotalCarColorTypes 必须长度一致且大于 0。");
                     errorCount++;
                 }
                 else
                 {
-                    int totalRandomCars = 0;
-                    for (int i = 0; i < countsLen; i++) totalRandomCars += Math.Max(0, level.RandomCarCounts[i]);
+                    int totalCars = 0;
+                    for (int i = 0; i < countsLen; i++) totalCars += Math.Max(0, level.TotalCarCounts[i]);
+
+                    //校验所有车辆的颜色配置个数为3的倍数
+
+                    // 统计每种颜色的车辆总数量
+                    var colorCounts = new Dictionary<string, int>();
+
+                    // 初始化所有颜色计数
+                    for (int i = 0; i < level.TotalCarColorTypes.Length; i++)
+                    {
+                        colorCounts[level.TotalCarColorTypes[i]] = level.TotalCarCounts[i];
+                    }
+
+                    // 4. 验证每种颜色的车辆数量是否为3的倍数
+                    bool hasColorError = false;
+                    foreach (var kvp in colorCounts)
+                    {
+                        if (kvp.Value > 0 && kvp.Value % 3 != 0)
+                        {
+                            errors.AppendLine($"[错误] {kvp.Key} 颜色车辆总数为 {kvp.Value}，不是3的倍数。");
+                            errorCount++;
+                            hasColorError = true;
+                        }
+                    }
+
+                    // 可选：显示颜色统计信息（作为调试信息）
+                    if (!hasColorError && colorCounts.Values.Any(count => count > 0))
+                    {
+
+                        var colorInfo = new StringBuilder();
+                        colorInfo.AppendLine("车辆颜色统计:");
+                        foreach (var kvp in colorCounts)
+                        {
+                            if (kvp.Value > 0)
+                            {
+                                colorInfo.AppendLine($"  {kvp.Key}: {kvp.Value}辆");
+                            }
+                        }
+                        // 这里可以选择将colorInfo作为警告信息添加，或者仅用于调试
+                        // warnings.AppendLine(colorInfo.ToString());
+                        // warningCount++;
+                    }
 
                     // 计算当前场景中"没有实体"的格子数（排除 Emptys，按实际实体占用统计）
                     int gw = Math.Max(0, level.Grid?.Width ?? 0);
@@ -284,85 +326,32 @@ namespace LevelsJsonEditor
                     MarkOccupied(level.Boxs);
                     //MarkOccupied(level.LockDoors);
 
-                    int emptyCells = Math.Max(0, totalCells - occupied.Count);
-                    if (totalRandomCars != emptyCells)
+                    int carsCarCount = 0;
+                    if (level.Cars != null && level.Cars.Length > 0)
                     {
-                        errors.AppendLine($"[错误] RandomCarCounts 总数({totalRandomCars}) 与场景空格子数({emptyCells})不相等。");
+                        carsCarCount = level.Cars.Length;
+                    }
+
+
+                    int factorysCarCount = 0;
+                    if (level.Factorys != null && level.Factorys.Length > 0)
+                    {
+                        for (int i = 0; i < level.Factorys.Length; i++) factorysCarCount += level.Factorys[i].IncludeCarCount;
+                    }
+
+                    int boxsCarCount = 0;
+                    if (level.Boxs != null && level.Boxs.Length > 0)
+                    {
+                        boxsCarCount = level.Boxs.Length;
+                    }
+
+                    int emptyCells = Math.Max(0, totalCells - occupied.Count);
+                    if (totalCars != (emptyCells + carsCarCount + factorysCarCount + boxsCarCount))
+                    {
+                        errors.AppendLine($"[错误] totalCars 总数({totalCars}) 与 场景空格子数量({emptyCells}) 场景静态车辆数({carsCarCount}) 车库总车辆数({factorysCarCount}) 箱子总车辆数({boxsCarCount})。");
                         errorCount++;
                     }
 
-                    //校验生成后所有车辆的颜色配置个数为3的倍数
-                    if ((level.Factorys == null || level.Factorys.Length == 0) && (level.Boxs == null || level.Boxs.Length == 0))
-                    {
-                        // 统计每种颜色的车辆总数量
-                        var colorCounts = new Dictionary<string, int>();
-
-                        // 初始化所有颜色计数为0
-                        foreach (CarColorType color in Enum.GetValues(typeof(CarColorType)))
-                        {
-                            colorCounts[color.ToString()] = 0;
-                        }
-
-                        // 1. 统计level.Cars中每种颜色车辆的个数
-                        if (level.Cars != null)
-                        {
-                            foreach (var car in level.Cars)
-                            {
-                                if (car != null && !string.IsNullOrEmpty(car.ColorType))
-                                {
-                                    if (colorCounts.ContainsKey(car.ColorType))
-                                    {
-                                        colorCounts[car.ColorType]++;
-                                    }
-                                }
-                            }
-                        }
-
-                        // 2. 统计RandomCarColorTypes中每种颜色车辆的个数
-                        if (level.RandomCar && level.RandomCarColorTypes != null && level.RandomCarCounts != null)
-                        {
-                            int minLength = Math.Min(level.RandomCarColorTypes.Length, level.RandomCarCounts.Length);
-                            for (int i = 0; i < minLength; i++)
-                            {
-                                string colorType = level.RandomCarColorTypes[i];
-                                int count = level.RandomCarCounts[i];
-                                if (!string.IsNullOrEmpty(colorType) && colorCounts.ContainsKey(colorType))
-                                {
-                                    colorCounts[colorType] += count;
-                                }
-                            }
-                        }
-
-                        // 4. 验证每种颜色的车辆数量是否为3的倍数
-                        bool hasColorError = false;
-                        foreach (var kvp in colorCounts)
-                        {
-                            if (kvp.Value > 0 && kvp.Value % 3 != 0)
-                            {
-                                errors.AppendLine($"[错误] {kvp.Key} 颜色车辆总数为 {kvp.Value}，不是3的倍数。");
-                                errorCount++;
-                                hasColorError = true;
-                            }
-                        }
-
-                        // 可选：显示颜色统计信息（作为调试信息）
-                        if (!hasColorError && colorCounts.Values.Any(count => count > 0))
-                        {
-
-                            var colorInfo = new StringBuilder();
-                            colorInfo.AppendLine("车辆颜色统计:");
-                            foreach (var kvp in colorCounts)
-                            {
-                                if (kvp.Value > 0)
-                                {
-                                    colorInfo.AppendLine($"  {kvp.Key}: {kvp.Value}辆");
-                                }
-                            }
-                            // 这里可以选择将colorInfo作为警告信息添加，或者仅用于调试
-                            // warnings.AppendLine(colorInfo.ToString());
-                            // warningCount++;
-                        }
-                    }
                 }
             }
 
@@ -447,7 +436,7 @@ namespace LevelsJsonEditor
             {
                 LV = lv,
                 HardType = (int)LevelHardType.Normal,
-                RandomCar = false,
+                //RandomCar = false,
                 //GameTimeLimit = 0,
                 //EnableTimeLimit = false,
                 Grid = new GridData { Width = 7, Height = 11, CellSize = 64f },
@@ -631,7 +620,7 @@ namespace LevelsJsonEditor
             {
                 LV = lv,
                 HardType = baseLv.HardType,
-                RandomCar = baseLv.RandomCar,
+                //RandomCar = baseLv.RandomCar,
                 //GameTimeLimit = baseLv.GameTimeLimit,
                 //EnableTimeLimit = baseLv.EnableTimeLimit,
                 Grid = new GridData
@@ -648,8 +637,8 @@ namespace LevelsJsonEditor
                 Factorys = new GridEntityData[0],
                 Boxs = new GridEntityData[0],
                 LockDoors = new GridEntityData[0],
-                RandomCarColorTypes = baseLv.RandomCarColorTypes,
-                RandomCarCounts = baseLv.RandomCarCounts,
+                TotalCarColorTypes = baseLv.TotalCarColorTypes,
+                TotalCarCounts = baseLv.TotalCarCounts,
                 AwardCoin = baseLv.AwardCoin,
                 AwardItem1 = baseLv.AwardItem1,
                 AwardItem2 = baseLv.AwardItem2,
@@ -776,11 +765,11 @@ namespace LevelsJsonEditor
             table.Controls.Add(cmbHardType, 3, row);
             row++;
             
-            // RandomCar
-            table.Controls.Add(new Label { Text = "RandomCar:", TextAlign = ContentAlignment.MiddleRight }, 0, row);
-            var chkRandomCar = new CheckBox { Name = "chkRandomCar" };
-            table.Controls.Add(chkRandomCar, 1, row);
-            row++;
+            //// RandomCar
+            //table.Controls.Add(new Label { Text = "RandomCar:", TextAlign = ContentAlignment.MiddleRight }, 0, row);
+            //var chkRandomCar = new CheckBox { Name = "chkRandomCar" };
+            //table.Controls.Add(chkRandomCar, 1, row);
+            //row++;
             
             //// GameTimeLimit
             //table.Controls.Add(new Label { Text = "GameTimeLimit:", TextAlign = ContentAlignment.MiddleRight }, 0, row);
@@ -918,13 +907,13 @@ namespace LevelsJsonEditor
             
             cmbHardType.SelectedIndexChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.HardType = (int)cmbHardType.SelectedItem; };
             
-            chkRandomCar.CheckedChanged += (s, e) => { 
-                if (_current != null && !_isUpdatingUI) { 
-                    _current.RandomCar = chkRandomCar.Checked; 
-                    randomCarPanel.Enabled = chkRandomCar.Checked;
-                    UpdateRandomCarPanel(randomCarPanel);
-                } 
-            };
+            //chkRandomCar.CheckedChanged += (s, e) => { 
+            //    if (_current != null && !_isUpdatingUI) { 
+            //        _current.RandomCar = chkRandomCar.Checked; 
+            //        randomCarPanel.Enabled = chkRandomCar.Checked;
+            //        UpdateRandomCarPanel(randomCarPanel);
+            //    } 
+            //};
             //numTimeLimit.ValueChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.GameTimeLimit = (float)numTimeLimit.Value; };
             //chkEnableTimeLimit.CheckedChanged += (s, e) => { if (_current != null && !_isUpdatingUI) _current.EnableTimeLimit = chkEnableTimeLimit.Checked; };
             
@@ -971,9 +960,9 @@ namespace LevelsJsonEditor
             AddRealTimeTrigger(numAwardItem4, () => {
                 if (_current != null && !_isUpdatingUI) _current.AwardItem4 = (int)numAwardItem4.Value;
             });
-            
+
             // 初始化随机车辆配置面板
-            randomCarPanel.Enabled = _current?.RandomCar ?? false;
+            randomCarPanel.Enabled = true;//_current?.RandomCar ?? false;
             UpdateRandomCarPanel(randomCarPanel);
 
             // 初始化保底调控配置面板
@@ -1037,9 +1026,9 @@ namespace LevelsJsonEditor
                                     case "cmbHardType":
                                         ((ComboBox)c).SelectedItem = (LevelHardType)_current.HardType;
                                         break;
-                                    case "chkRandomCar":
-                                        ((CheckBox)c).Checked = _current.RandomCar;
-                                        break;
+                                    //case "chkRandomCar":
+                                    //    ((CheckBox)c).Checked = _current.RandomCar;
+                                    //    break;
                                     //case "numTimeLimit":
                                     //    ((NumericUpDown)c).Value = (decimal)_current.GameTimeLimit;
                                     //    break;
@@ -1072,7 +1061,7 @@ namespace LevelsJsonEditor
                                         break;
                                     case "randomCarPanel":
                                         var panel = (Panel)c;
-                                        panel.Enabled = _current.RandomCar;
+                                        //panel.Enabled = _current.RandomCar;
                                         UpdateRandomCarPanel(panel);
                                         break;
                                     case "spaceProbabilityPanel":
@@ -1610,25 +1599,25 @@ namespace LevelsJsonEditor
             
             panel.Controls.Clear();
             
-            if (!_current.RandomCar) 
-            {
-                // 当RandomCar为false时，显示提示信息
-                var lblDisabled = new Label 
-                { 
-                    Text = "随机车辆配置已禁用", 
-                    ForeColor = System.Drawing.SystemColors.GrayText,
-                    AutoSize = true,
-                    Margin = new Padding(0, 10, 0, 0)
-                };
-
-                panel.Size = panel.MaximumSize = panel.MinimumSize = new Size(600, 50); // 最小100px，最大400px
-
-                panel.Controls.Add(lblDisabled);
-               
-                // 恢复滚动位置
-                RestoreScrollPosition(scrollPanel, savedScrollPosition);
-                return;
-            }
+            //if (!_current.RandomCar) 
+            //{
+            //    // 当RandomCar为false时，显示提示信息
+            //    var lblDisabled = new Label 
+            //    { 
+            //        Text = "随机车辆配置已禁用", 
+            //        ForeColor = System.Drawing.SystemColors.GrayText,
+            //        AutoSize = true,
+            //        Margin = new Padding(0, 10, 0, 0)
+            //    };
+            //
+            //    panel.Size = panel.MaximumSize = panel.MinimumSize = new Size(600, 50); // 最小100px，最大400px
+            //
+            //    panel.Controls.Add(lblDisabled);
+            //   
+            //    // 恢复滚动位置
+            //    RestoreScrollPosition(scrollPanel, savedScrollPosition);
+            //    return;
+            //}
             
             var layout = new TableLayoutPanel
             {
@@ -1647,7 +1636,7 @@ namespace LevelsJsonEditor
             // 添加标题
             var lblTitle = new Label 
             { 
-                Text = "随机车辆配置", 
+                Text = "总车辆配置", 
                 Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold),
                 AutoSize = true
             };
@@ -1655,8 +1644,8 @@ namespace LevelsJsonEditor
             layout.SetColumnSpan(lblTitle, 4);
             
             // 添加数量控制
-            int curSize = Math.Max(_current.RandomCarCounts?.Length ?? 0,
-                _current.RandomCarColorTypes?.Length ?? 0);
+            int curSize = Math.Max(_current.TotalCarCounts?.Length ?? 0,
+                _current.TotalCarColorTypes?.Length ?? 0);
             
             var numSize = new NumericUpDown 
             { 
@@ -1669,8 +1658,8 @@ namespace LevelsJsonEditor
                 if (!_isUpdatingUI)
                 {
                     int newSize = (int)numSize.Value;
-                    _current.RandomCarCounts = ResizeArray(_current.RandomCarCounts, newSize);
-                    _current.RandomCarColorTypes = ResizeArray(_current.RandomCarColorTypes, newSize);
+                    _current.TotalCarCounts = ResizeArray(_current.TotalCarCounts, newSize);
+                    _current.TotalCarColorTypes = ResizeArray(_current.TotalCarColorTypes, newSize);
                     UpdateRandomCarPanel(panel);
                 }
             };
@@ -1678,24 +1667,24 @@ namespace LevelsJsonEditor
                 if (!_isUpdatingUI)
                 {
                     int newSize = (int)numSize.Value;
-                    _current.RandomCarCounts = ResizeArray(_current.RandomCarCounts, newSize);
-                    _current.RandomCarColorTypes = ResizeArray(_current.RandomCarColorTypes, newSize);
+                    _current.TotalCarCounts = ResizeArray(_current.TotalCarCounts, newSize);
+                    _current.TotalCarColorTypes = ResizeArray(_current.TotalCarColorTypes, newSize);
                     UpdateRandomCarPanel(panel);
                 }
             });
             
-            layout.Controls.Add(new Label { Text = "随机种类数量:", AutoSize = true }, 0, 1);
+            layout.Controls.Add(new Label { Text = "车辆种类数量:", AutoSize = true }, 0, 1);
             layout.Controls.Add(numSize, 1, 1);
             
             // 确保数组初始化
-            if (_current.RandomCarCounts == null) _current.RandomCarCounts = new int[curSize];
-            if (_current.RandomCarColorTypes == null) _current.RandomCarColorTypes = new string[curSize];
+            if (_current.TotalCarCounts == null) _current.TotalCarCounts = new int[curSize];
+            if (_current.TotalCarColorTypes == null) _current.TotalCarColorTypes = new string[curSize];
             
             // 确保数组长度一致
-            if (_current.RandomCarCounts.Length != curSize)
-                _current.RandomCarCounts = ResizeArray(_current.RandomCarCounts, curSize);
-            if (_current.RandomCarColorTypes.Length != curSize)
-                _current.RandomCarColorTypes = ResizeArray(_current.RandomCarColorTypes, curSize);
+            if (_current.TotalCarCounts.Length != curSize)
+                _current.TotalCarCounts = ResizeArray(_current.TotalCarCounts, curSize);
+            if (_current.TotalCarColorTypes.Length != curSize)
+                _current.TotalCarColorTypes = ResizeArray(_current.TotalCarColorTypes, curSize);
             
             // 添加每个随机车配置
             for (int i = 0; i < curSize; i++)
@@ -1717,8 +1706,8 @@ namespace LevelsJsonEditor
                 }
                 
                 // 安全获取颜色类型
-                string colorTypeStr = (i < _current.RandomCarColorTypes.Length && _current.RandomCarColorTypes[i] != null) 
-                    ? _current.RandomCarColorTypes[i] 
+                string colorTypeStr = (i < _current.TotalCarColorTypes.Length && _current.TotalCarColorTypes[i] != null) 
+                    ? _current.TotalCarColorTypes[i] 
                     : CarColorType.White.ToString();
                     
                 // 设置选中项
@@ -1729,7 +1718,7 @@ namespace LevelsJsonEditor
                 else
                 {
                     cmbColor.SelectedItem = CarColorType.White;
-                    _current.RandomCarColorTypes[i] = CarColorType.White.ToString();
+                    _current.TotalCarColorTypes[i] = CarColorType.White.ToString();
                 }
                 
                 cmbColor.SelectedIndexChanged += (s, e) => {
@@ -1737,12 +1726,12 @@ namespace LevelsJsonEditor
                     {
                         var cb = (ComboBox)s;
                         int index = (int)cb.Tag;
-                        _current.RandomCarColorTypes[index] = cb.SelectedItem.ToString();
+                        _current.TotalCarColorTypes[index] = cb.SelectedItem.ToString();
                     }
                 };
                 
                 // 数量
-                int countValue = (i < _current.RandomCarCounts.Length) ? _current.RandomCarCounts[i] : 0;
+                int countValue = (i < _current.TotalCarCounts.Length) ? _current.TotalCarCounts[i] : 0;
                 var numCount = new NumericUpDown
                 {
                     Minimum = 0,
@@ -1756,14 +1745,14 @@ namespace LevelsJsonEditor
                     {
                         var num = (NumericUpDown)s;
                         int index = (int)num.Tag;
-                        _current.RandomCarCounts[index] = (int)num.Value;
+                        _current.TotalCarCounts[index] = (int)num.Value;
                     }
                 };
                 AddRealTimeTrigger(numCount, () => {
                     if (!_isUpdatingUI)
                     {
                         int index = (int)numCount.Tag;
-                        _current.RandomCarCounts[index] = (int)numCount.Value;
+                        _current.TotalCarCounts[index] = (int)numCount.Value;
                     }
                 });
                 
