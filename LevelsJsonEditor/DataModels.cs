@@ -183,8 +183,8 @@ namespace LevelsJsonEditor
         public int AwardItem4 { get; set; } = 0;
 
         // 新增：难度调控配置（可选字段，兼容旧配置）
-        public SpaceProbabilityData[] SpaceProbabilityConfigs { get; set; } = new SpaceProbabilityData[0];
-        public SpaceGuaranteeData[] SpaceGuaranteeConfigs { get; set; } = new SpaceGuaranteeData[0];
+        //public SpaceProbabilityData[] SpaceProbabilityConfigs { get; set; } = new SpaceProbabilityData[0];
+        //public SpaceGuaranteeData[] SpaceGuaranteeConfigs { get; set; } = new SpaceGuaranteeData[0];
     }
 
     // 关卡数据容器（用于JSON序列化）

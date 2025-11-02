@@ -142,7 +142,7 @@ namespace LevelsJsonEditor
             this.groupBoxLevelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxLevelInfo.Location = new System.Drawing.Point(0, 0);
             this.groupBoxLevelInfo.Name = "groupBoxLevelInfo";
-            this.groupBoxLevelInfo.Size = new System.Drawing.Size(1428, 500);
+            this.groupBoxLevelInfo.Size = new System.Drawing.Size(1428, 450);
             this.groupBoxLevelInfo.TabIndex = 0;
             this.groupBoxLevelInfo.TabStop = false;
             this.groupBoxLevelInfo.Text = "关卡信息";

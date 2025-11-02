@@ -483,9 +483,7 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0,
-      "SpaceProbabilityConfigs": [],
-      "SpaceGuaranteeConfigs": []
+      "AwardItem4": 0
     },
     {
       "LV": 2,
@@ -1098,9 +1096,7 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0,
-      "SpaceProbabilityConfigs": [],
-      "SpaceGuaranteeConfigs": []
+      "AwardItem4": 0
     },
     {
       "LV": 3,
@@ -1727,9 +1723,7 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0,
-      "SpaceProbabilityConfigs": [],
-      "SpaceGuaranteeConfigs": []
+      "AwardItem4": 0
     },
     {
       "LV": 4,
@@ -1859,14 +1853,6 @@
         {
           "Type": "Car",
           "CellX": 3,
-          "CellY": 4,
-          "ColorType": "Red",
-          "Dir": null,
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Car",
-          "CellX": 3,
           "CellY": 6,
           "ColorType": "Red",
           "Dir": null,
@@ -1949,6 +1935,14 @@
           "CellX": 2,
           "CellY": 6,
           "ColorType": "Yellow",
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Car",
+          "CellX": 3,
+          "CellY": 4,
+          "ColorType": "Red",
           "Dir": null,
           "IncludeCarCount": 0
         }
@@ -2342,9 +2336,7 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0,
-      "SpaceProbabilityConfigs": [],
-      "SpaceGuaranteeConfigs": []
+      "AwardItem4": 0
     },
     {
       "LV": 5,
@@ -2686,9 +2678,7 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0,
-      "SpaceProbabilityConfigs": [],
-      "SpaceGuaranteeConfigs": []
+      "AwardItem4": 0
     },
     {
       "LV": 6,
@@ -3342,9 +3332,7 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0,
-      "SpaceProbabilityConfigs": [],
-      "SpaceGuaranteeConfigs": []
+      "AwardItem4": 0
     },
     {
       "LV": 7,
@@ -3761,15 +3749,7 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0,
-      "SpaceProbabilityConfigs": [],
-      "SpaceGuaranteeConfigs": [
-        {
-          "Space": 1,
-          "RestrictNoMatch": false,
-          "Count": 5
-        }
-      ]
+      "AwardItem4": 0
     },
     {
       "LV": 8,
@@ -4186,9 +4166,7 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0,
-      "SpaceProbabilityConfigs": [],
-      "SpaceGuaranteeConfigs": []
+      "AwardItem4": 0
     },
     {
       "LV": 9,
@@ -4621,9 +4599,7 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0,
-      "SpaceProbabilityConfigs": [],
-      "SpaceGuaranteeConfigs": []
+      "AwardItem4": 0
     },
     {
       "LV": 10,
@@ -5277,9 +5253,7 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0,
-      "SpaceProbabilityConfigs": [],
-      "SpaceGuaranteeConfigs": []
+      "AwardItem4": 0
     },
     {
       "LV": 11,
@@ -5806,9 +5780,7 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0,
-      "SpaceProbabilityConfigs": [],
-      "SpaceGuaranteeConfigs": []
+      "AwardItem4": 0
     },
     {
       "LV": 12,
@@ -6289,12 +6261,10 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0,
-      "SpaceProbabilityConfigs": [],
-      "SpaceGuaranteeConfigs": []
+      "AwardItem4": 0
     },
     {
-      "LV": 30,
+      "LV": 13,
       "HardType": 0,
       "Grid": {
         "Width": 7,
@@ -6423,7 +6393,7 @@
           "Type": "Wall",
           "CellX": 0,
           "CellY": 3,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6431,7 +6401,7 @@
           "Type": "Wall",
           "CellX": 0,
           "CellY": 4,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6439,7 +6409,7 @@
           "Type": "Wall",
           "CellX": 0,
           "CellY": 5,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6447,7 +6417,7 @@
           "Type": "Wall",
           "CellX": 0,
           "CellY": 6,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6455,7 +6425,7 @@
           "Type": "Wall",
           "CellX": 0,
           "CellY": 7,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6463,7 +6433,7 @@
           "Type": "Wall",
           "CellX": 0,
           "CellY": 8,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6471,7 +6441,7 @@
           "Type": "Wall",
           "CellX": 0,
           "CellY": 9,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6479,7 +6449,15 @@
           "Type": "Wall",
           "CellX": 0,
           "CellY": 10,
-          "ColorType": null,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 10,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6487,119 +6465,15 @@
           "Type": "Wall",
           "CellX": 2,
           "CellY": 10,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
         {
           "Type": "Wall",
-          "CellX": 2,
-          "CellY": 9,
-          "ColorType": null,
-          "Dir": "Down",
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 2,
-          "CellY": 8,
-          "ColorType": null,
-          "Dir": "Down",
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 2,
-          "CellY": 7,
-          "ColorType": null,
-          "Dir": "Down",
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 2,
-          "CellY": 6,
-          "ColorType": null,
-          "Dir": "Down",
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 2,
-          "CellY": 5,
-          "ColorType": null,
-          "Dir": "Down",
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 2,
-          "CellY": 4,
-          "ColorType": null,
-          "Dir": "Down",
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 2,
-          "CellY": 3,
-          "ColorType": null,
-          "Dir": "Down",
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 4,
-          "CellY": 3,
-          "ColorType": null,
-          "Dir": "Down",
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 4,
-          "CellY": 4,
-          "ColorType": null,
-          "Dir": "Down",
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 4,
-          "CellY": 5,
-          "ColorType": null,
-          "Dir": "Down",
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 4,
-          "CellY": 6,
-          "ColorType": null,
-          "Dir": "Down",
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 4,
-          "CellY": 7,
-          "ColorType": null,
-          "Dir": "Down",
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 4,
-          "CellY": 8,
-          "ColorType": null,
-          "Dir": "Down",
-          "IncludeCarCount": 0
-        },
-        {
-          "Type": "Wall",
-          "CellX": 4,
-          "CellY": 9,
-          "ColorType": null,
+          "CellX": 3,
+          "CellY": 10,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6607,7 +6481,15 @@
           "Type": "Wall",
           "CellX": 4,
           "CellY": 10,
-          "ColorType": null,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 10,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6615,7 +6497,7 @@
           "Type": "Wall",
           "CellX": 6,
           "CellY": 10,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6623,7 +6505,7 @@
           "Type": "Wall",
           "CellX": 6,
           "CellY": 9,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6631,7 +6513,7 @@
           "Type": "Wall",
           "CellX": 6,
           "CellY": 8,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6639,7 +6521,7 @@
           "Type": "Wall",
           "CellX": 6,
           "CellY": 7,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6647,7 +6529,7 @@
           "Type": "Wall",
           "CellX": 6,
           "CellY": 6,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6655,7 +6537,7 @@
           "Type": "Wall",
           "CellX": 6,
           "CellY": 5,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6663,7 +6545,7 @@
           "Type": "Wall",
           "CellX": 6,
           "CellY": 4,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         },
@@ -6671,7 +6553,5263 @@
           "Type": "Wall",
           "CellX": 6,
           "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
           "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 3,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 3,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 3,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 3,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 3,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [
+        {
+          "Type": "Factory",
+          "CellX": 5,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Factory",
+          "CellX": 4,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Factory",
+          "CellX": 3,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        }
+      ],
+      "Boxs": [
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        }
+      ],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 14,
+      "HardType": 1,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [
+        {
+          "Type": "Factory",
+          "CellX": 0,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Right",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Factory",
+          "CellX": 2,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Factory",
+          "CellX": 4,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Factory",
+          "CellX": 6,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Left",
+          "IncludeCarCount": 4
+        }
+      ],
+      "Boxs": [
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        12,
+        12,
+        9,
+        9,
+        9
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 15,
+      "HardType": 0,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [],
+      "Boxs": [],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Orange",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 16,
+      "HardType": 0,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [],
+      "Boxs": [
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 1,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        9,
+        9,
+        6,
+        6,
+        9
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 17,
+      "HardType": 0,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [
+        {
+          "Type": "Factory",
+          "CellX": 0,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 7
+        },
+        {
+          "Type": "Factory",
+          "CellX": 6,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        }
+      ],
+      "Boxs": [],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        9,
+        9,
+        12,
+        9,
+        9
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 18,
+      "HardType": 0,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [
+        {
+          "Type": "Factory",
+          "CellX": 4,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Factory",
+          "CellX": 2,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Factory",
+          "CellX": 3,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 6
+        }
+      ],
+      "Boxs": [
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 1,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 1,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        9,
+        12,
+        12,
+        9,
+        9
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 19,
+      "HardType": 3,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [
+        {
+          "Type": "Factory",
+          "CellX": 5,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 8
+        },
+        {
+          "Type": "Factory",
+          "CellX": 6,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 5
+        },
+        {
+          "Type": "Factory",
+          "CellX": 1,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 7
+        }
+      ],
+      "Boxs": [
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Orange",
+        "Purple",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        9,
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 20,
+      "HardType": 0,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [],
+      "Boxs": [],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        9,
+        9,
+        6,
+        6,
+        6
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 21,
+      "HardType": 0,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [
+        {
+          "Type": "Factory",
+          "CellX": 0,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Factory",
+          "CellX": 2,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Right",
+          "IncludeCarCount": 5
+        },
+        {
+          "Type": "Factory",
+          "CellX": 2,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 10
+        },
+        {
+          "Type": "Factory",
+          "CellX": 6,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 6
+        }
+      ],
+      "Boxs": [
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 6
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 6
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 6
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 6
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 6
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 6
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 6
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 6
+        }
+      ],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        12,
+        12,
+        12,
+        9,
+        9
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 22,
+      "HardType": 0,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [
+        {
+          "Type": "Factory",
+          "CellX": 3,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 8
+        }
+      ],
+      "Boxs": [
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        9,
+        9,
+        9,
+        9,
+        6
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 23,
+      "HardType": 0,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [
+        {
+          "Type": "Factory",
+          "CellX": 3,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 16
+        }
+      ],
+      "Boxs": [
+        {
+          "Type": "Box",
+          "CellX": 1,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 1,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 1,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        9,
+        9,
+        9,
+        12,
+        12
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 24,
+      "HardType": 0,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [
+        {
+          "Type": "Factory",
+          "CellX": 5,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Right",
+          "IncludeCarCount": 5
+        },
+        {
+          "Type": "Factory",
+          "CellX": 1,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Left",
+          "IncludeCarCount": 5
+        },
+        {
+          "Type": "Factory",
+          "CellX": 0,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 8
+        },
+        {
+          "Type": "Factory",
+          "CellX": 6,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 8
+        }
+      ],
+      "Boxs": [
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Right",
+          "IncludeCarCount": 5
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Right",
+          "IncludeCarCount": 5
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Right",
+          "IncludeCarCount": 5
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Right",
+          "IncludeCarCount": 5
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Right",
+          "IncludeCarCount": 5
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Right",
+          "IncludeCarCount": 5
+        }
+      ],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Orange",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        12,
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 25,
+      "HardType": 0,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 3,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         }
@@ -6739,30 +11877,1537 @@
           "Type": "Factory",
           "CellX": 3,
           "CellY": 10,
-          "ColorType": null,
+          "ColorType": "",
           "Dir": "Down",
-          "IncludeCarCount": 7
+          "IncludeCarCount": 9
+        },
+        {
+          "Type": "Factory",
+          "CellX": 0,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 5
+        },
+        {
+          "Type": "Factory",
+          "CellX": 1,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 5
+        },
+        {
+          "Type": "Factory",
+          "CellX": 5,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 5
+        },
+        {
+          "Type": "Factory",
+          "CellX": 6,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 5
         }
       ],
-      "Boxs": [],
-      "LockDoors": [
+      "Boxs": [
         {
-          "Type": "LockDoor",
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 1,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
           "CellX": 3,
-          "CellY": 3,
-          "ColorType": "Blue",
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 4,
+          "ColorType": "",
           "Dir": "Down",
           "IncludeCarCount": 0
         }
       ],
+      "LockDoors": [],
       "TotalCarColorTypes": [
         "Red",
         "Blue",
-        "Green",
         "Yellow",
-        "Purple"
+        "Orange",
+        "Purple",
+        "Green"
       ],
       "TotalCarCounts": [
+        12,
+        12,
+        12,
+        9,
+        9,
+        9
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 26,
+      "HardType": 0,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [],
+      "Boxs": [
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 1,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 1,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Orange",
+        "Purple",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        6,
+        6,
+        9,
+        6,
+        6,
+        6
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 27,
+      "HardType": 0,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [
+        {
+          "Type": "Factory",
+          "CellX": 6,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 8
+        },
+        {
+          "Type": "Factory",
+          "CellX": 0,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 8
+        }
+      ],
+      "Boxs": [
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 1,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 1,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 1,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 3,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        12,
+        12,
+        9,
+        9,
+        9
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 28,
+      "HardType": 0,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [
+        {
+          "Type": "Factory",
+          "CellX": 6,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 6
+        }
+      ],
+      "Boxs": [
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Purple",
+        "Orange",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        9,
         6,
         6,
         6,
@@ -6773,9 +13418,947 @@
       "AwardItem1": 0,
       "AwardItem2": 0,
       "AwardItem3": 0,
-      "AwardItem4": 0,
-      "SpaceProbabilityConfigs": [],
-      "SpaceGuaranteeConfigs": []
+      "AwardItem4": 0
+    },
+    {
+      "LV": 29,
+      "HardType": 3,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 1,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 5,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 3,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [
+        {
+          "Type": "Factory",
+          "CellX": 0,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Factory",
+          "CellX": 3,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 6
+        },
+        {
+          "Type": "Factory",
+          "CellX": 6,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        }
+      ],
+      "Boxs": [
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 1,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 1,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 0,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 2,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 4,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 5,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        },
+        {
+          "Type": "Box",
+          "CellX": 6,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 4
+        }
+      ],
+      "LockDoors": [],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow",
+        "Pink",
+        "Orange",
+        "Purple",
+        "Green"
+      ],
+      "TotalCarCounts": [
+        9,
+        9,
+        9,
+        6,
+        6,
+        6,
+        6
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
+    },
+    {
+      "LV": 30,
+      "HardType": 0,
+      "Grid": {
+        "Width": 7,
+        "Height": 11,
+        "CellSize": 64.0
+      },
+      "Parks": [
+        {
+          "Type": "Park",
+          "CellX": 0,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 1,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 2,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 3,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 4,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 5,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Park",
+          "CellX": 6,
+          "CellY": 1,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "PayParks": [
+        {
+          "Type": "PayPark",
+          "CellX": 0,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 1,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 2,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 3,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 4,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 5,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "PayPark",
+          "CellX": 6,
+          "CellY": 0,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Cars": [
+        {
+          "Type": "Car",
+          "CellX": 1,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Entities": [
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 0,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 2,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 4,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 10,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 9,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 8,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 7,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 6,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 5,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 4,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Wall",
+          "CellX": 6,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 0
+        }
+      ],
+      "Emptys": [
+        {
+          "Type": "Empty",
+          "CellX": 0,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 1,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 2,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 3,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 4,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 5,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        },
+        {
+          "Type": "Empty",
+          "CellX": 6,
+          "CellY": 2,
+          "ColorType": null,
+          "Dir": null,
+          "IncludeCarCount": 0
+        }
+      ],
+      "Factorys": [],
+      "Boxs": [],
+      "LockDoors": [
+        {
+          "Type": "LockDoor",
+          "CellX": 3,
+          "CellY": 3,
+          "ColorType": "",
+          "Dir": "Down",
+          "IncludeCarCount": 7
+        }
+      ],
+      "TotalCarColorTypes": [
+        "Red",
+        "Blue",
+        "Yellow"
+      ],
+      "TotalCarCounts": [
+        3,
+        3,
+        3
+      ],
+      "AwardCoin": 0,
+      "AwardItem1": 0,
+      "AwardItem2": 0,
+      "AwardItem3": 0,
+      "AwardItem4": 0
     }
   ]
 }

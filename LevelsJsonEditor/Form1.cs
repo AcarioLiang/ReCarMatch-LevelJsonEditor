@@ -346,12 +346,24 @@ namespace LevelsJsonEditor
                     }
 
                     int emptyCells = Math.Max(0, totalCells - occupied.Count);
-                    if (totalCars != (emptyCells + carsCarCount + factorysCarCount + boxsCarCount))
-                    {
-                        errors.AppendLine($"[错误] totalCars 总数({totalCars}) 与 场景空格子数量({emptyCells}) 场景静态车辆数({carsCarCount}) 车库总车辆数({factorysCarCount}) 箱子总车辆数({boxsCarCount})。");
-                        errorCount++;
-                    }
 
+                    if(factorysCarCount > 0 || boxsCarCount > 0)
+                    {
+                        if (totalCars != carsCarCount + factorysCarCount + boxsCarCount + emptyCells)
+                        {
+                            errors.AppendLine($"[错误] totalCars 总数({totalCars}) 与 各实体总数{carsCarCount + factorysCarCount + boxsCarCount + emptyCells}不一致(场景空格子数量({emptyCells}) 场景静态车辆数({carsCarCount}) 车库总车辆数({factorysCarCount}) 箱子总车辆数({boxsCarCount}))。");
+                            errorCount++;
+                        }
+                    }
+                    else
+                    {
+                        if (totalCars != carsCarCount + factorysCarCount + boxsCarCount + emptyCells)
+                        {
+                            warnings.AppendLine($"[警告] totalCars 总数({totalCars}) 与 各实体总数{carsCarCount + factorysCarCount + boxsCarCount + emptyCells}不一致(场景空格子数量({emptyCells}) 场景静态车辆数({carsCarCount}) 车库总车辆数({factorysCarCount}) 箱子总车辆数({boxsCarCount}))。");
+                            warningCount++;
+                        }
+                    }
+                    
                 }
             }
 
@@ -645,8 +657,8 @@ namespace LevelsJsonEditor
                 AwardItem3 = baseLv.AwardItem3,
                 AwardItem4 = baseLv.AwardItem4,
 
-                SpaceProbabilityConfigs = baseLv.SpaceProbabilityConfigs,
-                SpaceGuaranteeConfigs = baseLv.SpaceGuaranteeConfigs
+                //SpaceProbabilityConfigs = baseLv.SpaceProbabilityConfigs,
+                //SpaceGuaranteeConfigs = baseLv.SpaceGuaranteeConfigs
             };
         }
 
@@ -846,6 +858,7 @@ namespace LevelsJsonEditor
             table.SetColumnSpan(randomCarPanel, 4);
             row++;
 
+            /*
             // 保底调控概率配置区域
             var spaceProbabilityPanel = new Panel
             {
@@ -877,7 +890,7 @@ namespace LevelsJsonEditor
             table.Controls.Add(spaceGuaranteePanel, 0, row);
             table.SetColumnSpan(spaceGuaranteePanel, 4);
             row++;
-            
+            */
             // 保存按钮
             var btnSaveLevel = new Button { Text = "保存关卡", Name = "btnSaveLevel" };
             btnSaveLevel.Click += (s, e) => SaveJson();
@@ -966,8 +979,8 @@ namespace LevelsJsonEditor
             UpdateRandomCarPanel(randomCarPanel);
 
             // 初始化保底调控配置面板
-            UpdateSpaceProbabilityPanel(spaceProbabilityPanel);
-            UpdateSpaceGuaranteePanel(spaceGuaranteePanel);
+            //UpdateSpaceProbabilityPanel(spaceProbabilityPanel);
+            //UpdateSpaceGuaranteePanel(spaceGuaranteePanel);
         }
 
         // 辅助方法：获取scrollPanel并保存滚动位置
@@ -1064,12 +1077,12 @@ namespace LevelsJsonEditor
                                         //panel.Enabled = _current.RandomCar;
                                         UpdateRandomCarPanel(panel);
                                         break;
-                                    case "spaceProbabilityPanel":
-                                        UpdateSpaceProbabilityPanel((Panel)c);
-                                        break;
-                                    case "spaceGuaranteePanel":
-                                        UpdateSpaceGuaranteePanel((Panel)c);
-                                        break;
+                                    //case "spaceProbabilityPanel":
+                                    //    UpdateSpaceProbabilityPanel((Panel)c);
+                                    //    break;
+                                    //case "spaceGuaranteePanel":
+                                    //    UpdateSpaceGuaranteePanel((Panel)c);
+                                    //    break;
                                 }
                             }
                         }
@@ -1373,6 +1386,94 @@ namespace LevelsJsonEditor
             DrawEntities(g, content, cell, gw, gh, _groups["Cars"]);
             DrawEntities(g, content, cell, gw, gh, _groups["Boxs"]);
             DrawEntities(g, content, cell, gw, gh, _groups["LockDoors"]);
+
+            // 绘制左上角统计信息
+            DrawSceneCounters(g);
+        }
+
+        // 绘制场景关键数量信息（左上角）
+        private void DrawSceneCounters(Graphics g)
+        {
+            if (_current == null || _current.Grid == null) return;
+
+            int gridWidth = Math.Max(0, _current.Grid.Width);
+            int gridHeight = Math.Max(0, _current.Grid.Height);
+            int totalCells = gridWidth * gridHeight;
+
+            // 统计占用格子
+            var occupied = new HashSet<string>();
+            void Mark(GridEntityData[] arr)
+            {
+                if (arr == null) return;
+                foreach (var a in arr)
+                {
+                    if (a == null) continue;
+                    int x = a.CellX;
+                    int y = a.CellY;
+                    if (x < 0 || x >= gridWidth || y < 0 || y >= gridHeight) continue;
+                    occupied.Add(x + "," + y);
+                }
+            }
+
+            
+            // 标记除Emptys以外的所有实体
+            Mark(_groups["Parks"]?.ToArray());
+            Mark(_groups["PayParks"]?.ToArray());
+            Mark(_groups["Cars"]?.ToArray());
+            Mark(_groups["Entities"]?.ToArray());
+            Mark(_groups["Factorys"]?.ToArray());
+            Mark(_groups["Boxs"]?.ToArray());
+            Mark(_groups["Emptys"]?.ToArray());
+            //Mark(_current.LockDoors);
+
+            int emptyCells = Math.Max(0, totalCells - occupied.Count);
+
+            // 统计各类车辆数量
+            int totalCars = 0;
+            if (_current.TotalCarCounts != null)
+            {
+                for (int i = 0; i < _current.TotalCarCounts.Length; i++)
+                {
+                    totalCars += Math.Max(0, _current.TotalCarCounts[i]);
+                }
+            }
+
+            int carsCarCount = _groups["Cars"] != null ? _groups["Cars"].Count : 0;
+
+            int factorysCarCount = 0;
+            if (_groups["Factorys"] != null)
+            {
+                foreach (var f in _groups["Factorys"])
+                {
+                    if (f != null) factorysCarCount += Math.Max(0, f.IncludeCarCount);
+                }
+            }
+
+            int boxsCarCount = _groups["Boxs"] != null ? _groups["Boxs"].Count : 0;
+
+            // 组装文本
+            string[] lines = new[]
+            {
+                "总车辆配置总数: " + totalCars,
+                "",
+                "场景空格子数量: " + emptyCells,
+                "场景静态车辆数: " + carsCarCount,
+                "车库总车辆数: " + factorysCarCount,
+                "箱子总车辆数: " + boxsCarCount
+            };
+
+            string text = string.Join("\n", lines);
+
+            using (var font = new Font("Microsoft YaHei", 9f, FontStyle.Regular))
+            using (var bgBrush = new SolidBrush(Color.FromArgb(160, 0, 0, 0)))
+            using (var textBrush = new SolidBrush(Color.White))
+            {
+                SizeF size = g.MeasureString(text, font);
+                var padding = 6;
+                var rect = new RectangleF(5, 5, size.Width + padding * 2, size.Height + padding * 2);
+                g.FillRectangle(bgBrush, rect);
+                g.DrawString(text, font, textBrush, rect.Left + padding, rect.Top + padding);
+            }
         }
 
         private void DrawEntities(Graphics g, RectangleF content, int cell, int gw, int gh, List<GridEntityData> entities)
@@ -1661,6 +1762,7 @@ namespace LevelsJsonEditor
                     _current.TotalCarCounts = ResizeArray(_current.TotalCarCounts, newSize);
                     _current.TotalCarColorTypes = ResizeArray(_current.TotalCarColorTypes, newSize);
                     UpdateRandomCarPanel(panel);
+                    panelPreview.Invalidate();
                 }
             };
             AddRealTimeTrigger(numSize, () => {
@@ -1670,6 +1772,7 @@ namespace LevelsJsonEditor
                     _current.TotalCarCounts = ResizeArray(_current.TotalCarCounts, newSize);
                     _current.TotalCarColorTypes = ResizeArray(_current.TotalCarColorTypes, newSize);
                     UpdateRandomCarPanel(panel);
+                    panelPreview.Invalidate();
                 }
             });
             
@@ -1746,6 +1849,7 @@ namespace LevelsJsonEditor
                         var num = (NumericUpDown)s;
                         int index = (int)num.Tag;
                         _current.TotalCarCounts[index] = (int)num.Value;
+                        panelPreview.Invalidate();
                     }
                 };
                 AddRealTimeTrigger(numCount, () => {
@@ -1753,6 +1857,7 @@ namespace LevelsJsonEditor
                     {
                         int index = (int)numCount.Tag;
                         _current.TotalCarCounts[index] = (int)numCount.Value;
+                        panelPreview.Invalidate();
                     }
                 });
                 
@@ -1948,6 +2053,7 @@ namespace LevelsJsonEditor
             SelectEntityInTree(_selectedGroup, _selectedIndex);
         }
 
+        /*
         // 保底调控概率配置面板更新方法
         private void UpdateSpaceProbabilityPanel(Panel panel)
         {
@@ -2275,5 +2381,6 @@ namespace LevelsJsonEditor
             // 恢复滚动位置
             RestoreScrollPosition(scrollPanel, savedScrollPosition);
         }
+        */
     }
 }
