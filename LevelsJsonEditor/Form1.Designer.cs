@@ -36,6 +36,8 @@ namespace LevelsJsonEditor
             this.cmbLevelSelect = new System.Windows.Forms.ToolStripComboBox();
             this.btnNewLevel = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteLevel = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnValidateAll = new System.Windows.Forms.ToolStripButton();
             this.panelTop = new System.Windows.Forms.Panel();
             this.groupBoxLevelInfo = new System.Windows.Forms.GroupBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -77,7 +79,9 @@ namespace LevelsJsonEditor
             this.toolStripSeparator1,
             this.cmbLevelSelect,
             this.btnNewLevel,
-            this.btnDeleteLevel});
+            this.btnDeleteLevel,
+            this.toolStripSeparator2,
+            this.btnValidateAll});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1428, 38);
@@ -122,6 +126,19 @@ namespace LevelsJsonEditor
             this.btnDeleteLevel.Name = "btnDeleteLevel";
             this.btnDeleteLevel.Size = new System.Drawing.Size(86, 28);
             this.btnDeleteLevel.Text = "删除关卡";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 33);
+            // 
+            // btnValidateAll
+            // 
+            this.btnValidateAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnValidateAll.Margin = new System.Windows.Forms.Padding(20, 1, 1, 2);
+            this.btnValidateAll.Name = "btnValidateAll";
+            this.btnValidateAll.Size = new System.Drawing.Size(100, 28);
+            this.btnValidateAll.Text = "检查全部关卡";
             // 
             // panelTop
             // 
@@ -345,6 +362,8 @@ namespace LevelsJsonEditor
         private System.Windows.Forms.ToolStripComboBox cmbLevelSelect;
         private System.Windows.Forms.ToolStripButton btnNewLevel;
         private System.Windows.Forms.ToolStripButton btnDeleteLevel;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btnValidateAll;
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.GroupBox groupBoxLevelInfo;
         private System.Windows.Forms.SplitContainer splitContainer1;

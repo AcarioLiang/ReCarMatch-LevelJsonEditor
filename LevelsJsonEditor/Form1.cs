@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
@@ -78,6 +79,7 @@ namespace LevelsJsonEditor
             btnSave.Click += BtnSave_Click;
             btnNewLevel.Click += BtnNewLevel_Click;
             btnDeleteLevel.Click += BtnDeleteLevel_Click;
+            btnValidateAll.Click += BtnValidateAll_Click;
             cmbLevelSelect.SelectedIndexChanged += CmbLevelSelect_SelectedIndexChanged;
             
             treeViewEntities.AfterSelect += TreeViewEntities_AfterSelect;
@@ -613,6 +615,101 @@ namespace LevelsJsonEditor
                 SortLevelsByLV(); // 删除后排序并重新定位
                 SetCurrentIndex(_currentIndex);
             }
+        }
+
+        private void BtnValidateAll_Click(object sender, EventArgs e)
+        {
+            if (_container?.Levels == null || _container.Levels.Count == 0)
+            {
+                MessageBox.Show("没有关卡需要检查", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var allResults = new StringBuilder();
+            int totalErrorCount = 0;
+            int totalWarningCount = 0;
+            int checkedCount = 0;
+
+            foreach (var level in _container.Levels)
+            {
+                if (level == null) continue;
+
+                checkedCount++;
+                bool isValid = ValidateLevel(level, out string title, out string message);
+
+                // 判断是否有错误或警告需要显示
+                bool hasError = !isValid;
+                bool hasWarning = isValid && message.Contains("警告");
+
+                // 只有当有错误或警告时才添加到结果中
+                if (hasError || hasWarning)
+                {
+                    allResults.AppendLine($"========== 关卡 LV{level.LV} ==========");
+                    allResults.AppendLine(message);
+                    allResults.AppendLine();
+                }
+
+                // 统计错误和警告数量
+                if (!isValid)
+                {
+                    // 从message中提取错误数量
+                    var errorMatch = Regex.Match(message, @"发现 (\d+) 个错误");
+                    if (errorMatch.Success)
+                    {
+                        totalErrorCount += int.Parse(errorMatch.Groups[1].Value);
+                    }
+                    else if (message.Contains("[错误]"))
+                    {
+                        totalErrorCount += message.Split(new[] { "[错误]" }, StringSplitOptions.None).Length - 1;
+                    }
+                }
+                else
+                {
+                    // 从message中提取警告数量
+                    var warningMatch = Regex.Match(message, @"有 (\d+) 条警告");
+                    if (warningMatch.Success)
+                    {
+                        totalWarningCount += int.Parse(warningMatch.Groups[1].Value);
+                    }
+                }
+            }
+
+            // 组装最终结果
+            var finalMessage = new StringBuilder();
+            finalMessage.AppendLine($"已检查 {checkedCount} 个关卡");
+            finalMessage.AppendLine();
+
+            if (totalErrorCount == 0 && totalWarningCount == 0)
+            {
+                finalMessage.AppendLine("无错误");
+            }
+            else
+            {
+                if (totalErrorCount > 0)
+                {
+                    finalMessage.AppendLine($"总错误数: {totalErrorCount}");
+                }
+                if (totalWarningCount > 0)
+                {
+                    finalMessage.AppendLine($"总警告数: {totalWarningCount}");
+                }
+            }
+
+            // 只有当有详细信息时才显示
+            if (allResults.Length > 0)
+            {
+                finalMessage.AppendLine();
+                finalMessage.AppendLine("详细信息：");
+                finalMessage.AppendLine("----------------------------------------");
+                finalMessage.Append(allResults.ToString());
+            }
+
+            // 显示结果
+            string resultTitle = totalErrorCount > 0 ? "检查完成(可按Ctrl+C复制文本) - 发现错误" : "检查完成";
+            MessageBoxIcon icon = totalErrorCount > 0 ? MessageBoxIcon.Error : 
+                                  totalWarningCount > 0 ? MessageBoxIcon.Warning : MessageBoxIcon.Information;
+
+            MessageBox.Show(finalMessage.ToString(), resultTitle, MessageBoxButtons.OK, icon);
         }
 
         private void CmbLevelSelect_SelectedIndexChanged(object sender, EventArgs e)
