@@ -34,6 +34,9 @@ namespace LevelsJsonEditor
         // 选择状态
         private string _selectedGroup = null;
         private int _selectedIndex = -1;
+        
+        // 当前编辑的Floor层级
+        private int _currentFloor = 0;
 
         // 颜色映射（预览用）
         private readonly Dictionary<string, Color> _typeColors = new Dictionary<string, Color>(StringComparer.OrdinalIgnoreCase)
@@ -48,6 +51,7 @@ namespace LevelsJsonEditor
             { "Factory", Color.FromArgb(204, 102, 38) },
             { "Box", Color.FromArgb(179, 128, 51) },
             { "LockDoor", Color.FromArgb(230, 153, 77) },
+            { "SubLevel", Color.FromArgb(130, 53, 97) },
         };
 
         // 网格预览参数
@@ -244,6 +248,13 @@ namespace LevelsJsonEditor
                 ValidateEntityList(kv.Key, kv.Value, level.Grid, errors, warnings, ref errorCount, ref warningCount, globalCells);
             }
 
+            // SubLevel校验（同时构建Floor到SubLevel区域的映射）
+            Dictionary<int, HashSet<string>> floorSubLevelRegions = new Dictionary<int, HashSet<string>>();
+            ValidateSubLevels(level, errors, warnings, ref errorCount, ref warningCount, floorSubLevelRegions);
+
+            // 校验所有floor>0的实体是否在对应SubLevel区域内
+            ValidateEntitiesInSubLevelRegions(level, floorSubLevelRegions, errors, ref errorCount);
+
             //校验车辆总数是否一直
 
             if (errorCount == 0)
@@ -349,21 +360,28 @@ namespace LevelsJsonEditor
                         boxsCarCount = level.Boxs.Length;
                     }
 
+                    int subLevelsCarCount = 0;
+                    if (level.SubLevels != null && level.SubLevels.Length > 0)
+                    {
+                        for (int i = 0; i < level.SubLevels.Length; i++) subLevelsCarCount += (level.SubLevels[i].SubLevelSizeX * level.SubLevels[i].SubLevelSizeY);
+
+                    }
+
                     int emptyCells = Math.Max(0, totalCells - occupied.Count);
 
                     if(factorysCarCount > 0 || boxsCarCount > 0)
                     {
-                        if (totalCars != carsCarCount + factorysCarCount + boxsCarCount + emptyCells)
+                        if (totalCars != carsCarCount + factorysCarCount + boxsCarCount + emptyCells + subLevelsCarCount)
                         {
-                            errors.AppendLine($"[错误] totalCars 总数({totalCars}) 与 各实体总数{carsCarCount + factorysCarCount + boxsCarCount + emptyCells}不一致(场景空格子数量({emptyCells}) 场景静态车辆数({carsCarCount}) 车库总车辆数({factorysCarCount}) 箱子总车辆数({boxsCarCount}))。");
+                            errors.AppendLine($"[错误] totalCars 总数({totalCars}) 与 各实体总数{carsCarCount + factorysCarCount + boxsCarCount + emptyCells + subLevelsCarCount}不一致(场景空格子数量({emptyCells}) 场景静态车辆数({carsCarCount}) 车库总车辆数({factorysCarCount}) 箱子总车辆数({boxsCarCount}) 地下车库总车辆数({subLevelsCarCount}))。");
                             errorCount++;
                         }
                     }
                     else
                     {
-                        if (totalCars != carsCarCount + factorysCarCount + boxsCarCount + emptyCells)
+                        if (totalCars != carsCarCount + factorysCarCount + boxsCarCount + emptyCells + subLevelsCarCount)
                         {
-                            warnings.AppendLine($"[警告] totalCars 总数({totalCars}) 与 各实体总数{carsCarCount + factorysCarCount + boxsCarCount + emptyCells}不一致(场景空格子数量({emptyCells}) 场景静态车辆数({carsCarCount}) 车库总车辆数({factorysCarCount}) 箱子总车辆数({boxsCarCount}))。");
+                            warnings.AppendLine($"[警告] totalCars 总数({totalCars}) 与 各实体总数{carsCarCount + factorysCarCount + boxsCarCount + emptyCells + subLevelsCarCount}不一致(场景空格子数量({emptyCells}) 场景静态车辆数({carsCarCount}) 车库总车辆数({factorysCarCount}) 箱子总车辆数({boxsCarCount}) 地下车库总车辆数({subLevelsCarCount}))。");
                             warningCount++;
                         }
                     }
@@ -411,7 +429,8 @@ namespace LevelsJsonEditor
             {
                 var e = list[i];
                 if (e == null) continue;
-                string key = $"{e.CellX},{e.CellY}";
+                // 包含Floor的key，相同层级的实体不允许重复
+                string key = $"{e.Floor},{e.CellX},{e.CellY}";
 
                 // 坐标合法性
                 if (grid != null)
@@ -423,25 +442,200 @@ namespace LevelsJsonEditor
                     }
                 }
 
-                // 本组重复
+                // 本组重复（相同Floor和坐标）
                 if (!localSet.Add(key))
                 {
-                    errors.AppendLine($"[错误] {groupName} 存在重复坐标 ({e.CellX},{e.CellY})。");
+                    errors.AppendLine($"[错误] {groupName} 存在重复坐标 Floor:{e.Floor} ({e.CellX},{e.CellY})。");
                     errorCount++;
                 }
 
-                // 跨组重复（警告）
+                // 跨组重复（警告，相同Floor和坐标）
                 if (globalCells.TryGetValue(key, out var existedGroup))
                 {
                     if (!string.Equals(existedGroup, groupName, StringComparison.OrdinalIgnoreCase))
                     {
-                        warnings.AppendLine($"[警告] {groupName}[{i}] 坐标与 {existedGroup} 冲突 ({e.CellX},{e.CellY})。");
+                        warnings.AppendLine($"[警告] {groupName}[{i}] 坐标与 {existedGroup} 冲突 Floor:{e.Floor} ({e.CellX},{e.CellY})。");
                         warningCount++;
                     }
                 }
                 else
                 {
                     globalCells[key] = groupName;
+                }
+            }
+        }
+
+        // 校验SubLevel
+        private void ValidateSubLevels(
+            LevelData level,
+            StringBuilder errors,
+            StringBuilder warnings,
+            ref int errorCount,
+            ref int warningCount,
+            Dictionary<int, HashSet<string>> floorSubLevelRegions)
+        {
+            if (level.SubLevels == null || level.SubLevels.Length == 0)
+            {
+                return; // 没有SubLevel，无需校验
+            }
+
+            int gw = Math.Max(0, level.Grid?.Width ?? 0);
+            int gh = Math.Max(0, level.Grid?.Height ?? 0);
+
+            // 用于检测SubLevel区域重叠（所有SubLevel，不管Floor）
+            HashSet<string> allOccupiedCells = new HashSet<string>();
+
+            for (int i = 0; i < level.SubLevels.Length; i++)
+            {
+                var subLevel = level.SubLevels[i];
+                if (subLevel == null) continue;
+
+                // 1. 校验Floor和SubLevelSize必须大于0
+                if (subLevel.Floor <= 0)
+                {
+                    errors.AppendLine($"[错误] SubLevels[{i}] Floor必须大于0，当前值：{subLevel.Floor}。");
+                    errorCount++;
+                }
+
+                if (subLevel.SubLevelSizeX <= 0)
+                {
+                    errors.AppendLine($"[错误] SubLevels[{i}] SubLevelSizeX必须大于0，当前值：{subLevel.SubLevelSizeX}。");
+                    errorCount++;
+                }
+
+                if (subLevel.SubLevelSizeY <= 0)
+                {
+                    errors.AppendLine($"[错误] SubLevels[{i}] SubLevelSizeY必须大于0，当前值：{subLevel.SubLevelSizeY}。");
+                    errorCount++;
+                }
+
+                // 如果基本属性校验失败，跳过后续校验
+                if (subLevel.Floor <= 0 || subLevel.SubLevelSizeX <= 0 || subLevel.SubLevelSizeY <= 0)
+                {
+                    continue;
+                }
+
+                // 2. 校验SubLevel以及所代表的区域必须在网格系统范围内
+                int startX = subLevel.CellX;
+                int startY = subLevel.CellY;
+                int endX = startX + subLevel.SubLevelSizeX - 1;
+                int endY = startY + subLevel.SubLevelSizeY - 1;
+
+                if (startX < 0 || startY < 0 || endX >= gw || endY >= gh)
+                {
+                    errors.AppendLine($"[错误] SubLevels[{i}] 区域超出网格范围。起点({startX},{startY})，终点({endX},{endY})，网格范围[0,{gw-1}]x[0,{gh-1}]。");
+                    errorCount++;
+                    continue;
+                }
+
+                // 3. 检测SubLevel区域重叠（所有SubLevel，不管Floor）
+                bool hasOverlap = false;
+
+                // 检查当前SubLevel覆盖的所有格子
+                for (int dx = 0; dx < subLevel.SubLevelSizeX; dx++)
+                {
+                    for (int dy = 0; dy < subLevel.SubLevelSizeY; dy++)
+                    {
+                        int x = startX + dx;
+                        int y = startY + dy;
+                        string cellKey = $"{x},{y}";
+
+                        if (!allOccupiedCells.Add(cellKey))
+                        {
+                            // 该格子已被其他SubLevel占用
+                            if (!hasOverlap)
+                            {
+                                errors.AppendLine($"[错误] SubLevels[{i}] 区域与其他SubLevel重叠。起点({startX},{startY})，大小({subLevel.SubLevelSizeX},{subLevel.SubLevelSizeY})，Floor:{subLevel.Floor}。");
+                                errorCount++;
+                                hasOverlap = true;
+                            }
+                        }
+                    }
+                }
+
+                // 构建Floor到SubLevel区域的映射（用于后续校验其他实体）
+                if (!floorSubLevelRegions.ContainsKey(subLevel.Floor))
+                {
+                    floorSubLevelRegions[subLevel.Floor] = new HashSet<string>();
+                }
+
+                var regionSet = floorSubLevelRegions[subLevel.Floor];
+                for (int dx = 0; dx < subLevel.SubLevelSizeX; dx++)
+                {
+                    for (int dy = 0; dy < subLevel.SubLevelSizeY; dy++)
+                    {
+                        int x = startX + dx;
+                        int y = startY + dy;
+                        regionSet.Add($"{x},{y}");
+                    }
+                }
+            }
+        }
+
+        // 校验所有floor>0的实体是否在对应SubLevel区域内
+        private void ValidateEntitiesInSubLevelRegions(
+            LevelData level,
+            Dictionary<int, HashSet<string>> floorSubLevelRegions,
+            StringBuilder errors,
+            ref int errorCount)
+        {
+            if (floorSubLevelRegions == null || floorSubLevelRegions.Count == 0)
+            {
+                // 没有SubLevel区域，所有floor>0的实体都是非法的
+                ValidateEntitiesFloorInSubLevels(level.Emptys, "Emptys", floorSubLevelRegions, errors, ref errorCount);
+                ValidateEntitiesFloorInSubLevels(level.Entities, "Entities", floorSubLevelRegions, errors, ref errorCount);
+                ValidateEntitiesFloorInSubLevels(level.Parks, "Parks", floorSubLevelRegions, errors, ref errorCount);
+                ValidateEntitiesFloorInSubLevels(level.PayParks, "PayParks", floorSubLevelRegions, errors, ref errorCount);
+                ValidateEntitiesFloorInSubLevels(level.Cars, "Cars", floorSubLevelRegions, errors, ref errorCount);
+                ValidateEntitiesFloorInSubLevels(level.Factorys, "Factorys", floorSubLevelRegions, errors, ref errorCount);
+                ValidateEntitiesFloorInSubLevels(level.Boxs, "Boxs", floorSubLevelRegions, errors, ref errorCount);
+                ValidateEntitiesFloorInSubLevels(level.LockDoors, "LockDoors", floorSubLevelRegions, errors, ref errorCount);
+                return;
+            }
+
+            ValidateEntitiesFloorInSubLevels(level.Emptys, "Emptys", floorSubLevelRegions, errors, ref errorCount);
+            ValidateEntitiesFloorInSubLevels(level.Entities, "Entities", floorSubLevelRegions, errors, ref errorCount);
+            ValidateEntitiesFloorInSubLevels(level.Parks, "Parks", floorSubLevelRegions, errors, ref errorCount);
+            ValidateEntitiesFloorInSubLevels(level.PayParks, "PayParks", floorSubLevelRegions, errors, ref errorCount);
+            ValidateEntitiesFloorInSubLevels(level.Cars, "Cars", floorSubLevelRegions, errors, ref errorCount);
+            ValidateEntitiesFloorInSubLevels(level.Factorys, "Factorys", floorSubLevelRegions, errors, ref errorCount);
+            ValidateEntitiesFloorInSubLevels(level.Boxs, "Boxs", floorSubLevelRegions, errors, ref errorCount);
+            ValidateEntitiesFloorInSubLevels(level.LockDoors, "LockDoors", floorSubLevelRegions, errors, ref errorCount);
+        }
+
+        // 辅助方法：校验一组实体中floor>0的实体是否在对应SubLevel区域内
+        private void ValidateEntitiesFloorInSubLevels(
+            GridEntityData[] entities,
+            string groupName,
+            Dictionary<int, HashSet<string>> floorSubLevelRegions,
+            StringBuilder errors,
+            ref int errorCount)
+        {
+            if (entities == null) return;
+
+            for (int i = 0; i < entities.Length; i++)
+            {
+                var entity = entities[i];
+                if (entity == null) continue;
+
+                // 只校验floor>0的实体
+                if (entity.Floor <= 0) continue;
+
+                // 检查该Floor是否有对应的SubLevel区域
+                if (floorSubLevelRegions == null || !floorSubLevelRegions.ContainsKey(entity.Floor))
+                {
+                    errors.AppendLine($"[错误] {groupName}[{i}] Floor:{entity.Floor} 没有对应的SubLevel区域，位置({entity.CellX},{entity.CellY})。");
+                    errorCount++;
+                    continue;
+                }
+
+                // 检查实体位置是否在对应Floor的SubLevel区域内
+                string cellKey = $"{entity.CellX},{entity.CellY}";
+                var regionSet = floorSubLevelRegions[entity.Floor];
+                if (!regionSet.Contains(cellKey))
+                {
+                    errors.AppendLine($"[错误] {groupName}[{i}] Floor:{entity.Floor} 位置({entity.CellX},{entity.CellY})不在对应Floor的SubLevel区域内。");
+                    errorCount++;
                 }
             }
         }
@@ -811,6 +1005,7 @@ namespace LevelsJsonEditor
                     string displayText = $"{entity.Type} ({entity.CellX},{entity.CellY})";
                     if (!string.IsNullOrEmpty(entity.ColorType))
                         displayText += $" [{entity.ColorType}]";
+                    displayText += $" Floor:{entity.Floor}";
                     //if (entity.HasKey)
                     //    displayText += " Key";
                     
@@ -1210,8 +1405,16 @@ namespace LevelsJsonEditor
                 
                 if (_groups.ContainsKey(_selectedGroup) && _selectedIndex >= 0 && _selectedIndex < _groups[_selectedGroup].Count)
                 {
-                    propertyGrid.SelectedObject = _groups[_selectedGroup][_selectedIndex];
-                    panelPreview.Invalidate(); // 重绘预览以显示选中状态
+                    var entity = _groups[_selectedGroup][_selectedIndex];
+                    propertyGrid.SelectedObject = entity;
+                    
+                    // 根据选中实体的Floor更新当前Floor
+                    if (entity != null && entity.Floor != _currentFloor)
+                    {
+                        _currentFloor = entity.Floor;
+                    }
+                    
+                    panelPreview.Invalidate(); // 重绘预览以显示选中状态和当前Floor
                 }
             }
             else
@@ -1265,7 +1468,8 @@ namespace LevelsJsonEditor
                 //HasKey = false,
                 //KayColorType = CarColorType.White.ToString(),
                 Dir = DirectionsType.Down.ToString(),
-                IncludeCarCount = 0
+                IncludeCarCount = 0,
+                Floor = _currentFloor // 使用当前Floor
             };
             
             _groups[groupName].Add(newEntity);
@@ -1356,6 +1560,15 @@ namespace LevelsJsonEditor
                     // 刷新预览
                     panelPreview.Invalidate();
                     return; // Type变更后直接返回，不需要再执行通用的属性更新
+                }
+            }
+            
+            // 如果修改的是Floor属性，更新当前Floor
+            if (e.ChangedItem.Label == "Floor")
+            {
+                if (entity != null)
+                {
+                    _currentFloor = entity.Floor;
                 }
             }
             
@@ -1482,7 +1695,10 @@ namespace LevelsJsonEditor
             // 绘制坐标轴标签
             DrawGridLabels(g, content, cell, gw, gh);
             
-            // 画实体
+            // 先绘制SubLevel（作为背景层）
+            DrawSubLevels(g, content, cell, gw, gh, _groups["SubLevels"]);
+            
+            // 画实体（按当前Floor过滤）
             DrawEntities(g, content, cell, gw, gh, _groups["Emptys"]);
             DrawEntities(g, content, cell, gw, gh, _groups["Entities"]);
             DrawEntities(g, content, cell, gw, gh, _groups["Parks"]);
@@ -1491,10 +1707,12 @@ namespace LevelsJsonEditor
             DrawEntities(g, content, cell, gw, gh, _groups["Cars"]);
             DrawEntities(g, content, cell, gw, gh, _groups["Boxs"]);
             DrawEntities(g, content, cell, gw, gh, _groups["LockDoors"]);
-            DrawEntities(g, content, cell, gw, gh, _groups["SubLevels"]);
 
             // 绘制左上角统计信息
             DrawSceneCounters(g);
+            
+            // 绘制右上角当前Floor信息
+            DrawCurrentFloor(g, panelPreview.ClientRectangle);
         }
 
         // 绘制场景关键数量信息（左上角）
@@ -1558,6 +1776,14 @@ namespace LevelsJsonEditor
 
             int boxsCarCount = _groups["Boxs"] != null ? _groups["Boxs"].Count : 0;
 
+            int sublevelCarCount = 0;
+            if (_groups["SubLevels"] != null)
+            {
+                foreach (var f in _groups["SubLevels"])
+                {
+                    if (f != null) sublevelCarCount += Math.Max(0, f.SubLevelSizeX * f.SubLevelSizeY);
+                }
+            }
             // 组装文本
             string[] lines = new[]
             {
@@ -1566,7 +1792,8 @@ namespace LevelsJsonEditor
                 "场景空格子数量: " + emptyCells,
                 "场景静态车辆数: " + carsCarCount,
                 "车库总车辆数: " + factorysCarCount,
-                "箱子总车辆数: " + boxsCarCount
+                "箱子总车辆数: " + boxsCarCount,
+                "地下车库总车辆数: " + sublevelCarCount
             };
 
             string text = string.Join("\n", lines);
@@ -1588,6 +1815,8 @@ namespace LevelsJsonEditor
             foreach (var entity in entities)
             {
                 if (entity == null) continue;
+                // 只绘制当前Floor的实体
+                if (entity.Floor != _currentFloor) continue;
                 if (entity.CellX < 0 || entity.CellX >= gw || entity.CellY < 0 || entity.CellY >= gh) continue;
 
                 var rect = new RectangleF(
@@ -1630,6 +1859,91 @@ namespace LevelsJsonEditor
                         }
                     }
                 }
+            }
+        }
+
+        // 绘制SubLevel实体（特殊逻辑：绘制区域）
+        private void DrawSubLevels(Graphics g, RectangleF content, int cell, int gw, int gh, List<GridEntityData> subLevels)
+        {
+            foreach (var subLevel in subLevels)
+            {
+                if (subLevel == null) continue;
+                // 只绘制当前Floor的SubLevel
+                //if (subLevel.Floor != _currentFloor) continue;
+                if (subLevel.CellX < 0 || subLevel.CellX >= gw || subLevel.CellY < 0 || subLevel.CellY >= gh) continue;
+
+                int sizeX = Math.Max(1, subLevel.SubLevelSizeX);
+                int sizeY = Math.Max(1, subLevel.SubLevelSizeY);
+
+                // 获取SubLevel图像
+                var image = GetImageForEntity(subLevel);
+
+                // 绘制从CellX,CellY开始，向右sizeX，向下sizeY的区域
+                for (int dx = 0; dx < sizeX; dx++)
+                {
+                    for (int dy = 0; dy < sizeY; dy++)
+                    {
+                        int x = subLevel.CellX + dx;
+                        int y = subLevel.CellY + dy;
+                        
+                        // 检查边界
+                        if (x < 0 || x >= gw || y < 0 || y >= gh) continue;
+
+                        var rect = new RectangleF(
+                            content.X + x * cell + 1,
+                            content.Y + (gh - 1 - y) * cell + 1, // Y坐标翻转
+                            cell - 2, cell - 2);
+
+                        if (image != null)
+                        {
+                            g.DrawImage(image, rect);
+                        }
+                        else
+                        {
+                            // 使用SubLevel颜色
+                            Color color = _typeColors.TryGetValue("SubLevel", out var c) ? c : Color.FromArgb(130, 53, 97);
+                            g.FillRectangle(new SolidBrush(color), rect);
+                        }
+                    }
+                }
+
+                // 选中高亮（只高亮原点）
+                if (_selectedGroup != null && _selectedIndex >= 0 && _selectedGroup == "SubLevels")
+                {
+                    var selectedEntities = _groups[_selectedGroup];
+                    if (_selectedIndex < selectedEntities.Count && ReferenceEquals(subLevel, selectedEntities[_selectedIndex]))
+                    {
+                        var originRect = new RectangleF(
+                            content.X + subLevel.CellX * cell + 1,
+                            content.Y + (gh - 1 - subLevel.CellY) * cell + 1,
+                            cell - 2, cell - 2);
+                        using (var pen = new Pen(Color.Yellow, 2))
+                        {
+                            g.DrawRectangle(pen, Rectangle.Round(originRect));
+                        }
+                    }
+                }
+            }
+        }
+
+        // 绘制右上角当前Floor信息
+        private void DrawCurrentFloor(Graphics g, Rectangle clientRect)
+        {
+            string text = $"当前层级：{_currentFloor}";
+            
+            using (var font = new Font("Microsoft YaHei", 9f, FontStyle.Regular))
+            using (var bgBrush = new SolidBrush(Color.FromArgb(160, 0, 0, 0)))
+            using (var textBrush = new SolidBrush(Color.White))
+            {
+                SizeF size = g.MeasureString(text, font);
+                var padding = 6;
+                var rect = new RectangleF(
+                    clientRect.Width - size.Width - padding * 2 - 5,
+                    5,
+                    size.Width + padding * 2,
+                    size.Height + padding * 2);
+                g.FillRectangle(bgBrush, rect);
+                g.DrawString(text, font, textBrush, rect.Left + padding, rect.Top + padding);
             }
         }
 
