@@ -130,6 +130,9 @@ namespace LevelsJsonEditor
         public string Dir { get; set; } = "Down";
         
         public int IncludeCarCount { get; set; } = 0;
+        public int Floor { get; set; } = 0;
+        public int SubLevelSizeX { get; set; } = 0;
+        public int SubLevelSizeY { get; set; } = 0;
     }
 
 
@@ -174,6 +177,7 @@ namespace LevelsJsonEditor
         public GridEntityData[] Factorys { get; set; } = new GridEntityData[0];
         public GridEntityData[] Boxs { get; set; } = new GridEntityData[0];
         public GridEntityData[] LockDoors { get; set; } = new GridEntityData[0];
+        public GridEntityData[] SubLevels { get; set; } = new GridEntityData[0];
         public string[] TotalCarColorTypes { get; set; } = new string[0];
         public int[] TotalCarCounts { get; set; } = new int[0];
         public int AwardCoin { get; set; } = 0;

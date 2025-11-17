@@ -15,6 +15,7 @@ namespace LevelsJsonEditor
         public static Image WallImage { get; private set; }
         public static Image ParkImage { get; private set; }
         public static Image BoxImage { get; private set; }
+        public static Image SubLevelImage { get; private set; }
         public static List<Image> CarImages { get; private set; } = new List<Image>();
         public static List<Image> FactoryImages { get; private set; } = new List<Image>();
         public static List<Image> LockDoorHeadImages { get; private set; } = new List<Image>();
@@ -63,6 +64,9 @@ namespace LevelsJsonEditor
 
             // 加载Box图像
             BoxImage = LoadImage("Box", "Game_Grid_box.png");
+
+            // 加载SubLevel图像
+            SubLevelImage = LoadImage("SubLevel", "Game_Grid_subLevel.png");
 
             // 加载Car图像 (按颜色顺序: White=0, Red=1, Blue=2, Green=3, Yellow=4, Purple=5)
             CarImages.Clear();
@@ -165,6 +169,11 @@ namespace LevelsJsonEditor
                     case "box":
                         if (resourceName == "Game_Grid_box")
                             return Properties.Resources.Game_Grid_box;
+                        break;
+
+                    case "sublevel":
+                        if (resourceName == "Game_Grid_subLevel")
+                            return Properties.Resources.Game_Grid_subLevel;
                         break;
 
                     case "factory":

@@ -203,5 +203,17 @@
   <ItemGroup>
     <None Include="Resources\Wall\Game_Grid_wall.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Car\Game_SnakeHead8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Car\Game_SnakeHead9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Car\Game_SnakeHead10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubLevel\Game_Grid_subLevel.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

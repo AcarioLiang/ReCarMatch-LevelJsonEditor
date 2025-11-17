@@ -136,6 +136,9 @@
   <data name="Game_Grid_box" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Box\Game_Grid_box.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Game_Grid_subLevel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SubLevel\Game_Grid_subLevel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Game_Grid_wall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Wall\Game_Grid_wall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -217,6 +220,9 @@
   <data name="Game_SnakeHead1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Car\Game_SnakeHead1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Game_SnakeHead10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Car\Game_SnakeHead10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Game_SnakeHead2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Car\Game_SnakeHead2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -234,5 +240,11 @@
   </data>
   <data name="Game_SnakeHead7" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Car\Game_SnakeHead7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Game_SnakeHead8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Car\Game_SnakeHead8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Game_SnakeHead9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Car\Game_SnakeHead9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

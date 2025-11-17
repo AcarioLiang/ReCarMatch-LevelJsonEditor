@@ -123,6 +123,16 @@ namespace LevelsJsonEditor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Game_Grid_subLevel {
+            get {
+                object obj = ResourceManager.GetObject("Game_Grid_subLevel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Game_Grid_wall {
             get {
                 object obj = ResourceManager.GetObject("Game_Grid_wall", resourceCulture);
@@ -393,6 +403,16 @@ namespace LevelsJsonEditor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Game_SnakeHead10 {
+            get {
+                object obj = ResourceManager.GetObject("Game_SnakeHead10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Game_SnakeHead2 {
             get {
                 object obj = ResourceManager.GetObject("Game_SnakeHead2", resourceCulture);
@@ -446,6 +466,26 @@ namespace LevelsJsonEditor.Properties {
         internal static System.Drawing.Bitmap Game_SnakeHead7 {
             get {
                 object obj = ResourceManager.GetObject("Game_SnakeHead7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Game_SnakeHead8 {
+            get {
+                object obj = ResourceManager.GetObject("Game_SnakeHead8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Game_SnakeHead9 {
+            get {
+                object obj = ResourceManager.GetObject("Game_SnakeHead9", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

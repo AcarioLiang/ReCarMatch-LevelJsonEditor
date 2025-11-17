@@ -27,7 +27,7 @@ namespace LevelsJsonEditor
         // 实体分组
         private readonly string[] _groupsOrder = new[]
         {
-            "Parks","PayParks","Cars","Entities","Emptys","Factorys","Boxs","LockDoors"
+            "Parks","PayParks","Cars","Entities","Emptys","Factorys","Boxs","LockDoors","SubLevels"
         };
         private readonly Dictionary<string, List<GridEntityData>> _groups = new Dictionary<string, List<GridEntityData>>();
 
@@ -232,6 +232,7 @@ namespace LevelsJsonEditor
                 {"Factorys", level.Factorys ?? new GridEntityData[0]},
                 {"Boxs", level.Boxs ?? new GridEntityData[0]},
                 {"LockDoors", level.LockDoors ?? new GridEntityData[0]},
+                //{"SubLevels", level.SubLevels ?? new GridEntityData[0]},
                 {"Cars", level.Cars ?? new GridEntityData[0]},
             };
 
@@ -327,6 +328,7 @@ namespace LevelsJsonEditor
                     MarkOccupied(level.Emptys);
                     MarkOccupied(level.Boxs);
                     //MarkOccupied(level.LockDoors);
+                    //MarkOccupied(level.SubLevels);
 
                     int carsCarCount = 0;
                     if (level.Cars != null && level.Cars.Length > 0)
@@ -461,7 +463,8 @@ namespace LevelsJsonEditor
                 Emptys = new GridEntityData[0],
                 Factorys = new GridEntityData[0],
                 Boxs = new GridEntityData[0],
-                LockDoors = new GridEntityData[0]
+                LockDoors = new GridEntityData[0],
+                SubLevels = new GridEntityData[0]
             };
         }
 
@@ -518,6 +521,7 @@ namespace LevelsJsonEditor
                 case "Factorys": return _current.Factorys;
                 case "Boxs": return _current.Boxs;
                 case "LockDoors": return _current.LockDoors;
+                case "SubLevels": return _current.SubLevels;
                 default: return new GridEntityData[0];
             }
         }
@@ -532,6 +536,7 @@ namespace LevelsJsonEditor
             _current.Factorys = _groups["Factorys"].ToArray();
             _current.Boxs = _groups["Boxs"].ToArray();
             _current.LockDoors = _groups["LockDoors"].ToArray();
+            _current.SubLevels = _groups["SubLevels"].ToArray();
         }
 
         private void ClearSelection()
@@ -746,6 +751,7 @@ namespace LevelsJsonEditor
                 Factorys = new GridEntityData[0],
                 Boxs = new GridEntityData[0],
                 LockDoors = new GridEntityData[0],
+                SubLevels = new GridEntityData[0],
                 TotalCarColorTypes = baseLv.TotalCarColorTypes,
                 TotalCarCounts = baseLv.TotalCarCounts,
                 AwardCoin = baseLv.AwardCoin,
@@ -1278,6 +1284,7 @@ namespace LevelsJsonEditor
                 case "Factorys": return "Factory";
                 case "Boxs": return "Box";
                 case "LockDoors": return "LockDoor";
+                case "SubLevels": return "SubLevel";
                 case "Entities": return "Wall";
                 default: return "Empty";
             }
@@ -1297,6 +1304,7 @@ namespace LevelsJsonEditor
                 case "Factory": return "Factorys";
                 case "Box": return "Boxs";
                 case "LockDoor": return "LockDoors";
+                case "SubLevel": return "SubLevels";
                 case "Wall":
                 case "Hole":
                 case "Item":
@@ -1483,6 +1491,7 @@ namespace LevelsJsonEditor
             DrawEntities(g, content, cell, gw, gh, _groups["Cars"]);
             DrawEntities(g, content, cell, gw, gh, _groups["Boxs"]);
             DrawEntities(g, content, cell, gw, gh, _groups["LockDoors"]);
+            DrawEntities(g, content, cell, gw, gh, _groups["SubLevels"]);
 
             // 绘制左上角统计信息
             DrawSceneCounters(g);
@@ -1522,6 +1531,7 @@ namespace LevelsJsonEditor
             Mark(_groups["Boxs"]?.ToArray());
             Mark(_groups["Emptys"]?.ToArray());
             //Mark(_current.LockDoors);
+            //Mark(_current.SubLevels);
 
             int emptyCells = Math.Max(0, totalCells - occupied.Count);
 
@@ -1721,6 +1731,8 @@ namespace LevelsJsonEditor
                     }
                     return null;
 
+                case "sublevel":
+                    return ImageResources.SubLevelImage;
                 case "empty":
                 case "hole":
                 case "item":
