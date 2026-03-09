@@ -215,5 +215,14 @@
   <ItemGroup>
     <None Include="Resources\SubLevel\Game_Grid_subLevel.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FreezingLayers1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FreezingLayers2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FreezingLayers3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

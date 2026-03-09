@@ -73,6 +73,36 @@ namespace LevelsJsonEditor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap FreezingLayers1 {
+            get {
+                object obj = ResourceManager.GetObject("FreezingLayers1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap FreezingLayers2 {
+            get {
+                object obj = ResourceManager.GetObject("FreezingLayers2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap FreezingLayers3 {
+            get {
+                object obj = ResourceManager.GetObject("FreezingLayers3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Game_Factory_Down {
             get {
                 object obj = ResourceManager.GetObject("Game_Factory_Down", resourceCulture);

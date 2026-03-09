@@ -21,6 +21,7 @@ namespace LevelsJsonEditor
         public static List<Image> LockDoorHeadImages { get; private set; } = new List<Image>();
         public static List<Image> LockDoorBodyImages { get; private set; } = new List<Image>();
         public static List<Image> LockDoorKeyImages { get; private set; } = new List<Image>();
+        public static List<Image> States_FreezingLayers { get; private set; } = new List<Image>();
 
         private static string _resourcesPath;
         private static bool _initialized = false;
@@ -94,6 +95,12 @@ namespace LevelsJsonEditor
                 LockDoorBodyImages.Add(LoadImage("LockDoor", $"Game_LockDoor_Body_{i}.png"));
                 LockDoorKeyImages.Add(LoadImage("LockDoor", $"Game_LockDoor_Key_{i}.png"));
             }
+
+            // 加载FreezingLayers图像
+            States_FreezingLayers.Clear();
+            States_FreezingLayers.Add(LoadImage("States", "FreezingLayers1.png")); 
+            States_FreezingLayers.Add(LoadImage("States", "FreezingLayers2.png")); 
+            States_FreezingLayers.Add(LoadImage("States", "FreezingLayers3.png")); 
         }
 
         private static Image LoadImage(string category, string fileName)
@@ -266,6 +273,18 @@ namespace LevelsJsonEditor
                                 return Properties.Resources.Game_LockDoor_Key_6;
                             case "Game_LockDoor_Key_7":
                                 return Properties.Resources.Game_LockDoor_Key_7;
+                        }
+                        break;
+
+                    case "states":
+                        switch (resourceName)
+                        {
+                            case "FreezingLayers1":
+                                return Properties.Resources.FreezingLayers1;
+                            case "FreezingLayers2":
+                                return Properties.Resources.FreezingLayers2;
+                            case "FreezingLayers3":
+                                return Properties.Resources.FreezingLayers3;
                         }
                         break;
                 }
