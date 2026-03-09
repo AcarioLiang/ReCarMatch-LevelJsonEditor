@@ -133,6 +133,7 @@ namespace LevelsJsonEditor
         public int Floor { get; set; } = 0;
         public int SubLevelSizeX { get; set; } = 0;
         public int SubLevelSizeY { get; set; } = 0;
+        public int FreezingLayers { get; set; } = 0;
     }
 
 

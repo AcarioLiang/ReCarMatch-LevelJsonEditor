@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -1845,6 +1845,23 @@ namespace LevelsJsonEditor
                     }
 
                     g.FillRectangle(new SolidBrush(color), rect);
+                }
+
+                // 若为车辆且有冻结层数，则叠加冻结层图像
+                if ("Car".Equals(entity.Type, StringComparison.OrdinalIgnoreCase)
+                    && entity.FreezingLayers > 0
+                    && ImageResources.States_FreezingLayers != null
+                    && ImageResources.States_FreezingLayers.Count > 0)
+                {
+                    int idx = Math.Min(entity.FreezingLayers, ImageResources.States_FreezingLayers.Count) - 1;
+                    if (idx >= 0 && idx < ImageResources.States_FreezingLayers.Count)
+                    {
+                        var freezingImage = ImageResources.States_FreezingLayers[idx];
+                        if (freezingImage != null)
+                        {
+                            g.DrawImage(freezingImage, rect);
+                        }
+                    }
                 }
 
                 // 选中高亮
