@@ -250,6 +250,80 @@ namespace LevelsJsonEditor
                 ValidateEntityList(kv.Key, kv.Value, level.Grid, errors, warnings, ref errorCount, ref warningCount, globalCells);
             }
 
+            // 校验 GridLocks 与 GridKeys：数量一致且颜色成对且不重复
+            var gridLocks = level.GridLocks ?? Array.Empty<GridEntityData>();
+            var gridKeys = level.GridKeys ?? Array.Empty<GridEntityData>();
+
+            if (gridLocks.Length != gridKeys.Length)
+            {
+                errors.AppendLine($"[错误] GridLocks 与 GridKeys 实体数量必须一致。当前 GridLocks:{gridLocks.Length}, GridKeys:{gridKeys.Length}。");
+                errorCount++;
+            }
+
+            // 统计颜色出现次数（忽略空颜色）
+            var lockColorCount = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+            var keyColorCount = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+
+            void AddColorCount(Dictionary<string, int> dict, GridEntityData[] arr, string groupName)
+            {
+                if (arr == null) return;
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var e = arr[i];
+                    if (e == null) continue;
+                    var color = e.ColorType ?? string.Empty;
+                    color = color.Trim();
+                    if (string.IsNullOrEmpty(color))
+                    {
+                        errors.AppendLine($"[错误] {groupName}[{i}] 未配置 ColorType，GridLock/GridKey 必须指定颜色。");
+                        errorCount++;
+                        continue;
+                    }
+
+                    if (!dict.TryGetValue(color, out var c))
+                        dict[color] = 1;
+                    else
+                        dict[color] = c + 1;
+                }
+            }
+
+            AddColorCount(lockColorCount, gridLocks, "GridLocks");
+            AddColorCount(keyColorCount, gridKeys, "GridKeys");
+
+            // 颜色必须成对：每种颜色在锁和钥匙中各出现一次，且无重复
+            foreach (var kv in lockColorCount)
+            {
+                var color = kv.Key;
+                var count = kv.Value;
+                if (count != 1)
+                {
+                    errors.AppendLine($"[错误] GridLocks 中颜色 {color} 出现 {count} 次，必须唯一且成对出现。");
+                    errorCount++;
+                }
+
+                if (!keyColorCount.TryGetValue(color, out var keyCount))
+                {
+                    errors.AppendLine($"[错误] 颜色 {color} 在 GridLocks 中存在，但在 GridKeys 中没有对应钥匙。");
+                    errorCount++;
+                }
+                else if (keyCount != 1)
+                {
+                    errors.AppendLine($"[错误] 颜色 {color} 在 GridKeys 中出现 {keyCount} 次，必须唯一且与 GridLocks 一一对应。");
+                    errorCount++;
+                }
+            }
+
+            // 反向检查：GridKeys 中多出来的颜色
+            foreach (var kv in keyColorCount)
+            {
+                var color = kv.Key;
+                if (!lockColorCount.ContainsKey(color))
+                {
+                    errors.AppendLine($"[错误] 颜色 {color} 在 GridKeys 中存在，但在 GridLocks 中没有对应锁。");
+                    errorCount++;
+                }
+            }
+
             // SubLevel校验（同时构建Floor到SubLevel区域的映射）
             Dictionary<int, HashSet<string>> floorSubLevelRegions = new Dictionary<int, HashSet<string>>();
             ValidateSubLevels(level, errors, warnings, ref errorCount, ref warningCount, floorSubLevelRegions);
