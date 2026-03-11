@@ -27,7 +27,7 @@ namespace LevelsJsonEditor
         // 实体分组
         private readonly string[] _groupsOrder = new[]
         {
-            "Parks","PayParks","Cars","Entities","Emptys","Factorys","Boxs","LockDoors","SubLevels"
+            "Parks","PayParks","Cars","Entities","Emptys","Factorys","Boxs","LockDoors","GridLocks","GridKeys","SubLevels"
         };
         private readonly Dictionary<string, List<GridEntityData>> _groups = new Dictionary<string, List<GridEntityData>>();
 
@@ -43,8 +43,6 @@ namespace LevelsJsonEditor
         {
             { "Empty", Color.FromArgb(243, 243, 243) },
             { "Wall", Color.FromArgb(89, 89, 89) },
-            { "Hole", Color.FromArgb(38, 38, 38) },
-            { "Item", Color.FromArgb(51, 153, 230) },
             { "Car", Color.FromArgb(230, 230, 51) },
             { "Park", Color.FromArgb(51, 230, 51) },
             { "PayPark", Color.FromArgb(51, 230, 153) },
@@ -52,6 +50,8 @@ namespace LevelsJsonEditor
             { "Box", Color.FromArgb(179, 128, 51) },
             { "LockDoor", Color.FromArgb(230, 153, 77) },
             { "SubLevel", Color.FromArgb(130, 53, 97) },
+            { "GridLock", Color.FromArgb(212, 175, 55) }, // 金色锁
+            { "GridKey", Color.FromArgb(212, 175, 55) },  // 金色钥匙
         };
 
         // 网格预览参数
@@ -236,6 +236,8 @@ namespace LevelsJsonEditor
                 {"Factorys", level.Factorys ?? new GridEntityData[0]},
                 {"Boxs", level.Boxs ?? new GridEntityData[0]},
                 {"LockDoors", level.LockDoors ?? new GridEntityData[0]},
+                {"GridLocks", level.GridLocks ?? new GridEntityData[0]},
+                {"GridKeys", level.GridKeys ?? new GridEntityData[0]},
                 //{"SubLevels", level.SubLevels ?? new GridEntityData[0]},
                 {"Cars", level.Cars ?? new GridEntityData[0]},
             };
@@ -340,6 +342,8 @@ namespace LevelsJsonEditor
                     MarkOccupied(level.Boxs);
                     //MarkOccupied(level.LockDoors);
                     //MarkOccupied(level.SubLevels);
+                    MarkOccupied(level.GridLocks);
+                    MarkOccupied(level.GridKeys);
 
                     int carsCarCount = 0;
                     if (level.Cars != null && level.Cars.Length > 0)
@@ -590,6 +594,8 @@ namespace LevelsJsonEditor
                 ValidateEntitiesFloorInSubLevels(level.Factorys, "Factorys", floorSubLevelRegions, errors, ref errorCount);
                 ValidateEntitiesFloorInSubLevels(level.Boxs, "Boxs", floorSubLevelRegions, errors, ref errorCount);
                 ValidateEntitiesFloorInSubLevels(level.LockDoors, "LockDoors", floorSubLevelRegions, errors, ref errorCount);
+                ValidateEntitiesFloorInSubLevels(level.GridLocks, "GridLocks", floorSubLevelRegions, errors, ref errorCount);
+                ValidateEntitiesFloorInSubLevels(level.GridKeys, "GridKeys", floorSubLevelRegions, errors, ref errorCount);
                 return;
             }
 
@@ -601,6 +607,8 @@ namespace LevelsJsonEditor
             ValidateEntitiesFloorInSubLevels(level.Factorys, "Factorys", floorSubLevelRegions, errors, ref errorCount);
             ValidateEntitiesFloorInSubLevels(level.Boxs, "Boxs", floorSubLevelRegions, errors, ref errorCount);
             ValidateEntitiesFloorInSubLevels(level.LockDoors, "LockDoors", floorSubLevelRegions, errors, ref errorCount);
+            ValidateEntitiesFloorInSubLevels(level.GridLocks, "GridLocks", floorSubLevelRegions, errors, ref errorCount);
+            ValidateEntitiesFloorInSubLevels(level.GridKeys, "GridKeys", floorSubLevelRegions, errors, ref errorCount);
         }
 
         // 辅助方法：校验一组实体中floor>0的实体是否在对应SubLevel区域内
@@ -658,7 +666,9 @@ namespace LevelsJsonEditor
                 Factorys = new GridEntityData[0],
                 Boxs = new GridEntityData[0],
                 LockDoors = new GridEntityData[0],
-                SubLevels = new GridEntityData[0]
+                SubLevels = new GridEntityData[0],
+                GridLocks = new GridEntityData[0],
+                GridKeys = new GridEntityData[0]
             };
         }
 
@@ -715,6 +725,8 @@ namespace LevelsJsonEditor
                 case "Factorys": return _current.Factorys;
                 case "Boxs": return _current.Boxs;
                 case "LockDoors": return _current.LockDoors;
+                case "GridLocks": return _current.GridLocks;
+                case "GridKeys": return _current.GridKeys;
                 case "SubLevels": return _current.SubLevels;
                 default: return new GridEntityData[0];
             }
@@ -730,6 +742,8 @@ namespace LevelsJsonEditor
             _current.Factorys = _groups["Factorys"].ToArray();
             _current.Boxs = _groups["Boxs"].ToArray();
             _current.LockDoors = _groups["LockDoors"].ToArray();
+            _current.GridLocks = _groups["GridLocks"].ToArray();
+            _current.GridKeys = _groups["GridKeys"].ToArray();
             _current.SubLevels = _groups["SubLevels"].ToArray();
         }
 
@@ -946,6 +960,8 @@ namespace LevelsJsonEditor
                 Boxs = new GridEntityData[0],
                 LockDoors = new GridEntityData[0],
                 SubLevels = new GridEntityData[0],
+                GridLocks = new GridEntityData[0],
+                GridKeys = new GridEntityData[0],
                 TotalCarColorTypes = baseLv.TotalCarColorTypes,
                 TotalCarCounts = baseLv.TotalCarCounts,
                 AwardCoin = baseLv.AwardCoin,
@@ -1488,6 +1504,8 @@ namespace LevelsJsonEditor
                 case "Factorys": return "Factory";
                 case "Boxs": return "Box";
                 case "LockDoors": return "LockDoor";
+                case "GridLocks": return "GridLock";
+                case "GridKeys": return "GridKey";
                 case "SubLevels": return "SubLevel";
                 case "Entities": return "Wall";
                 default: return "Empty";
@@ -1508,10 +1526,10 @@ namespace LevelsJsonEditor
                 case "Factory": return "Factorys";
                 case "Box": return "Boxs";
                 case "LockDoor": return "LockDoors";
+                case "GridLock": return "GridLocks";
+                case "GridKey": return "GridKeys";
                 case "SubLevel": return "SubLevels";
                 case "Wall":
-                case "Hole":
-                case "Item":
                 default: return "Entities"; // 其他类型都归到Entities组
             }
         }
@@ -1707,6 +1725,8 @@ namespace LevelsJsonEditor
             DrawEntities(g, content, cell, gw, gh, _groups["Cars"]);
             DrawEntities(g, content, cell, gw, gh, _groups["Boxs"]);
             DrawEntities(g, content, cell, gw, gh, _groups["LockDoors"]);
+            DrawEntities(g, content, cell, gw, gh, _groups["GridLocks"]);
+            DrawEntities(g, content, cell, gw, gh, _groups["GridKeys"]);
 
             // 绘制左上角统计信息
             DrawSceneCounters(g);
@@ -1750,6 +1770,8 @@ namespace LevelsJsonEditor
             Mark(_groups["Emptys"]?.ToArray());
             //Mark(_current.LockDoors);
             //Mark(_current.SubLevels);
+            Mark(_groups["GridLocks"]?.ToArray());
+            Mark(_groups["GridKeys"]?.ToArray());
 
             int emptyCells = Math.Max(0, totalCells - occupied.Count);
 
@@ -2059,6 +2081,34 @@ namespace LevelsJsonEditor
                                 return ImageResources.LockDoorHeadImages[colorIndex];
                         }
                         return ImageResources.LockDoorHeadImages[0];
+                    }
+                    return null;
+
+                case "gridlock":
+                    // 栅格锁，根据颜色类型选择对应锁图；当前仅有金色资源
+                    if (ImageResources.GridLockImages.Count > 0)
+                    {
+                        if (Enum.TryParse<CarColorType>(entity.ColorType ?? CarColorType.White.ToString(), true, out var colorType))
+                        {
+                            int colorIndex = (int)colorType;
+                            if (colorIndex >= 0 && colorIndex < ImageResources.GridLockImages.Count)
+                                return ImageResources.GridLockImages[colorIndex];
+                        }
+                        return ImageResources.GridLockImages[0]; // 默认返回第一个
+                    }
+                    return null;
+
+                case "gridkey":
+                    // 栅格钥匙，根据颜色类型选择对应钥匙图；当前仅有金色资源
+                    if (ImageResources.GridKeyImages.Count > 0)
+                    {
+                        if (Enum.TryParse<CarColorType>(entity.ColorType ?? CarColorType.White.ToString(), true, out var colorType))
+                        {
+                            int colorIndex = (int)colorType;
+                            if (colorIndex >= 0 && colorIndex < ImageResources.GridKeyImages.Count)
+                                return ImageResources.GridKeyImages[colorIndex];
+                        }
+                        return ImageResources.GridKeyImages[0]; // 默认返回第一个
                     }
                     return null;
 

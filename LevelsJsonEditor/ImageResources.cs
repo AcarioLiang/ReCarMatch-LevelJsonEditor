@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -22,6 +22,9 @@ namespace LevelsJsonEditor
         public static List<Image> LockDoorBodyImages { get; private set; } = new List<Image>();
         public static List<Image> LockDoorKeyImages { get; private set; } = new List<Image>();
         public static List<Image> States_FreezingLayers { get; private set; } = new List<Image>();
+
+        public static List<Image> GridLockImages { get; private set; } = new List<Image>();
+        public static List<Image> GridKeyImages { get; private set; } = new List<Image>();
 
         private static string _resourcesPath;
         private static bool _initialized = false;
@@ -100,7 +103,18 @@ namespace LevelsJsonEditor
             States_FreezingLayers.Clear();
             States_FreezingLayers.Add(LoadImage("States", "FreezingLayers1.png")); 
             States_FreezingLayers.Add(LoadImage("States", "FreezingLayers2.png")); 
-            States_FreezingLayers.Add(LoadImage("States", "FreezingLayers3.png")); 
+            States_FreezingLayers.Add(LoadImage("States", "FreezingLayers3.png"));
+
+            // 加载 GridLock / GridKey 图像（按颜色类型区分的锁和钥匙）
+            // 目前仅提供金色资源，如后续有更多颜色可在此扩展
+            GridLockImages.Clear();
+            GridLockImages.Add(LoadImage("GridLock", "障碍金锁01.png"));
+            GridLockImages.Add(LoadImage("GridLock", "障碍银锁01.png"));
+
+            GridKeyImages.Clear();
+            GridKeyImages.Add(LoadImage("GridLock", "障碍金钥匙.png"));
+            GridKeyImages.Add(LoadImage("GridLock", "障碍银钥匙.png"));
+
         }
 
         private static Image LoadImage(string category, string fileName)

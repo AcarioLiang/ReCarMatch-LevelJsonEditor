@@ -182,6 +182,9 @@ namespace LevelsJsonEditor
         public GridEntityData[] Boxs { get; set; } = new GridEntityData[0];
         public GridEntityData[] LockDoors { get; set; } = new GridEntityData[0];
         public GridEntityData[] SubLevels { get; set; } = new GridEntityData[0];
+        // 新增 GridLock / GridKey 独立分组，参考 PayParks
+        public GridEntityData[] GridLocks { get; set; } = new GridEntityData[0];
+        public GridEntityData[] GridKeys { get; set; } = new GridEntityData[0];
         public string[] TotalCarColorTypes { get; set; } = new string[0];
         public int[] TotalCarCounts { get; set; } = new int[0];
         public int AwardCoin { get; set; } = 0;
