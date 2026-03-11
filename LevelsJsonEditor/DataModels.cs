@@ -11,15 +11,18 @@ namespace LevelsJsonEditor
     public enum GridEntityType
     {
         Empty = 0,
+        Wall,
+        Car,
         Park,
         PayPark,
-        Car,
-        Entitie,
         Factory,
         Box,
         LockDoor,
-        Wall
+        SubLevel,
+        GridLock,
+        GridKey
     }
+
 
     public enum LevelHardType
     {

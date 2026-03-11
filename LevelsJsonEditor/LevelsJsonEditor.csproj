@@ -216,13 +216,19 @@
     <None Include="Resources\SubLevel\Game_Grid_subLevel.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\FreezingLayers3.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\FreezingLayers1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\FreezingLayers2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\FreezingLayers3.png" />
+    <Content Include="Resources\GridLock\障碍金钥匙.png" />
+    <Content Include="Resources\GridLock\障碍金锁01.png" />
+    <Content Include="Resources\GridLock\障碍银钥匙.png" />
+    <Content Include="Resources\GridLock\障碍银锁01.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
