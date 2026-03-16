@@ -1100,6 +1100,8 @@ namespace LevelsJsonEditor
                 //HasKey = s.HasKey,
                 //KayColorType = s.KayColorType,
                 Dir = s.Dir,
+                Floor = s.Floor,
+                FreezingLayers = s.FreezingLayers,
                 IncludeCarCount = s.IncludeCarCount
             };
         }
@@ -1598,6 +1600,7 @@ namespace LevelsJsonEditor
                 //KayColorType = CarColorType.White.ToString(),
                 Dir = DirectionsType.Down.ToString(),
                 IncludeCarCount = 0,
+                FreezingLayers = groupName.Equals("FreezingCars", StringComparison.OrdinalIgnoreCase) ? 2 : 0,
                 Floor = _currentFloor // 使用当前Floor
             };
             
