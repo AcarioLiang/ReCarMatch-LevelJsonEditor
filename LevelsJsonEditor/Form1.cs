@@ -326,6 +326,35 @@ namespace LevelsJsonEditor
                 }
             }
 
+            // 校验 FreezingLayers：仅 FreezingCar 类型允许 FreezingLayers > 0
+            void CheckFreezingLayers(string groupName, GridEntityData[] list)
+            {
+                if (list == null) return;
+                for (int i = 0; i < list.Length; i++)
+                {
+                    var e = list[i];
+                    if (e == null) continue;
+                    if (e.FreezingLayers > 0 &&
+                        !"FreezingCar".Equals(e.Type, StringComparison.OrdinalIgnoreCase))
+                    {
+                        errors.AppendLine($"[错误] {groupName}[{i}] (Type={e.Type}, Cell=({e.CellX},{e.CellY})) 的 FreezingLayers={e.FreezingLayers}，仅 FreezingCar 类型允许 FreezingLayers > 0。");
+                        errorCount++;
+                    }
+                }
+            }
+
+            CheckFreezingLayers("Emptys", level.Emptys);
+            CheckFreezingLayers("Entities", level.Entities);
+            CheckFreezingLayers("Parks", level.Parks);
+            CheckFreezingLayers("PayParks", level.PayParks);
+            CheckFreezingLayers("Factorys", level.Factorys);
+            CheckFreezingLayers("Boxs", level.Boxs);
+            CheckFreezingLayers("LockDoors", level.LockDoors);
+            CheckFreezingLayers("GridLocks", level.GridLocks);
+            CheckFreezingLayers("GridKeys", level.GridKeys);
+            CheckFreezingLayers("Cars", level.Cars);
+            CheckFreezingLayers("FreezingCars", level.FreezingCars);
+
             // SubLevel校验（同时构建Floor到SubLevel区域的映射）
             Dictionary<int, HashSet<string>> floorSubLevelRegions = new Dictionary<int, HashSet<string>>();
             ValidateSubLevels(level, errors, warnings, ref errorCount, ref warningCount, floorSubLevelRegions);
