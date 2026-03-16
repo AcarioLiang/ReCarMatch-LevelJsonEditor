@@ -27,7 +27,7 @@ namespace LevelsJsonEditor
         // 实体分组
         private readonly string[] _groupsOrder = new[]
         {
-            "Parks","PayParks","Cars","Entities","Emptys","Factorys","Boxs","LockDoors","GridLocks","GridKeys","SubLevels"
+            "Parks","PayParks","Cars","Entities","Emptys","Factorys","Boxs","LockDoors","GridLocks","GridKeys","SubLevels","FreezingCars"
         };
         private readonly Dictionary<string, List<GridEntityData>> _groups = new Dictionary<string, List<GridEntityData>>();
 
@@ -52,6 +52,7 @@ namespace LevelsJsonEditor
             { "SubLevel", Color.FromArgb(130, 53, 97) },
             { "GridLock", Color.FromArgb(212, 175, 55) }, // 金色锁
             { "GridKey", Color.FromArgb(212, 175, 55) },  // 金色钥匙
+            { "FreezingCar", Color.FromArgb(212, 175, 55) },  // 金色钥匙
         };
 
         // 网格预览参数
@@ -240,6 +241,7 @@ namespace LevelsJsonEditor
                 {"GridKeys", level.GridKeys ?? new GridEntityData[0]},
                 //{"SubLevels", level.SubLevels ?? new GridEntityData[0]},
                 {"Cars", level.Cars ?? new GridEntityData[0]},
+                //{"FreezingCars", level.Cars ?? new GridEntityData[0]},
             };
 
             // 跨组重复记录（作为警告，避免误报）
@@ -331,6 +333,7 @@ namespace LevelsJsonEditor
             // 校验所有floor>0的实体是否在对应SubLevel区域内
             ValidateEntitiesInSubLevelRegions(level, floorSubLevelRegions, errors, ref errorCount);
 
+
             //校验车辆总数是否一直
 
             if (errorCount == 0)
@@ -418,6 +421,7 @@ namespace LevelsJsonEditor
                     //MarkOccupied(level.SubLevels);
                     MarkOccupied(level.GridLocks);
                     MarkOccupied(level.GridKeys);
+                    //MarkOccupied(level.FreezingCars);
 
                     int carsCarCount = 0;
                     if (level.Cars != null && level.Cars.Length > 0)
@@ -670,6 +674,7 @@ namespace LevelsJsonEditor
                 ValidateEntitiesFloorInSubLevels(level.LockDoors, "LockDoors", floorSubLevelRegions, errors, ref errorCount);
                 ValidateEntitiesFloorInSubLevels(level.GridLocks, "GridLocks", floorSubLevelRegions, errors, ref errorCount);
                 ValidateEntitiesFloorInSubLevels(level.GridKeys, "GridKeys", floorSubLevelRegions, errors, ref errorCount);
+                ValidateEntitiesFloorInSubLevels(level.FreezingCars, "FreezingCars", floorSubLevelRegions, errors, ref errorCount);
                 return;
             }
 
@@ -683,6 +688,7 @@ namespace LevelsJsonEditor
             ValidateEntitiesFloorInSubLevels(level.LockDoors, "LockDoors", floorSubLevelRegions, errors, ref errorCount);
             ValidateEntitiesFloorInSubLevels(level.GridLocks, "GridLocks", floorSubLevelRegions, errors, ref errorCount);
             ValidateEntitiesFloorInSubLevels(level.GridKeys, "GridKeys", floorSubLevelRegions, errors, ref errorCount);
+            ValidateEntitiesFloorInSubLevels(level.FreezingCars, "FreezingCars", floorSubLevelRegions, errors, ref errorCount);
         }
 
         // 辅助方法：校验一组实体中floor>0的实体是否在对应SubLevel区域内
@@ -742,7 +748,8 @@ namespace LevelsJsonEditor
                 LockDoors = new GridEntityData[0],
                 SubLevels = new GridEntityData[0],
                 GridLocks = new GridEntityData[0],
-                GridKeys = new GridEntityData[0]
+                GridKeys = new GridEntityData[0],
+                FreezingCars = new GridEntityData[0]
             };
         }
 
@@ -802,6 +809,7 @@ namespace LevelsJsonEditor
                 case "GridLocks": return _current.GridLocks;
                 case "GridKeys": return _current.GridKeys;
                 case "SubLevels": return _current.SubLevels;
+                case "FreezingCars": return _current.FreezingCars;
                 default: return new GridEntityData[0];
             }
         }
@@ -819,6 +827,7 @@ namespace LevelsJsonEditor
             _current.GridLocks = _groups["GridLocks"].ToArray();
             _current.GridKeys = _groups["GridKeys"].ToArray();
             _current.SubLevels = _groups["SubLevels"].ToArray();
+            _current.FreezingCars = _groups["FreezingCars"].ToArray();
         }
 
         private void ClearSelection()
@@ -1036,6 +1045,7 @@ namespace LevelsJsonEditor
                 SubLevels = new GridEntityData[0],
                 GridLocks = new GridEntityData[0],
                 GridKeys = new GridEntityData[0],
+                FreezingCars = new GridEntityData[0],
                 TotalCarColorTypes = baseLv.TotalCarColorTypes,
                 TotalCarCounts = baseLv.TotalCarCounts,
                 AwardCoin = baseLv.AwardCoin,
@@ -1582,6 +1592,7 @@ namespace LevelsJsonEditor
                 case "GridKeys": return "GridKey";
                 case "SubLevels": return "SubLevel";
                 case "Entities": return "Wall";
+                case "FreezingCars": return "FreezingCar";
                 default: return "Empty";
             }
         }
@@ -1603,6 +1614,7 @@ namespace LevelsJsonEditor
                 case "GridLock": return "GridLocks";
                 case "GridKey": return "GridKeys";
                 case "SubLevel": return "SubLevels";
+                case "FreezingCar": return "FreezingCars";
                 case "Wall":
                 default: return "Entities"; // 其他类型都归到Entities组
             }
@@ -1801,6 +1813,7 @@ namespace LevelsJsonEditor
             DrawEntities(g, content, cell, gw, gh, _groups["LockDoors"]);
             DrawEntities(g, content, cell, gw, gh, _groups["GridLocks"]);
             DrawEntities(g, content, cell, gw, gh, _groups["GridKeys"]);
+            DrawEntities(g, content, cell, gw, gh, _groups["FreezingCars"]);
 
             // 绘制左上角统计信息
             DrawSceneCounters(g);
@@ -1846,6 +1859,7 @@ namespace LevelsJsonEditor
             //Mark(_current.SubLevels);
             Mark(_groups["GridLocks"]?.ToArray());
             Mark(_groups["GridKeys"]?.ToArray());
+            //Mark(_groups["FreezingCars"]?.ToArray());
 
             int emptyCells = Math.Max(0, totalCells - occupied.Count);
 
@@ -1940,11 +1954,14 @@ namespace LevelsJsonEditor
                         color = GetCarColor(entity.ColorType);
                     }
 
-                    g.FillRectangle(new SolidBrush(color), rect);
+                    if (!"FreezingCar".Equals(entity.Type, StringComparison.OrdinalIgnoreCase))
+                    {
+                        g.FillRectangle(new SolidBrush(color), rect);
+                    }
                 }
 
                 // 若为车辆且有冻结层数，则叠加冻结层图像
-                if ("Car".Equals(entity.Type, StringComparison.OrdinalIgnoreCase)
+                if ("FreezingCar".Equals(entity.Type, StringComparison.OrdinalIgnoreCase)
                     && entity.FreezingLayers > 0
                     && ImageResources.States_FreezingLayers != null
                     && ImageResources.States_FreezingLayers.Count > 0)

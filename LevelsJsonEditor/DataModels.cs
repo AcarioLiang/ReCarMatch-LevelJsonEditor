@@ -20,7 +20,8 @@ namespace LevelsJsonEditor
         LockDoor,
         SubLevel,
         GridLock,
-        GridKey
+        GridKey,
+        FreezingCar
     }
 
 
@@ -185,6 +186,7 @@ namespace LevelsJsonEditor
         // 新增 GridLock / GridKey 独立分组，参考 PayParks
         public GridEntityData[] GridLocks { get; set; } = new GridEntityData[0];
         public GridEntityData[] GridKeys { get; set; } = new GridEntityData[0];
+        public GridEntityData[] FreezingCars { get; set; } = new GridEntityData[0];
         public string[] TotalCarColorTypes { get; set; } = new string[0];
         public int[] TotalCarCounts { get; set; } = new int[0];
         public int AwardCoin { get; set; } = 0;
